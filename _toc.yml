@@ -3,28 +3,43 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: GettingStarted
-- file: Processing_in_R
-  sections:
-  - file: R/Preprocessing
-  - file: R/Graph_Generation
-  - file: R/SNF
-  - file: R/preprocess_functions
-- file: Processing_in_Python
-  sections: 
-  - file: Python/Preprocessing
-  - file: Python/SNF
-  - file: Python/Preprocess_Functions
-- file: Executing_MOGDx
-  sections:
-  - file: Execution/Command_Line
-  - file: Execution/mogdx
-  - file: Execution/Jupyter_Notebook
-- file: Training_MOGDx
-  sections:
-  - file: MAIN/GNN_MME
-  - file: MAIN/Training
-  - file: MAIN/Utils
-- file: contact
-- file: requirements
+parts:
+  - caption: Introduction
+    numbered: False
+    chapters:
+    - file: GettingStarted
+  - caption: Data Processing
+    numbered: False
+    chapters:
+    - file: Processing_in_R
+      sections:
+      - file: MOGDx/PreProcessing/R/Preprocessing
+      - file: MOGDx/PreProcessing/R/Graph_Generation
+      - file: MOGDx/PreProcessing/R/SNF
+      - file: MOGDx/PreProcessing/R/preprocess_functions
+    - file: Processing_in_Python
+      sections: 
+      - file: MOGDx/PreProcessing/Preprocessing
+      - file: MOGDx/PreProcessing/SNF
+      - file: MOGDx/MAIN/Preprocess_Functions
+  - caption: MOGDx Deployment
+    numbered: False
+    chapters:
+    - file: Executing_MOGDx
+      sections:
+      - file: Execution/Command_Line
+      - file: Execution/mogdx
+      - file: Execution/Jupyter_Notebook
+  - caption: Model Development
+    numbered: False
+    chapters:
+    - file: Training_MOGDx
+      sections:
+      - file: MOGDx/MAIN/GNN_MME
+      - file: MOGDx/MAIN/Training
+      - file: MOGDx/MAIN/Utils
+  - caption: Reference
+    numbered: False
+    chapters:
+    - file: contact
+    - file: requirements

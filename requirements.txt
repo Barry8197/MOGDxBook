@@ -1,3 +1,10 @@
-jupyter-book
-matplotlib
-numpy
+seaborn
+scikit-learn
+palettable
+IProgress
+ipywidgets
+astropy
+pydeseq2
+captum
+statsmodels
+prettytable
