@@ -1,0 +1,1445 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOGDx &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../intro.html" class="icon icon-home">
+            Project name not set
+              <img src="../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MOGDx</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/Notebooks/MOGDx_PNet.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="mogdx">
+<h1>MOGDx<a class="headerlink" href="#mogdx" title="Link to this heading"></a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span> 
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span> <span class="s1">&#39;./../&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MAIN.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MAIN.train</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">MAIN.preprocess_functions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MAIN.GNN_MME</span><span class="w"> </span><span class="kn">import</span> <span class="n">GCN_MME</span> <span class="p">,</span> <span class="n">GSage_MME</span> <span class="p">,</span> <span class="n">GAT_MME</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.reactome</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactomeNetwork</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.Pnet</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaskedLinear</span> <span class="p">,</span> <span class="n">PNET</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">numpy_array_to_one_hot</span><span class="p">,</span> <span class="n">get_gpu_memory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.interpret</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span> <span class="p">,</span> <span class="n">evaluate_interpret_save</span> <span class="p">,</span> <span class="n">visualize_importances</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dgl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished Library Import </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finished Library Import 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_input</span> <span class="o">=</span> <span class="s1">&#39;./../../data/raw/&#39;</span>
+<span class="n">snf_net</span> <span class="o">=</span> <span class="s1">&#39;RPPA_mRNA_graph.graphml&#39;</span>
+<span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;paper_BRCA_Subtype_PAM50&#39;</span>
+<span class="n">interpret_feat</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">pnet</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span><span class="c1"># Get GPU device name, else use CPU</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using </span><span class="si">%s</span><span class="s2"> device&quot;</span> <span class="o">%</span> <span class="n">device</span><span class="p">)</span>
+<span class="n">get_gpu_memory</span><span class="p">()</span>
+
+<span class="n">datModalities</span> <span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">data_parsing</span><span class="p">(</span><span class="n">data_input</span> <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;mRNA&#39;</span><span class="p">,</span> <span class="s1">&#39;RPPA&#39;</span> <span class="p">]</span> <span class="p">,</span> <span class="n">target</span> <span class="p">,</span> <span class="n">index_col</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">interpret_feat</span> <span class="p">:</span> 
+    <span class="n">features</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">datModalities</span><span class="p">)</span> <span class="p">:</span> 
+        <span class="n">features</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">datModalities</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        
+<span class="k">if</span> <span class="n">pnet</span> <span class="p">:</span> 
+    <span class="c1"># List of cancer genes was taken from the PNet paper dataset</span>
+    <span class="n">genes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./../../data/ext_data/cancer_genes.txt&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Build network to obtain gene and pathway relationships</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">ReactomeNetwork</span><span class="p">(</span><span class="n">genes_of_interest</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">genes</span><span class="p">[</span><span class="s1">&#39;genes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span> <span class="p">,</span> <span class="n">n_levels</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">graph_file</span> <span class="o">=</span> <span class="n">data_input</span> <span class="o">+</span> <span class="s1">&#39;../Networks/&#39;</span> <span class="o">+</span> <span class="n">snf_net</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_graphml</span><span class="p">(</span><span class="n">graph_file</span><span class="p">)</span>
+
+<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span>
+
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span> <span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">skf</span><span class="p">)</span>
+
+<span class="n">MME_input_shapes</span> <span class="o">=</span> <span class="p">[</span> <span class="n">datModalities</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">datModalities</span><span class="p">]</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">merge_dfs</span> <span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">datModalities</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">from_networkx</span><span class="p">(</span><span class="n">g</span> <span class="p">,</span> <span class="n">node_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;idx&#39;</span> <span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">])</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+
+<span class="k">del</span> <span class="n">datModalities</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="n">output_metrics</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_logits</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">meta</span><span class="p">))</span> <span class="p">:</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">GCN_MME</span><span class="p">(</span><span class="n">MME_input_shapes</span> <span class="p">,</span> <span class="p">[</span><span class="mi">16</span> <span class="p">,</span> <span class="mi">32</span><span class="p">]</span> <span class="p">,</span> <span class="mi">32</span> <span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">]</span>  <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">PNet</span><span class="o">=</span><span class="n">net</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    
+    <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">loss_plot</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">device</span> <span class="p">,</span>  <span class="n">model</span> <span class="p">,</span> <span class="n">label</span> <span class="p">,</span> <span class="mi">2000</span> <span class="p">,</span> <span class="mf">1e-3</span> <span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loss for split </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">NeighborSampler</span><span class="p">(</span>
+        <span class="p">[</span><span class="mi">15</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">gnnlayers</span><span class="p">))],</span>  <span class="c1"># fanout for each layer</span>
+        <span class="n">prefetch_node_feats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">],</span>
+        <span class="n">prefetch_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">g</span><span class="p">,</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">test_index</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span>
+        <span class="n">sampler</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">use_uva</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="n">test_output_metrics</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">test_dataloader</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Fold : </span><span class="si">{:01d}</span><span class="s2"> | Test Accuracy = </span><span class="si">{:.4f}</span><span class="s2"> | F1 = </span><span class="si">{:.4f}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="p">,</span> <span class="n">test_output_metrics</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">test_output_metrics</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="n">test_logits</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">test_output_metrics</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">test_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">test_output_metrics</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="n">output_metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_output_metrics</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">best_idx</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">elif</span> <span class="n">output_metrics</span><span class="p">[</span><span class="n">best_idx</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">test_output_metrics</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> 
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">best_idx</span>   <span class="o">=</span> <span class="n">i</span>
+
+    <span class="k">if</span> <span class="n">interpret_feat</span> <span class="p">:</span> 
+        <span class="n">prev_dim</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i_int</span> <span class="p">,</span> <span class="p">(</span><span class="n">pnet</span> <span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">encoder_dims</span> <span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">input_dims</span><span class="p">))</span> <span class="p">:</span> 
+            
+            <span class="n">pnet</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="n">i_int</span><span class="p">]</span>
+            
+            <span class="n">x</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">][</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">test_index</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int</span><span class="p">)</span> <span class="p">,</span> <span class="n">prev_dim</span><span class="p">:</span><span class="n">dim</span><span class="o">+</span><span class="n">prev_dim</span><span class="p">]</span>
+        
+            <span class="k">if</span> <span class="n">i_int</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                <span class="n">model_importances_cv</span> <span class="o">=</span> <span class="n">interpret</span><span class="p">(</span><span class="n">pnet</span> <span class="p">,</span> <span class="n">x</span> <span class="p">,</span> <span class="n">savedir</span><span class="o">=</span><span class="s1">&#39;None&#39;</span> <span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model_importances_cv</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">:</span> 
+                    <span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">model_importances_cv</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model_importances_cv</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">model_importances_cv</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">model_importances_cv</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+                <span class="n">model_importances_cv</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_importances_cv</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">:</span> 
+                <span class="n">model_importances_tmp</span> <span class="o">=</span> <span class="n">interpret</span><span class="p">(</span><span class="n">pnet</span> <span class="p">,</span> <span class="n">x</span> <span class="p">,</span> <span class="n">savedir</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">model_importances_tmp</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model_importances_tmp</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">model_importances_tmp</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">model_importances_tmp</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+                <span class="n">model_importances_tmp</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_importances_tmp</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model_importances_cv</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">:</span> 
+                    <span class="n">model_importances_tmp</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_importances_tmp</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Features&#39;</span> <span class="p">:</span> 
+                        <span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="p">,</span> <span class="n">model_importances_tmp</span><span class="p">[</span><span class="n">layer</span><span class="p">]])</span>
+                    <span class="k">else</span> <span class="p">:</span> 
+                        <span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">+=</span> <span class="n">model_importances_tmp</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span>
+        
+            <span class="n">prev_dim</span> <span class="o">+=</span> <span class="n">dim</span>
+            
+        <span class="n">model_importances_cv</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">i_int</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;Features&#39;</span> <span class="k">else</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model_importances_cv</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+            <span class="n">model_importances</span> <span class="o">=</span> <span class="n">model_importances_cv</span>
+        <span class="k">else</span> <span class="p">:</span> 
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model_importances</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="s1">&#39;Features&#39;</span> <span class="p">:</span> 
+                    <span class="n">model_importances</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">+=</span>  <span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span>
+                <span class="k">else</span> <span class="p">:</span> 
+                    <span class="n">model_importances</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">model_importances</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="p">,</span> <span class="n">model_importances_cv</span><span class="p">[</span><span class="n">layer</span><span class="p">]]</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">get_gpu_memory</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">model</span>
+    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Clearing gpu memory&#39;</span><span class="p">)</span>
+    <span class="n">get_gpu_memory</span><span class="p">()</span>
+
+<span class="n">test_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">test_logits</span><span class="p">)</span>
+<span class="n">test_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">interpret_feat</span> <span class="p">:</span> 
+    <span class="n">model_importances</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model_importances</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    
+<span class="n">accuracy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">F1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">output_metrics</span> <span class="p">:</span>
+    
+    <span class="n">accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">F1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> Fold Cross Validation Accuracy = </span><span class="si">%2.2f</span><span class="s2"> </span><span class="se">\u00B1</span><span class="s2"> </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">5</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> Fold Cross Validation F1 = </span><span class="si">%2.2f</span><span class="s2"> </span><span class="se">\u00B1</span><span class="s2"> </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">5</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">F1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">F1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_logits</span> <span class="p">,</span> <span class="n">test_labels</span> <span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Test Accuracy = </span><span class="si">%2.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">precision_recall_plot</span> <span class="p">,</span> <span class="n">all_predictions_conf</span> <span class="o">=</span> <span class="n">AUROC</span><span class="p">(</span><span class="n">test_logits</span><span class="p">,</span> <span class="n">test_labels</span> <span class="p">,</span> <span class="n">meta</span><span class="p">)</span>
+
+<span class="n">node_predictions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">node_true</span>        <span class="o">=</span> <span class="p">[]</span>
+<span class="n">display_label</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
+<span class="k">for</span> <span class="n">pred</span> <span class="p">,</span> <span class="n">true</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">all_predictions_conf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">test_labels</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()))</span>  <span class="p">:</span> 
+    <span class="n">node_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">display_label</span><span class="p">[</span><span class="n">pred</span><span class="p">])</span>
+    <span class="n">node_true</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">display_label</span><span class="p">[</span><span class="n">true</span><span class="p">])</span>
+
+<span class="n">preds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual&#39;</span> <span class="p">:</span> <span class="n">node_true</span> <span class="p">,</span> <span class="s1">&#39;Predicted&#39;</span> <span class="p">:</span> <span class="n">node_predictions</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using cuda device
+Total = 6.4Gb 	 Reserved = 1.0Gb 	 Allocated = 0.4Gb
+StratifiedKFold(n_splits=5, random_state=None, shuffle=True)
+GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=29995, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=464, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=32, out=16, normalization=both, activation=None)
+    (1): GraphConv(in=16, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18312,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 1.8948 | Train Acc. 0.1128 | 
+Epoch 00005 | Loss 0.5655 | Train Acc. 0.8430 | 
+Epoch 00010 | Loss 0.4913 | Train Acc. 0.8512 | 
+Epoch 00015 | Loss 0.4636 | Train Acc. 0.8616 | 
+Epoch 00020 | Loss 0.4220 | Train Acc. 0.8709 | 
+Epoch 00025 | Loss 0.4030 | Train Acc. 0.8663 | 
+Epoch 00030 | Loss 0.3853 | Train Acc. 0.8709 | 
+Epoch 00035 | Loss 0.3747 | Train Acc. 0.8791 | 
+Epoch 00040 | Loss 0.3544 | Train Acc. 0.8756 | 
+Epoch 00045 | Loss 0.3522 | Train Acc. 0.8791 | 
+Epoch 00050 | Loss 0.3353 | Train Acc. 0.8872 | 
+Epoch 00055 | Loss 0.3260 | Train Acc. 0.8953 | 
+Epoch 00060 | Loss 0.3268 | Train Acc. 0.8895 | 
+Epoch 00065 | Loss 0.3123 | Train Acc. 0.8977 | 
+Epoch 00070 | Loss 0.3085 | Train Acc. 0.8849 | 
+Epoch 00075 | Loss 0.3127 | Train Acc. 0.8930 | 
+Epoch 00080 | Loss 0.3069 | Train Acc. 0.9023 | 
+Epoch 00085 | Loss 0.3020 | Train Acc. 0.9000 | 
+Epoch 00090 | Loss 0.2920 | Train Acc. 0.9163 | 
+Epoch 00095 | Loss 0.2840 | Train Acc. 0.9012 | 
+Epoch 00100 | Loss 0.2843 | Train Acc. 0.9023 | 
+Epoch 00105 | Loss 0.2789 | Train Acc. 0.9035 | 
+Epoch 00110 | Loss 0.2750 | Train Acc. 0.9093 | 
+Epoch 00115 | Loss 0.2747 | Train Acc. 0.9174 | 
+Epoch 00120 | Loss 0.2797 | Train Acc. 0.9116 | 
+Epoch 00125 | Loss 0.2683 | Train Acc. 0.9151 | 
+Epoch 00130 | Loss 0.2694 | Train Acc. 0.9047 | 
+Epoch 00135 | Loss 0.2631 | Train Acc. 0.9151 | 
+Epoch 00140 | Loss 0.2595 | Train Acc. 0.9221 | 
+Epoch 00145 | Loss 0.2594 | Train Acc. 0.9105 | 
+Epoch 00150 | Loss 0.2615 | Train Acc. 0.9093 | 
+Epoch 00155 | Loss 0.2581 | Train Acc. 0.9116 | 
+Epoch 00160 | Loss 0.2497 | Train Acc. 0.9186 | 
+Epoch 00165 | Loss 0.2498 | Train Acc. 0.9186 | 
+Epoch 00170 | Loss 0.2529 | Train Acc. 0.9093 | 
+Epoch 00175 | Loss 0.2478 | Train Acc. 0.9233 | 
+Epoch 00180 | Loss 0.2570 | Train Acc. 0.9093 | 
+Epoch 00185 | Loss 0.2506 | Train Acc. 0.9140 | 
+Epoch 00190 | Loss 0.2366 | Train Acc. 0.9244 | 
+Epoch 00195 | Loss 0.2442 | Train Acc. 0.9279 | 
+Epoch 00200 | Loss 0.2500 | Train Acc. 0.9128 | 
+Epoch 00205 | Loss 0.2446 | Train Acc. 0.9209 | 
+Epoch 00210 | Loss 0.2410 | Train Acc. 0.9256 | 
+Epoch 00215 | Loss 0.2385 | Train Acc. 0.9314 | 
+Epoch 00220 | Loss 0.2354 | Train Acc. 0.9279 | 
+Epoch 00225 | Loss 0.2368 | Train Acc. 0.9360 | 
+Epoch 00230 | Loss 0.2352 | Train Acc. 0.9163 | 
+Epoch 00235 | Loss 0.2431 | Train Acc. 0.9198 | 
+Epoch 00240 | Loss 0.2404 | Train Acc. 0.9221 | 
+Epoch 00245 | Loss 0.2355 | Train Acc. 0.9209 | 
+Epoch 00250 | Loss 0.2315 | Train Acc. 0.9244 | 
+Epoch 00255 | Loss 0.2405 | Train Acc. 0.9302 | 
+Epoch 00260 | Loss 0.2370 | Train Acc. 0.9116 | 
+Epoch 00265 | Loss 0.2372 | Train Acc. 0.9116 | 
+Epoch 00270 | Loss 0.2280 | Train Acc. 0.9233 | 
+Epoch 00275 | Loss 0.2366 | Train Acc. 0.9233 | 
+Epoch 00280 | Loss 0.2429 | Train Acc. 0.9198 | 
+Epoch 00285 | Loss 0.2285 | Train Acc. 0.9302 | 
+Epoch 00290 | Loss 0.2374 | Train Acc. 0.9233 | 
+Epoch 00295 | Loss 0.2441 | Train Acc. 0.9209 | 
+Epoch 00300 | Loss 0.2385 | Train Acc. 0.9163 | 
+Epoch 00305 | Loss 0.2364 | Train Acc. 0.9267 | 
+Epoch 00310 | Loss 0.2412 | Train Acc. 0.9151 | 
+Epoch 00315 | Loss 0.2367 | Train Acc. 0.9233 | 
+Epoch 00320 | Loss 0.2265 | Train Acc. 0.9326 | 
+Epoch 00325 | Loss 0.2383 | Train Acc. 0.9081 | 
+Epoch 00330 | Loss 0.2290 | Train Acc. 0.9209 | 
+Epoch 00335 | Loss 0.2274 | Train Acc. 0.9244 | 
+Epoch 00340 | Loss 0.2349 | Train Acc. 0.9233 | 
+Epoch 00345 | Loss 0.2335 | Train Acc. 0.9174 | 
+Epoch 00350 | Loss 0.2329 | Train Acc. 0.9302 | 
+Epoch 00355 | Loss 0.2343 | Train Acc. 0.9256 | 
+Epoch 00360 | Loss 0.2326 | Train Acc. 0.9279 | 
+Epoch 00365 | Loss 0.2343 | Train Acc. 0.9302 | 
+Epoch 00370 | Loss 0.2429 | Train Acc. 0.9116 | 
+Epoch 00375 | Loss 0.2299 | Train Acc. 0.9256 | 
+Epoch 00380 | Loss 0.2308 | Train Acc. 0.9267 | 
+Epoch 00385 | Loss 0.2337 | Train Acc. 0.9302 | 
+Epoch 00390 | Loss 0.2240 | Train Acc. 0.9221 | 
+Epoch 00395 | Loss 0.2296 | Train Acc. 0.9163 | 
+Epoch 00400 | Loss 0.2278 | Train Acc. 0.9209 | 
+Epoch 00405 | Loss 0.2389 | Train Acc. 0.9221 | 
+Epoch 00410 | Loss 0.2311 | Train Acc. 0.9360 | 
+Epoch 00415 | Loss 0.2435 | Train Acc. 0.9221 | 
+Epoch 00420 | Loss 0.2309 | Train Acc. 0.9291 | 
+Epoch 00425 | Loss 0.2361 | Train Acc. 0.9372 | 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 00430 | Loss 0.2303 | Train Acc. 0.9337 | 
+Epoch 00435 | Loss 0.2273 | Train Acc. 0.9233 | 
+Epoch 00440 | Loss 0.2175 | Train Acc. 0.9349 | 
+Epoch 00445 | Loss 0.2342 | Train Acc. 0.9267 | 
+Epoch 00450 | Loss 0.2214 | Train Acc. 0.9326 | 
+Epoch 00455 | Loss 0.2330 | Train Acc. 0.9209 | 
+Epoch 00460 | Loss 0.2367 | Train Acc. 0.9291 | 
+Epoch 00465 | Loss 0.2298 | Train Acc. 0.9198 | 
+Epoch 00470 | Loss 0.2298 | Train Acc. 0.9279 | 
+Epoch 00475 | Loss 0.2260 | Train Acc. 0.9326 | 
+Epoch 00480 | Loss 0.2280 | Train Acc. 0.9267 | 
+Epoch 00485 | Loss 0.2350 | Train Acc. 0.9221 | 
+Epoch 00490 | Loss 0.2367 | Train Acc. 0.9198 | 
+Epoch 00495 | Loss 0.2320 | Train Acc. 0.9279 | 
+Epoch 00500 | Loss 0.2245 | Train Acc. 0.9326 | 
+Epoch 00505 | Loss 0.2347 | Train Acc. 0.9291 | 
+Epoch 00510 | Loss 0.2302 | Train Acc. 0.9395 | 
+Epoch 00515 | Loss 0.2311 | Train Acc. 0.9267 | 
+Epoch 00520 | Loss 0.2321 | Train Acc. 0.9221 | 
+Epoch 00525 | Loss 0.2329 | Train Acc. 0.9314 | 
+Epoch 00530 | Loss 0.2356 | Train Acc. 0.9233 | 
+Epoch 00535 | Loss 0.2318 | Train Acc. 0.9291 | 
+Epoch 00540 | Loss 0.2264 | Train Acc. 0.9209 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<img alt="../../_images/22f4a05b152285348d372aef6f2ef2ac8d4843af9fc6cc3030fa73ec8ef29d74.png" src="../../_images/22f4a05b152285348d372aef6f2ef2ac8d4843af9fc6cc3030fa73ec8ef29d74.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 1 | Test Accuracy = 0.8380 | F1 = 0.8029 
+Save Path Not Found - Plots will not be saved
+Linear(in_features=29995, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Save Path Not Found - Plots will not be saved
+Linear(in_features=464, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Total = 6.4Gb 	 Reserved = 1.7Gb 	 Allocated = 0.4Gb
+Clearing gpu memory
+Total = 6.4Gb 	 Reserved = 1.1Gb 	 Allocated = 0.4Gb
+GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=29995, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=464, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=32, out=16, normalization=both, activation=None)
+    (1): GraphConv(in=16, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18312,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 1.9381 | Train Acc. 0.1069 | 
+Epoch 00005 | Loss 0.6563 | Train Acc. 0.8165 | 
+Epoch 00010 | Loss 0.5548 | Train Acc. 0.8304 | 
+Epoch 00015 | Loss 0.4945 | Train Acc. 0.8479 | 
+Epoch 00020 | Loss 0.4604 | Train Acc. 0.8537 | 
+Epoch 00025 | Loss 0.4405 | Train Acc. 0.8525 | 
+Epoch 00030 | Loss 0.4121 | Train Acc. 0.8664 | 
+Epoch 00035 | Loss 0.4009 | Train Acc. 0.8746 | 
+Epoch 00040 | Loss 0.3816 | Train Acc. 0.8722 | 
+Epoch 00045 | Loss 0.3749 | Train Acc. 0.8815 | 
+Epoch 00050 | Loss 0.3636 | Train Acc. 0.8699 | 
+Epoch 00055 | Loss 0.3579 | Train Acc. 0.8839 | 
+Epoch 00060 | Loss 0.3603 | Train Acc. 0.8792 | 
+Epoch 00065 | Loss 0.3604 | Train Acc. 0.8746 | 
+Epoch 00070 | Loss 0.3566 | Train Acc. 0.8699 | 
+Epoch 00075 | Loss 0.3418 | Train Acc. 0.8873 | 
+Epoch 00080 | Loss 0.3428 | Train Acc. 0.8734 | 
+Epoch 00085 | Loss 0.3379 | Train Acc. 0.8746 | 
+Epoch 00090 | Loss 0.3268 | Train Acc. 0.8792 | 
+Epoch 00095 | Loss 0.3298 | Train Acc. 0.8885 | 
+Epoch 00100 | Loss 0.3251 | Train Acc. 0.8850 | 
+Epoch 00105 | Loss 0.3195 | Train Acc. 0.8931 | 
+Epoch 00110 | Loss 0.3054 | Train Acc. 0.9024 | 
+Epoch 00115 | Loss 0.3179 | Train Acc. 0.8920 | 
+Epoch 00120 | Loss 0.2975 | Train Acc. 0.8990 | 
+Epoch 00125 | Loss 0.3044 | Train Acc. 0.8990 | 
+Epoch 00130 | Loss 0.3005 | Train Acc. 0.9071 | 
+Epoch 00135 | Loss 0.2918 | Train Acc. 0.8943 | 
+Epoch 00140 | Loss 0.2956 | Train Acc. 0.9001 | 
+Epoch 00145 | Loss 0.2920 | Train Acc. 0.8943 | 
+Epoch 00150 | Loss 0.2982 | Train Acc. 0.9013 | 
+Epoch 00155 | Loss 0.2890 | Train Acc. 0.9071 | 
+Epoch 00160 | Loss 0.2865 | Train Acc. 0.8990 | 
+Epoch 00165 | Loss 0.2889 | Train Acc. 0.9001 | 
+Epoch 00170 | Loss 0.2853 | Train Acc. 0.9082 | 
+Epoch 00175 | Loss 0.2855 | Train Acc. 0.8978 | 
+Epoch 00180 | Loss 0.2836 | Train Acc. 0.9013 | 
+Epoch 00185 | Loss 0.2789 | Train Acc. 0.9048 | 
+Epoch 00190 | Loss 0.2816 | Train Acc. 0.9071 | 
+Epoch 00195 | Loss 0.2650 | Train Acc. 0.9117 | 
+Epoch 00200 | Loss 0.2780 | Train Acc. 0.9048 | 
+Epoch 00205 | Loss 0.2855 | Train Acc. 0.9094 | 
+Epoch 00210 | Loss 0.2699 | Train Acc. 0.9013 | 
+Epoch 00215 | Loss 0.2802 | Train Acc. 0.8943 | 
+Epoch 00220 | Loss 0.2680 | Train Acc. 0.9141 | 
+Epoch 00225 | Loss 0.2771 | Train Acc. 0.9071 | 
+Epoch 00230 | Loss 0.2755 | Train Acc. 0.9082 | 
+Epoch 00235 | Loss 0.2793 | Train Acc. 0.9082 | 
+Epoch 00240 | Loss 0.2686 | Train Acc. 0.9129 | 
+Epoch 00245 | Loss 0.2702 | Train Acc. 0.9129 | 
+Epoch 00250 | Loss 0.2751 | Train Acc. 0.9117 | 
+Epoch 00255 | Loss 0.2725 | Train Acc. 0.9082 | 
+Epoch 00260 | Loss 0.2661 | Train Acc. 0.9152 | 
+Epoch 00265 | Loss 0.2727 | Train Acc. 0.9059 | 
+Epoch 00270 | Loss 0.2727 | Train Acc. 0.9106 | 
+Epoch 00275 | Loss 0.2695 | Train Acc. 0.9059 | 
+Epoch 00280 | Loss 0.2683 | Train Acc. 0.9129 | 
+Epoch 00285 | Loss 0.2641 | Train Acc. 0.9129 | 
+Epoch 00290 | Loss 0.2637 | Train Acc. 0.9036 | 
+Epoch 00295 | Loss 0.2739 | Train Acc. 0.9013 | 
+Epoch 00300 | Loss 0.2518 | Train Acc. 0.9141 | 
+Epoch 00305 | Loss 0.2543 | Train Acc. 0.9106 | 
+Epoch 00310 | Loss 0.2706 | Train Acc. 0.9059 | 
+Epoch 00315 | Loss 0.2660 | Train Acc. 0.9129 | 
+Epoch 00320 | Loss 0.2715 | Train Acc. 0.9082 | 
+Epoch 00325 | Loss 0.2550 | Train Acc. 0.9210 | 
+Epoch 00330 | Loss 0.2673 | Train Acc. 0.9013 | 
+Epoch 00335 | Loss 0.2646 | Train Acc. 0.9117 | 
+Epoch 00340 | Loss 0.2540 | Train Acc. 0.9257 | 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 00345 | Loss 0.2587 | Train Acc. 0.9129 | 
+Epoch 00350 | Loss 0.2599 | Train Acc. 0.9141 | 
+Epoch 00355 | Loss 0.2617 | Train Acc. 0.9280 | 
+Epoch 00360 | Loss 0.2624 | Train Acc. 0.9059 | 
+Epoch 00365 | Loss 0.2791 | Train Acc. 0.9048 | 
+Epoch 00370 | Loss 0.2708 | Train Acc. 0.9071 | 
+Epoch 00375 | Loss 0.2617 | Train Acc. 0.9117 | 
+Epoch 00380 | Loss 0.2666 | Train Acc. 0.9071 | 
+Epoch 00385 | Loss 0.2598 | Train Acc. 0.9187 | 
+Epoch 00390 | Loss 0.2634 | Train Acc. 0.9071 | 
+Epoch 00395 | Loss 0.2595 | Train Acc. 0.9141 | 
+Epoch 00400 | Loss 0.2630 | Train Acc. 0.9059 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/f31d049f07e486919accf4d66c0e789ec84673a86db8397706a897763f902a23.png" src="../../_images/f31d049f07e486919accf4d66c0e789ec84673a86db8397706a897763f902a23.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 2 | Test Accuracy = 0.8465 | F1 = 0.8152 
+Save Path Not Found - Plots will not be saved
+Linear(in_features=29995, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Save Path Not Found - Plots will not be saved
+Linear(in_features=464, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Total = 6.4Gb 	 Reserved = 1.5Gb 	 Allocated = 0.4Gb
+Clearing gpu memory
+Total = 6.4Gb 	 Reserved = 1.0Gb 	 Allocated = 0.4Gb
+GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=29995, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=464, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=32, out=16, normalization=both, activation=None)
+    (1): GraphConv(in=16, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18312,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 2.2516 | Train Acc. 0.1626 | 
+Epoch 00005 | Loss 0.6506 | Train Acc. 0.8107 | 
+Epoch 00010 | Loss 0.5206 | Train Acc. 0.8444 | 
+Epoch 00015 | Loss 0.4786 | Train Acc. 0.8525 | 
+Epoch 00020 | Loss 0.4510 | Train Acc. 0.8595 | 
+Epoch 00025 | Loss 0.4321 | Train Acc. 0.8676 | 
+Epoch 00030 | Loss 0.4150 | Train Acc. 0.8688 | 
+Epoch 00035 | Loss 0.4024 | Train Acc. 0.8688 | 
+Epoch 00040 | Loss 0.3748 | Train Acc. 0.8908 | 
+Epoch 00045 | Loss 0.3773 | Train Acc. 0.8804 | 
+Epoch 00050 | Loss 0.3749 | Train Acc. 0.8769 | 
+Epoch 00055 | Loss 0.3663 | Train Acc. 0.8804 | 
+Epoch 00060 | Loss 0.3480 | Train Acc. 0.8943 | 
+Epoch 00065 | Loss 0.3519 | Train Acc. 0.8908 | 
+Epoch 00070 | Loss 0.3517 | Train Acc. 0.8897 | 
+Epoch 00075 | Loss 0.3355 | Train Acc. 0.8943 | 
+Epoch 00080 | Loss 0.3388 | Train Acc. 0.8908 | 
+Epoch 00085 | Loss 0.3276 | Train Acc. 0.8943 | 
+Epoch 00090 | Loss 0.3234 | Train Acc. 0.8990 | 
+Epoch 00095 | Loss 0.3180 | Train Acc. 0.9036 | 
+Epoch 00100 | Loss 0.3060 | Train Acc. 0.9001 | 
+Epoch 00105 | Loss 0.3046 | Train Acc. 0.9106 | 
+Epoch 00110 | Loss 0.3036 | Train Acc. 0.9141 | 
+Epoch 00115 | Loss 0.3038 | Train Acc. 0.8978 | 
+Epoch 00120 | Loss 0.2959 | Train Acc. 0.9036 | 
+Epoch 00125 | Loss 0.2888 | Train Acc. 0.9187 | 
+Epoch 00130 | Loss 0.2838 | Train Acc. 0.9106 | 
+Epoch 00135 | Loss 0.3020 | Train Acc. 0.8931 | 
+Epoch 00140 | Loss 0.2842 | Train Acc. 0.9071 | 
+Epoch 00145 | Loss 0.2796 | Train Acc. 0.9129 | 
+Epoch 00150 | Loss 0.2922 | Train Acc. 0.9048 | 
+Epoch 00155 | Loss 0.2822 | Train Acc. 0.9059 | 
+Epoch 00160 | Loss 0.2707 | Train Acc. 0.9210 | 
+Epoch 00165 | Loss 0.2697 | Train Acc. 0.9082 | 
+Epoch 00170 | Loss 0.2856 | Train Acc. 0.9175 | 
+Epoch 00175 | Loss 0.2706 | Train Acc. 0.9268 | 
+Epoch 00180 | Loss 0.2684 | Train Acc. 0.9141 | 
+Epoch 00185 | Loss 0.2631 | Train Acc. 0.9222 | 
+Epoch 00190 | Loss 0.2772 | Train Acc. 0.9094 | 
+Epoch 00195 | Loss 0.2597 | Train Acc. 0.9175 | 
+Epoch 00200 | Loss 0.2702 | Train Acc. 0.9233 | 
+Epoch 00205 | Loss 0.2636 | Train Acc. 0.9117 | 
+Epoch 00210 | Loss 0.2449 | Train Acc. 0.9315 | 
+Epoch 00215 | Loss 0.2641 | Train Acc. 0.9187 | 
+Epoch 00220 | Loss 0.2679 | Train Acc. 0.9106 | 
+Epoch 00225 | Loss 0.2638 | Train Acc. 0.9175 | 
+Epoch 00230 | Loss 0.2528 | Train Acc. 0.9175 | 
+Epoch 00235 | Loss 0.2524 | Train Acc. 0.9210 | 
+Epoch 00240 | Loss 0.2542 | Train Acc. 0.9233 | 
+Epoch 00245 | Loss 0.2643 | Train Acc. 0.9082 | 
+Epoch 00250 | Loss 0.2503 | Train Acc. 0.9210 | 
+Epoch 00255 | Loss 0.2655 | Train Acc. 0.9199 | 
+Epoch 00260 | Loss 0.2571 | Train Acc. 0.9164 | 
+Epoch 00265 | Loss 0.2595 | Train Acc. 0.9082 | 
+Epoch 00270 | Loss 0.2681 | Train Acc. 0.9175 | 
+Epoch 00275 | Loss 0.2575 | Train Acc. 0.9233 | 
+Epoch 00280 | Loss 0.2510 | Train Acc. 0.9164 | 
+Epoch 00285 | Loss 0.2454 | Train Acc. 0.9292 | 
+Epoch 00290 | Loss 0.2667 | Train Acc. 0.9210 | 
+Epoch 00295 | Loss 0.2538 | Train Acc. 0.9268 | 
+Epoch 00300 | Loss 0.2554 | Train Acc. 0.9315 | 
+Epoch 00305 | Loss 0.2516 | Train Acc. 0.9315 | 
+Epoch 00310 | Loss 0.2532 | Train Acc. 0.9257 | 
+Epoch 00315 | Loss 0.2445 | Train Acc. 0.9210 | 
+Epoch 00320 | Loss 0.2483 | Train Acc. 0.9210 | 
+Epoch 00325 | Loss 0.2541 | Train Acc. 0.9210 | 
+Epoch 00330 | Loss 0.2555 | Train Acc. 0.9106 | 
+Epoch 00335 | Loss 0.2534 | Train Acc. 0.9082 | 
+Epoch 00340 | Loss 0.2510 | Train Acc. 0.9268 | 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 00345 | Loss 0.2439 | Train Acc. 0.9245 | 
+Epoch 00350 | Loss 0.2497 | Train Acc. 0.9222 | 
+Epoch 00355 | Loss 0.2494 | Train Acc. 0.9152 | 
+Epoch 00360 | Loss 0.2468 | Train Acc. 0.9199 | 
+Epoch 00365 | Loss 0.2594 | Train Acc. 0.9222 | 
+Epoch 00370 | Loss 0.2482 | Train Acc. 0.9233 | 
+Epoch 00375 | Loss 0.2579 | Train Acc. 0.9129 | 
+Epoch 00380 | Loss 0.2447 | Train Acc. 0.9350 | 
+Epoch 00385 | Loss 0.2516 | Train Acc. 0.9233 | 
+Epoch 00390 | Loss 0.2496 | Train Acc. 0.9199 | 
+Epoch 00395 | Loss 0.2483 | Train Acc. 0.9152 | 
+Epoch 00400 | Loss 0.2462 | Train Acc. 0.9210 | 
+Epoch 00405 | Loss 0.2564 | Train Acc. 0.9164 | 
+Epoch 00410 | Loss 0.2403 | Train Acc. 0.9245 | 
+Epoch 00415 | Loss 0.2434 | Train Acc. 0.9292 | 
+Epoch 00420 | Loss 0.2534 | Train Acc. 0.9152 | 
+Epoch 00425 | Loss 0.2609 | Train Acc. 0.9187 | 
+Epoch 00430 | Loss 0.2559 | Train Acc. 0.9152 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/11a8925fbc8bed85eab62f9892610434cb5119e7832744465be26682a4bc0c26.png" src="../../_images/11a8925fbc8bed85eab62f9892610434cb5119e7832744465be26682a4bc0c26.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 3 | Test Accuracy = 0.8512 | F1 = 0.8183 
+Save Path Not Found - Plots will not be saved
+Linear(in_features=29995, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Save Path Not Found - Plots will not be saved
+Linear(in_features=464, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Total = 6.4Gb 	 Reserved = 1.5Gb 	 Allocated = 0.4Gb
+Clearing gpu memory
+Total = 6.4Gb 	 Reserved = 1.1Gb 	 Allocated = 0.4Gb
+GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=29995, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=464, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=32, out=16, normalization=both, activation=None)
+    (1): GraphConv(in=16, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18312,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 2.0780 | Train Acc. 0.1266 | 
+Epoch 00005 | Loss 0.6189 | Train Acc. 0.8397 | 
+Epoch 00010 | Loss 0.5197 | Train Acc. 0.8513 | 
+Epoch 00015 | Loss 0.4740 | Train Acc. 0.8525 | 
+Epoch 00020 | Loss 0.4512 | Train Acc. 0.8595 | 
+Epoch 00025 | Loss 0.4341 | Train Acc. 0.8688 | 
+Epoch 00030 | Loss 0.4138 | Train Acc. 0.8676 | 
+Epoch 00035 | Loss 0.3991 | Train Acc. 0.8699 | 
+Epoch 00040 | Loss 0.3898 | Train Acc. 0.8699 | 
+Epoch 00045 | Loss 0.3833 | Train Acc. 0.8792 | 
+Epoch 00050 | Loss 0.3639 | Train Acc. 0.8873 | 
+Epoch 00055 | Loss 0.3433 | Train Acc. 0.8815 | 
+Epoch 00060 | Loss 0.3557 | Train Acc. 0.8780 | 
+Epoch 00065 | Loss 0.3618 | Train Acc. 0.8757 | 
+Epoch 00070 | Loss 0.3457 | Train Acc. 0.8862 | 
+Epoch 00075 | Loss 0.3495 | Train Acc. 0.8804 | 
+Epoch 00080 | Loss 0.3255 | Train Acc. 0.8931 | 
+Epoch 00085 | Loss 0.3401 | Train Acc. 0.8897 | 
+Epoch 00090 | Loss 0.3173 | Train Acc. 0.8978 | 
+Epoch 00095 | Loss 0.3208 | Train Acc. 0.8873 | 
+Epoch 00100 | Loss 0.3046 | Train Acc. 0.8931 | 
+Epoch 00105 | Loss 0.3007 | Train Acc. 0.9036 | 
+Epoch 00110 | Loss 0.2986 | Train Acc. 0.8966 | 
+Epoch 00115 | Loss 0.2999 | Train Acc. 0.8978 | 
+Epoch 00120 | Loss 0.2988 | Train Acc. 0.8966 | 
+Epoch 00125 | Loss 0.2965 | Train Acc. 0.9024 | 
+Epoch 00130 | Loss 0.2940 | Train Acc. 0.9024 | 
+Epoch 00135 | Loss 0.2862 | Train Acc. 0.9129 | 
+Epoch 00140 | Loss 0.2868 | Train Acc. 0.9071 | 
+Epoch 00145 | Loss 0.2732 | Train Acc. 0.9048 | 
+Epoch 00150 | Loss 0.2717 | Train Acc. 0.9245 | 
+Epoch 00155 | Loss 0.2878 | Train Acc. 0.9094 | 
+Epoch 00160 | Loss 0.2604 | Train Acc. 0.9048 | 
+Epoch 00165 | Loss 0.2797 | Train Acc. 0.9141 | 
+Epoch 00170 | Loss 0.2747 | Train Acc. 0.9152 | 
+Epoch 00175 | Loss 0.2617 | Train Acc. 0.9164 | 
+Epoch 00180 | Loss 0.2593 | Train Acc. 0.9129 | 
+Epoch 00185 | Loss 0.2568 | Train Acc. 0.9152 | 
+Epoch 00190 | Loss 0.2670 | Train Acc. 0.9048 | 
+Epoch 00195 | Loss 0.2560 | Train Acc. 0.9222 | 
+Epoch 00200 | Loss 0.2704 | Train Acc. 0.9071 | 
+Epoch 00205 | Loss 0.2761 | Train Acc. 0.9082 | 
+Epoch 00210 | Loss 0.2616 | Train Acc. 0.9222 | 
+Epoch 00215 | Loss 0.2517 | Train Acc. 0.9141 | 
+Epoch 00220 | Loss 0.2634 | Train Acc. 0.9117 | 
+Epoch 00225 | Loss 0.2605 | Train Acc. 0.9152 | 
+Epoch 00230 | Loss 0.2477 | Train Acc. 0.9222 | 
+Epoch 00235 | Loss 0.2583 | Train Acc. 0.9071 | 
+Epoch 00240 | Loss 0.2687 | Train Acc. 0.9164 | 
+Epoch 00245 | Loss 0.2621 | Train Acc. 0.9106 | 
+Epoch 00250 | Loss 0.2736 | Train Acc. 0.9048 | 
+Epoch 00255 | Loss 0.2587 | Train Acc. 0.9106 | 
+Epoch 00260 | Loss 0.2507 | Train Acc. 0.9129 | 
+Epoch 00265 | Loss 0.2482 | Train Acc. 0.9222 | 
+Epoch 00270 | Loss 0.2583 | Train Acc. 0.9129 | 
+Epoch 00275 | Loss 0.2560 | Train Acc. 0.9129 | 
+Epoch 00280 | Loss 0.2469 | Train Acc. 0.9222 | 
+Epoch 00285 | Loss 0.2553 | Train Acc. 0.9187 | 
+Epoch 00290 | Loss 0.2610 | Train Acc. 0.9129 | 
+Epoch 00295 | Loss 0.2534 | Train Acc. 0.9187 | 
+Epoch 00300 | Loss 0.2552 | Train Acc. 0.9152 | 
+Epoch 00305 | Loss 0.2579 | Train Acc. 0.9164 | 
+Epoch 00310 | Loss 0.2458 | Train Acc. 0.9199 | 
+Epoch 00315 | Loss 0.2514 | Train Acc. 0.9233 | 
+Epoch 00320 | Loss 0.2486 | Train Acc. 0.9175 | 
+Epoch 00325 | Loss 0.2496 | Train Acc. 0.9164 | 
+Epoch 00330 | Loss 0.2496 | Train Acc. 0.9210 | 
+Epoch 00335 | Loss 0.2493 | Train Acc. 0.9141 | 
+Epoch 00340 | Loss 0.2462 | Train Acc. 0.9187 | 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 00345 | Loss 0.2485 | Train Acc. 0.9117 | 
+Epoch 00350 | Loss 0.2486 | Train Acc. 0.9222 | 
+Epoch 00355 | Loss 0.2460 | Train Acc. 0.9141 | 
+Epoch 00360 | Loss 0.2437 | Train Acc. 0.9245 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/08a4699baecfd01eb769ab6f71241f15dafcef9c3e740de361e81d880d19afaa.png" src="../../_images/08a4699baecfd01eb769ab6f71241f15dafcef9c3e740de361e81d880d19afaa.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 4 | Test Accuracy = 0.8605 | F1 = 0.8377 
+Save Path Not Found - Plots will not be saved
+Linear(in_features=29995, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Save Path Not Found - Plots will not be saved
+Linear(in_features=464, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Total = 6.4Gb 	 Reserved = 1.5Gb 	 Allocated = 0.4Gb
+Clearing gpu memory
+Total = 6.4Gb 	 Reserved = 1.2Gb 	 Allocated = 0.4Gb
+GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=29995, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): PNET(
+      (dropout): Dropout(p=0.5, inplace=False)
+      (layers): ModuleList(
+        (0): Linear(in_features=464, out_features=723, bias=True)
+        (1): MaskedLinear(in_features=723, out_features=1613, bias=True)
+        (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+        (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+        (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+        (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+      )
+      (skip): ModuleList(
+        (0): Linear(in_features=723, out_features=32, bias=True)
+        (1): Linear(in_features=1613, out_features=32, bias=True)
+        (2): Linear(in_features=1107, out_features=32, bias=True)
+        (3): Linear(in_features=488, out_features=32, bias=True)
+        (4): Linear(in_features=159, out_features=32, bias=True)
+        (5): Linear(in_features=28, out_features=32, bias=True)
+      )
+      (act_layers): ModuleList(
+        (0-5): 6 x ReLU()
+      )
+      (norm_layers): ModuleList(
+        (0): BatchNorm1d(723, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=32, out=16, normalization=both, activation=None)
+    (1): GraphConv(in=16, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18312,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 1.8757 | Train Acc. 0.1568 | 
+Epoch 00005 | Loss 0.7446 | Train Acc. 0.8118 | 
+Epoch 00010 | Loss 0.6390 | Train Acc. 0.8269 | 
+Epoch 00015 | Loss 0.5856 | Train Acc. 0.8444 | 
+Epoch 00020 | Loss 0.5617 | Train Acc. 0.8479 | 
+Epoch 00025 | Loss 0.5028 | Train Acc. 0.8560 | 
+Epoch 00030 | Loss 0.4850 | Train Acc. 0.8525 | 
+Epoch 00035 | Loss 0.4479 | Train Acc. 0.8746 | 
+Epoch 00040 | Loss 0.4481 | Train Acc. 0.8734 | 
+Epoch 00045 | Loss 0.4400 | Train Acc. 0.8734 | 
+Epoch 00050 | Loss 0.4205 | Train Acc. 0.8780 | 
+Epoch 00055 | Loss 0.4146 | Train Acc. 0.8757 | 
+Epoch 00060 | Loss 0.4076 | Train Acc. 0.8792 | 
+Epoch 00065 | Loss 0.4013 | Train Acc. 0.8722 | 
+Epoch 00070 | Loss 0.3920 | Train Acc. 0.8769 | 
+Epoch 00075 | Loss 0.4013 | Train Acc. 0.8780 | 
+Epoch 00080 | Loss 0.3779 | Train Acc. 0.8873 | 
+Epoch 00085 | Loss 0.3715 | Train Acc. 0.8792 | 
+Epoch 00090 | Loss 0.3741 | Train Acc. 0.8815 | 
+Epoch 00095 | Loss 0.3725 | Train Acc. 0.8873 | 
+Epoch 00100 | Loss 0.3573 | Train Acc. 0.8804 | 
+Epoch 00105 | Loss 0.3621 | Train Acc. 0.8827 | 
+Epoch 00110 | Loss 0.3502 | Train Acc. 0.8908 | 
+Epoch 00115 | Loss 0.3463 | Train Acc. 0.8943 | 
+Epoch 00120 | Loss 0.3401 | Train Acc. 0.8966 | 
+Epoch 00125 | Loss 0.3435 | Train Acc. 0.8966 | 
+Epoch 00130 | Loss 0.3342 | Train Acc. 0.9036 | 
+Epoch 00135 | Loss 0.3310 | Train Acc. 0.9013 | 
+Epoch 00140 | Loss 0.3230 | Train Acc. 0.8978 | 
+Epoch 00145 | Loss 0.3291 | Train Acc. 0.8966 | 
+Epoch 00150 | Loss 0.3351 | Train Acc. 0.8990 | 
+Epoch 00155 | Loss 0.3262 | Train Acc. 0.9001 | 
+Epoch 00160 | Loss 0.3328 | Train Acc. 0.9024 | 
+Epoch 00165 | Loss 0.3277 | Train Acc. 0.9059 | 
+Epoch 00170 | Loss 0.3125 | Train Acc. 0.9152 | 
+Epoch 00175 | Loss 0.3213 | Train Acc. 0.9001 | 
+Epoch 00180 | Loss 0.3223 | Train Acc. 0.8943 | 
+Epoch 00185 | Loss 0.3127 | Train Acc. 0.9106 | 
+Epoch 00190 | Loss 0.3197 | Train Acc. 0.9082 | 
+Epoch 00195 | Loss 0.3145 | Train Acc. 0.9036 | 
+Epoch 00200 | Loss 0.3150 | Train Acc. 0.9082 | 
+Epoch 00205 | Loss 0.3100 | Train Acc. 0.9071 | 
+Epoch 00210 | Loss 0.3087 | Train Acc. 0.9013 | 
+Epoch 00215 | Loss 0.3014 | Train Acc. 0.9048 | 
+Epoch 00220 | Loss 0.3221 | Train Acc. 0.8955 | 
+Epoch 00225 | Loss 0.3038 | Train Acc. 0.9071 | 
+Epoch 00230 | Loss 0.3078 | Train Acc. 0.9117 | 
+Epoch 00235 | Loss 0.3126 | Train Acc. 0.9001 | 
+Epoch 00240 | Loss 0.3016 | Train Acc. 0.9094 | 
+Epoch 00245 | Loss 0.3075 | Train Acc. 0.9013 | 
+Epoch 00250 | Loss 0.3024 | Train Acc. 0.9094 | 
+Epoch 00255 | Loss 0.2989 | Train Acc. 0.9152 | 
+Epoch 00260 | Loss 0.3055 | Train Acc. 0.9106 | 
+Epoch 00265 | Loss 0.2947 | Train Acc. 0.9013 | 
+Epoch 00270 | Loss 0.3008 | Train Acc. 0.9048 | 
+Epoch 00275 | Loss 0.3025 | Train Acc. 0.9094 | 
+Epoch 00280 | Loss 0.3150 | Train Acc. 0.9013 | 
+Epoch 00285 | Loss 0.3021 | Train Acc. 0.9071 | 
+Epoch 00290 | Loss 0.3087 | Train Acc. 0.9059 | 
+Epoch 00295 | Loss 0.3069 | Train Acc. 0.9094 | 
+Epoch 00300 | Loss 0.2924 | Train Acc. 0.9164 | 
+Epoch 00305 | Loss 0.3013 | Train Acc. 0.9094 | 
+Epoch 00310 | Loss 0.3010 | Train Acc. 0.9059 | 
+Epoch 00315 | Loss 0.2994 | Train Acc. 0.9059 | 
+Epoch 00320 | Loss 0.2977 | Train Acc. 0.9036 | 
+Epoch 00325 | Loss 0.3057 | Train Acc. 0.8955 | 
+Epoch 00330 | Loss 0.2983 | Train Acc. 0.9094 | 
+Epoch 00335 | Loss 0.2957 | Train Acc. 0.9001 | 
+Epoch 00340 | Loss 0.3175 | Train Acc. 0.8943 | 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 00345 | Loss 0.2996 | Train Acc. 0.9094 | 
+Epoch 00350 | Loss 0.3073 | Train Acc. 0.9071 | 
+Epoch 00355 | Loss 0.3087 | Train Acc. 0.9094 | 
+Epoch 00360 | Loss 0.2942 | Train Acc. 0.9141 | 
+Epoch 00365 | Loss 0.2919 | Train Acc. 0.9141 | 
+Epoch 00370 | Loss 0.3047 | Train Acc. 0.9013 | 
+Epoch 00375 | Loss 0.2992 | Train Acc. 0.9129 | 
+Epoch 00380 | Loss 0.2912 | Train Acc. 0.9164 | 
+Epoch 00385 | Loss 0.3084 | Train Acc. 0.9129 | 
+Epoch 00390 | Loss 0.3047 | Train Acc. 0.9106 | 
+Epoch 00395 | Loss 0.3011 | Train Acc. 0.9013 | 
+Epoch 00400 | Loss 0.3012 | Train Acc. 0.9071 | 
+Epoch 00405 | Loss 0.3124 | Train Acc. 0.8920 | 
+Epoch 00410 | Loss 0.3071 | Train Acc. 0.8955 | 
+Epoch 00415 | Loss 0.2970 | Train Acc. 0.9129 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/4ff2563b75f3d081d7e15601d3e997c8f249d7e171c6704b5e3c5de82af7ccad.png" src="../../_images/4ff2563b75f3d081d7e15601d3e997c8f249d7e171c6704b5e3c5de82af7ccad.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 5 | Test Accuracy = 0.8837 | F1 = 0.8644 
+Save Path Not Found - Plots will not be saved
+Linear(in_features=29995, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Save Path Not Found - Plots will not be saved
+Linear(in_features=464, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+Total = 6.4Gb 	 Reserved = 1.5Gb 	 Allocated = 0.4Gb
+Clearing gpu memory
+Total = 6.4Gb 	 Reserved = 1.2Gb 	 Allocated = 0.4Gb
+5 Fold Cross Validation Accuracy = 85.60 ± 1.57
+5 Fold Cross Validation F1 = 82.77 ± 2.15
+</pre></div>
+</div>
+<img alt="../../_images/f41d3a079e484277b5b9bdbb3234f1cd7b0374cae0ff4545668abfada330f2c3.png" src="../../_images/f41d3a079e484277b5b9bdbb3234f1cd7b0374cae0ff4545668abfada330f2c3.png" />
+<img alt="../../_images/1d1b52ee9814378eab6b3948fdb0dddef1cbe1ac3a2b8854cd32557a93ac2bd7.png" src="../../_images/1d1b52ee9814378eab6b3948fdb0dddef1cbe1ac3a2b8854cd32557a93ac2bd7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_layers_importance</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">model_layers_importance_fig</span><span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model_importances</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+        <span class="n">model_importances</span><span class="p">[</span><span class="s1">&#39;Features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Input Feature Importance&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">model_layers_importance_fig</span><span class="p">[</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fig</span>
+    <span class="k">else</span> <span class="p">:</span> 
+        <span class="n">layer_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Pathway Level </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> Importance&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Gene Importance&quot;</span>
+        <span class="n">model_layers_importance</span><span class="p">[</span><span class="n">layer_title</span><span class="p">]</span> <span class="o">=</span> <span class="n">layer</span>
+        <span class="n">model_layers_importance_fig</span><span class="p">[</span><span class="n">layer_title</span><span class="p">]</span> <span class="o">=</span> <span class="n">visualize_importances</span><span class="p">(</span>
+            <span class="n">model_importances</span><span class="p">[</span><span class="n">layer</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Average </span><span class="si">{</span><span class="n">layer_title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/06feb1cc682fb2b24377a92915c5114035b27140db499e2a2151886de5416aeb.png" src="../../_images/06feb1cc682fb2b24377a92915c5114035b27140db499e2a2151886de5416aeb.png" />
+<img alt="../../_images/107cdff0a28fcf2f51f6b8f45643789eb2ed7e59092d92be3d8ef4d3ba38ed6f.png" src="../../_images/107cdff0a28fcf2f51f6b8f45643789eb2ed7e59092d92be3d8ef4d3ba38ed6f.png" />
+<img alt="../../_images/4a82d080bedc84e8b7c1a42dc2000ff69a03652176bfcef1dd85c3d09bcb7e8e.png" src="../../_images/4a82d080bedc84e8b7c1a42dc2000ff69a03652176bfcef1dd85c3d09bcb7e8e.png" />
+<img alt="../../_images/24b10a4678a3dd2d51b2121881599d0964918f363837eeee0c3386219b80cb8a.png" src="../../_images/24b10a4678a3dd2d51b2121881599d0964918f363837eeee0c3386219b80cb8a.png" />
+<img alt="../../_images/3d6fc51547fe84b4e136642f1cefd2ef8ae62bf0bccf70211ca4efc3901a27db.png" src="../../_images/3d6fc51547fe84b4e136642f1cefd2ef8ae62bf0bccf70211ca4efc3901a27db.png" />
+<img alt="../../_images/2f3a730e8b2887b0a6d313b570cf64926759ef2026c0a8c1ad7ba6df7e8a5abf.png" src="../../_images/2f3a730e8b2887b0a6d313b570cf64926759ef2026c0a8c1ad7ba6df7e8a5abf.png" />
+<img alt="../../_images/85f6910ccf7d24f4345ac4902b53bdb4973d5d347ea0efbdf75b957369858d69.png" src="../../_images/85f6910ccf7d24f4345ac4902b53bdb4973d5d347ea0efbdf75b957369858d69.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">importances</span> <span class="o">=</span> <span class="n">model_importances</span><span class="p">[</span><span class="s1">&#39;Gene Importance&#39;</span><span class="p">]</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="p">(</span><span class="n">importances</span> <span class="o">-</span> <span class="n">importances</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">importances</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gse</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">gse</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ids&#39;</span> <span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">]</span>
+<span class="n">gse</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;C:/Users/Barry/Downloads/gene_enrichment.rnk&#39;</span> <span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span> <span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_gpu_memory</span><span class="p">()</span>
+<span class="c1">#del model , train_loader , test_loader</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">reset_accumulated_memory_stats</span><span class="p">()</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+<span class="n">get_gpu_memory</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total = 6.4Gb 	 Reserved = 1.2Gb 	 Allocated = 0.4Gb
+Total = 6.4Gb 	 Reserved = 1.2Gb 	 Allocated = 0.4Gb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test the model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing...&quot;</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">layerwise_infer</span><span class="p">(</span>
+    <span class="n">device</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">())),</span> <span class="n">best_model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">4096</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Accuracy </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Testing...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 30.75it/s]
+100%|██████████| 1/1 [00:00&lt;00:00, 36.35it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy 0.9089
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">emb</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">embedding_extraction</span><span class="p">(</span>
+        <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">]</span> <span class="p">,</span><span class="n">device</span><span class="p">,</span> <span class="mi">4096</span>
+    <span class="p">)</span>  <span class="c1"># pred in buffer_device</span>
+
+<span class="n">tsne_embedding_plot</span><span class="p">(</span><span class="n">emb</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="p">,</span> <span class="n">meta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 44.48it/s]
+</pre></div>
+</div>
+<img alt="../../_images/1ebdbf1b87b99fc727855e3b907257ebccc19ecf3a5451755da54db8ead4945c.png" src="../../_images/1ebdbf1b87b99fc727855e3b907257ebccc19ecf3a5451755da54db8ead4945c.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\Notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

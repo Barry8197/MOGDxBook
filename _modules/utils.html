@@ -1,453 +1,169 @@
 
+
 <!DOCTYPE html>
-
-
-<html lang="en" data-content_root="../" >
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>utils &#8212; MOGDx</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
-
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/utils';</script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
 
-  
-  
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
-      
-      <div class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-
-<a class="navbar-brand logo" href="../intro.html">
-  
-  
-  
-  
-  
-    
-    
-      
-    
-    
-    <img src="../_static/mogdx.png" class="logo__image only-light" alt="MOGDx - Home"/>
-    <script>document.write(`<img src="../_static/mogdx.png" class="logo__image only-dark" alt="MOGDx - Home"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
-                    Multi-Omic Graph Diagnosis (MOGDx)
-                </a>
-            </li>
-        </ul>
-        <ul class="nav bd-sidenav">
+          
+          
+          <a href="../intro.html" class="icon icon-home">
+            Project name not set
+              <img src="../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Processing_in_R.html">Processing in R</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../R/Preprocessing.html">MOGDx Modality Processing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../R/Graph_Generation.html">Modality Graph Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../R/SNF.html">Similarity Network Fusion (SNF)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../R/preprocess_functions.html">Preprocess Functions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Processing_in_Python.html">Processing in Python</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Python/Preprocessing.html">Preprocessing in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Python/SNF.html">Similarity Network Fusion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Python/Preprocess_Functions.html">Preprocess Functions</a></li>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Processing_in_Python.html">Processing in Python</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Executing_MOGDx.html">Executing MOGDx</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Execution/Command_Line.html">Running on Command Line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Execution/mogdx.html">MOGDx Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Execution/Jupyter_Notebook.html">Jupyter Notebook</a></li>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Executing_MOGDx.html">Executing MOGDx</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Training_MOGDx.html">MOGDx Main Functions and Classes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../MAIN/GNN_MME.html">Graph Neural Network with Multi Modal Encoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MAIN/Training.html">Training MOGDx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MAIN/Utils.html">Utility Functions</a></li>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
 </ul>
-</li>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Details</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
 </ul>
 
-    </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/Barry8197/MOGDx" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Barry8197/MOGDx/issues/new?title=Issue%20on%20page%20%2F_modules/utils.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
-
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
         </div>
-    </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
 </div>
-
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <h1>Source code for utils</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dgl.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphConv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 
-<div class="viewcode-block" id="data_parsing_R">
-<a class="viewcode-back" href="../MAIN/Utils.html#utils.data_parsing_R">[docs]</a>
-<span class="k">def</span> <span class="nf">data_parsing_R</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="p">,</span> <span class="n">MODALITIES</span> <span class="p">,</span><span class="n">TARGET</span> <span class="p">,</span> <span class="n">INDEX_COL</span><span class="p">)</span> <span class="p">:</span>
+<span class="c1"># Define the merge operation setup</span>
+<div class="viewcode-block" id="merge_dfs">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.merge_dfs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_dfs</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span> <span class="n">right_df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Parse data from multiple modalities and return the parsed data along with metadata.</span>
+<span class="sd">    Merges two DataFrames on their indexes with an outer join method.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        DATA_PATH (str): The path to the data.</span>
-<span class="sd">        MODALITIES (list): A list of modalities to be processed.</span>
-<span class="sd">        TARGET (str): The target variable.</span>
-<span class="sd">        INDEX_COL (str): The column to be used as the index.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        left_df (pd.DataFrame): The left DataFrame to merge.</span>
+<span class="sd">        right_df (pd.DataFrame): The right DataFrame to merge.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        tuple: A tuple containing the parsed data for each modality and the metadata.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        pd.DataFrame: The resulting DataFrame after merging.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1"># Merging on &#39;key&#39; and expanding with &#39;how=outer&#39; to include all records</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span> <span class="n">right_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="data_parsing">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.data_parsing">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">data_parsing</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="p">,</span> <span class="n">MODALITIES</span> <span class="p">,</span><span class="n">TARGET</span> <span class="p">,</span> <span class="n">INDEX_COL</span> <span class="p">,</span> <span class="n">PROCESSED</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses multiple data modalities into a unified structure, handling metadata alignment and preprocessing steps.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        DATA_PATH (str): The directory path where the data files are stored.</span>
+<span class="sd">        MODALITIES (list): A list of modality names to parse.</span>
+<span class="sd">        TARGET (str): The column name in metadata that indicates the target or label.</span>
+<span class="sd">        INDEX_COL (str): The column used as the index for merging and aligning data.</span>
+<span class="sd">        PROCESSED (bool, optional): Whether to load processed or preprocessed data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary of DataFrames, one for each modality.</span>
+<span class="sd">        pd.Series: Metadata series indexed by INDEX_COL and containing TARGET values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">datModalities</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">try</span> <span class="p">:</span> 
-        <span class="n">META_DATA_PATH</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">/datMeta_</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">.csv&#39;</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MODALITIES</span><span class="p">]</span>
+        <span class="n">modalities</span> <span class="o">=</span> <span class="p">[</span><span class="n">mod</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MODALITIES</span><span class="p">]</span>
     <span class="k">except</span> <span class="p">:</span> 
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Modalities listed not found in data path </span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    <span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">META_DATA_PATH</span> <span class="p">:</span> 
-        <span class="n">meta_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span> <span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">INDEX_COL</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="n">meta_tmp</span> <span class="o">=</span> <span class="n">meta_tmp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">INDEX_COL</span><span class="p">)</span>
-            
-        <span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">meta</span> <span class="p">,</span> <span class="n">meta_tmp</span><span class="p">[</span><span class="n">TARGET</span><span class="p">]])</span>
-
-    <span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="o">~</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)]</span> <span class="c1"># Remove duplicated entries</span>
-    <span class="n">meta</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="c1"># Ensures the patient ids are strings</span>
-
-    <span class="k">try</span> <span class="p">:</span>
-        <span class="n">TRAIN_DATA_PATH</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">/datExpr_</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">.csv&#39;</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MODALITIES</span><span class="p">]</span> <span class="c1"># Looks for all expr file names</span>
-    <span class="k">except</span> <span class="p">:</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Modalities listed not found in data path </span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-    <span class="n">datModalities</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">TRAIN_DATA_PATH</span> <span class="p">:</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Importing </span><span class="se">\t</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">path</span><span class="p">)</span>
-        
-        <span class="k">try</span> <span class="p">:</span> 
-            <span class="n">dattmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">path</span> <span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span> <span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">str</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">defchararray</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">dattmp</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
-                <span class="n">dattmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dattmp</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">defchararray</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">dattmp</span><span class="p">[</span><span class="mi">0</span> <span class="p">,</span><span class="mi">1</span><span class="p">:],</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dattmp</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-            <span class="k">else</span> <span class="p">:</span> 
-                <span class="n">dattmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dattmp</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dattmp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">:]]</span> <span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">defchararray</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">dattmp</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">))</span>
-                <span class="n">dattmp</span> <span class="o">=</span> <span class="n">dattmp</span><span class="o">.</span><span class="n">T</span>
-        <span class="k">except</span> <span class="p">:</span> 
-            <span class="n">dattmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span> <span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">dattmp</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
-                <span class="n">dattmp</span> <span class="o">=</span> <span class="n">dattmp</span><span class="o">.</span><span class="n">T</span>
-                
-        <span class="n">dattmp</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dattmp</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="c1"># Ensures the patient ids are strings</span>
-        <span class="n">dattmp</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="c1">#Assumes there is no &#39;.&#39; in file name as per specified naming convention. Can lead to erros down stream. Files should be modality_datEXpr.csv e.g. mRNA_datExpr.csv</span>
-        <span class="n">datModalities</span><span class="p">[</span><span class="n">dattmp</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">dattmp</span>
-
-    <span class="k">return</span> <span class="n">datModalities</span> <span class="p">,</span> <span class="n">meta</span></div>
-
-
-<div class="viewcode-block" id="data_parsing_python">
-<a class="viewcode-back" href="../MAIN/Utils.html#utils.data_parsing_python">[docs]</a>
-<span class="k">def</span> <span class="nf">data_parsing_python</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="p">,</span> <span class="n">MODALITIES</span> <span class="p">,</span><span class="n">TARGET</span> <span class="p">,</span> <span class="n">INDEX_COL</span><span class="p">)</span> <span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Parse data from multiple modalities and return the parsed data along with metadata.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        DATA_PATH (str): The path to the data.</span>
-<span class="sd">        MODALITIES (list): A list of modalities to be processed.</span>
-<span class="sd">        TARGET (str): The target variable.</span>
-<span class="sd">        INDEX_COL (str): The column to be used as the index.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        tuple: A tuple containing the parsed data for each modality and the metadata.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">datModalities</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modalities</span><span class="p">)</span> <span class="p">:</span> 
-        <span class="k">try</span> <span class="p">:</span> 
+        <span class="k">if</span> <span class="n">PROCESSED</span> <span class="p">:</span> 
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_processed.pkl&#39;</span> <span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span> 
                 <span class="n">loaded_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-        <span class="k">except</span> <span class="p">:</span> 
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Modalities listed not found in data path </span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
+        <span class="k">else</span> <span class="p">:</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_preprocessed.pkl&#39;</span> <span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span> 
+                <span class="n">loaded_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
             
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
             <span class="n">datMeta</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;datMeta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[[</span><span class="n">INDEX_COL</span> <span class="p">,</span> <span class="n">TARGET</span><span class="p">]]</span>
@@ -469,14 +185,14 @@ document.write(`
 
 
 <div class="viewcode-block" id="get_gpu_memory">
-<a class="viewcode-back" href="../MAIN/Utils.html#utils.get_gpu_memory">[docs]</a>
-<span class="k">def</span> <span class="nf">get_gpu_memory</span><span class="p">():</span>
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.get_gpu_memory">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_gpu_memory</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the total, reserved, and allocated GPU memory in gigabytes.</span>
-<span class="sd">    </span>
+<span class="sd">    Retrieves and prints the current GPU memory usage statistics including total, reserved, and allocated memory amounts.</span>
+
 <span class="sd">    Returns:</span>
-<span class="sd">        Print statement with the total, reserved, and allocated GPU memory.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
     <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_properties</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">total_memory</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>             
     <span class="n">r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">memory_reserved</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">memory_allocated</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>
@@ -485,20 +201,19 @@ document.write(`
 
 
 <div class="viewcode-block" id="indices_removal_adjust">
-<a class="viewcode-back" href="../MAIN/Utils.html#utils.indices_removal_adjust">[docs]</a>
-<span class="k">def</span> <span class="nf">indices_removal_adjust</span><span class="p">(</span><span class="n">idx_to_swap</span><span class="p">,</span> <span class="n">all_idx</span><span class="p">,</span> <span class="n">new_idx</span><span class="p">):</span>
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.indices_removal_adjust">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">indices_removal_adjust</span><span class="p">(</span><span class="n">idx_to_swap</span> <span class="p">,</span> <span class="n">all_idx</span><span class="p">,</span>  <span class="n">new_idx</span><span class="p">)</span> <span class="p">:</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Adjusts the indices based on the given parameters.</span>
+<span class="sd">    Adjusts and filters indices after some have been removed, mapping old indices to new indices post-removal.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        idx_to_swap (array-like): The indices to be swapped.</span>
-<span class="sd">        all_idx (pandas.Series): All the indices.</span>
-<span class="sd">        new_idx (array-like): The new indices.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        idx_to_swap (array-like): Indices that potentially need adjustment after an update.</span>
+<span class="sd">        all_idx (pd.Index): The complete set of original indices.</span>
+<span class="sd">        new_idx (array-like): The updated list of indices after some removals.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        numpy.ndarray: The adjusted indices.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        np.array: Adjusted indices reflecting the new index placement.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
     <span class="n">update_idx</span> <span class="o">=</span> <span class="n">all_idx</span><span class="p">[</span><span class="n">all_idx</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">new_idx</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span>
     
     <span class="n">update_idx_swap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">update_idx</span><span class="o">.</span><span class="n">index</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">update_idx</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -508,127 +223,104 @@ document.write(`
     
 
 <div class="viewcode-block" id="network_from_csv">
-<a class="viewcode-back" href="../MAIN/Utils.html#utils.network_from_csv">[docs]</a>
-<span class="k">def</span> <span class="nf">network_from_csv</span><span class="p">(</span><span class="n">NETWORK_PATH</span><span class="p">,</span> <span class="n">no_psn</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Generate a networkx network from a as_long_data_frame() object from igraph in R.</span>
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.network_from_csv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">network_from_csv</span><span class="p">(</span><span class="n">NETWORK_PATH</span> <span class="p">,</span> <span class="n">no_psn</span> <span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs a NetworkX graph from a CSV file containing network data.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        NETWORK_PATH (str): The path to the CSV file containing the network data.</span>
-<span class="sd">        no_psn (bool): If True, the function will not add any edges to the network.</span>
-<span class="sd">        weighted (bool): If True, the function will add weighted edges to the network based on the &#39;weight&#39; column in the CSV file.</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        NETWORK_PATH (str): The file path to the CSV containing the network data.</span>
+<span class="sd">        no_psn (bool): If True, performs special handling specific to pseudonetworks.</span>
+<span class="sd">        weighted (bool): Indicates if the network edges should consider weights (true for weighted edges).</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        G (networkx.Graph): The networkx Graph object representing the network.</span>
-
-<span class="sd">    &#39;&#39;&#39;</span>
-
+<span class="sd">        nx.Graph: The constructed NetworkX graph.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Open csv as pandas dataframe</span>
-    <span class="n">network</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">NETWORK_PATH</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">NETWORK_PATH</span> <span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># Obtain node names (ids) and numbers</span>
-    <span class="n">node_from</span> <span class="o">=</span> <span class="n">network</span><span class="p">[[</span><span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="s1">&#39;from_name&#39;</span><span class="p">]]</span>
-    <span class="n">node_from</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">node_from</span> <span class="o">=</span> <span class="n">network</span><span class="p">[[</span><span class="s1">&#39;from&#39;</span> <span class="p">,</span> <span class="s1">&#39;from_name&#39;</span><span class="p">]]</span>
+    <span class="n">node_from</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span> <span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
 
-    <span class="n">node_to</span> <span class="o">=</span> <span class="n">network</span><span class="p">[[</span><span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">]]</span>
-    <span class="n">node_to</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">node_to</span> <span class="o">=</span> <span class="n">network</span><span class="p">[[</span><span class="s1">&#39;to&#39;</span> <span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">]]</span>
+    <span class="n">node_to</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span> <span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
 
     <span class="c1"># Create networkx Graph object and add nodes to network </span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-
+    
     <span class="c1"># Add nodes to Graph object, resetting index to begin from 0</span>
-    <span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">node_from</span><span class="p">,</span> <span class="n">node_to</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">node_from</span> <span class="p">,</span> <span class="n">node_to</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span> <span class="c1"># Convert node names to strings</span>
-
+    
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
-
-    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="s1">&#39;idx&#39;</span><span class="p">)</span>
+    
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span> <span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="s1">&#39;idx&#39;</span><span class="p">)</span>
 
     <span class="c1"># Add edges and weights (if applicable to network)</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="n">weighted</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">edge1</span><span class="p">,</span> <span class="n">edge2</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;from&#39;</span><span class="p">],</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">],</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]):</span>
-            <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge2</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">weight</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">weighted</span> <span class="o">==</span> <span class="kc">True</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">edge1</span> <span class="p">,</span> <span class="n">edge2</span> <span class="p">,</span> <span class="n">weight</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;from&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">:</span> 
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge2</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">weight</span> <span class="p">))</span>
 
         <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">no_psn</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="k">pass</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">edge1</span><span class="p">,</span> <span class="n">edge2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;from_name&#39;</span><span class="p">],</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;to_name&#39;</span><span class="p">]):</span>
-            <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge1</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge2</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">elif</span> <span class="n">no_psn</span> <span class="o">==</span> <span class="kc">True</span> <span class="p">:</span>
+         <span class="k">pass</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">edge1</span> <span class="p">,</span> <span class="n">edge2</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;from_name&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;to_name&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">:</span>
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge1</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge2</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">))</span>
 
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-
+        
     <span class="k">return</span> <span class="n">G</span></div>
+
+
+<div class="viewcode-block" id="init_weights">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.init_weights">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_weights</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes weights for PyTorch layers within a model.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        m (torch.nn.Module): The model or layer to initialize.</span>
+
+<span class="sd">    Effects:</span>
+<span class="sd">        Applied in-situ: Adjusts the weights of the model passed based on the type of layer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">GraphConv</span><span class="p">):</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span> <span class="c1">## or simply use your layer.reset_parameters()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">in_features</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> 
+            <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">zeros_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span></div>
 
 </pre></div>
 
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer">
-                  
-<div class="prev-next-area">
-</div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
-              
-            
+           </div>
           </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Barry Ryan
-</p>
+          <footer>
 
-  </div>
-  
-  <div class="footer-item">
-    
+  <hr/>
 
-  <p class="copyright">
-    
-      © Copyright 2023.
-      <br/>
-    
-  </p>
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
 
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
-      </main>
-    </div>
+</footer>
+        </div>
+      </div>
+    </section>
   </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-  <footer class="bd-footer">
-  </footer>
-  </body>
+</body>
 </html>
