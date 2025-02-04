@@ -48,8 +48,8 @@
 
           
           
-          <a href="#" class="icon icon-home">
-            MOGDx Home
+          <a href="#">
+            
               <img src="_static/mogdx.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -211,7 +211,18 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
 
 </body>
 </html>
