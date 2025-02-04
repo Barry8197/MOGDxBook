@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preprocess Functions &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Executing MOGDx" href="../../Executing_MOGDx.html" />
+    <link rel="prev" title="Similarity Network Fusion" href="../PreProcessing/SNF.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../intro.html">
+            
+              <img src="../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Processing_in_Python.html">Processing in Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../PreProcessing/Preprocessing.html">Preprocessing in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PreProcessing/SNF.html">Similarity Network Fusion</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocess Functions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../Processing_in_Python.html">Processing in Python</a></li>
+      <li class="breadcrumb-item active">Preprocess Functions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/MAIN/Preprocess_Functions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-preprocess_functions">
+<span id="preprocess-functions"></span><h1>Preprocess Functions<a class="headerlink" href="#module-preprocess_functions" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.DESEQ">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">DESEQ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_genes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'parametric'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#DESEQ"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.DESEQ" title="Link to this definition"></a></dt>
+<dd><p>Conducts differential expression analysis using DESeq2 algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>count_mtx</strong> (<em>pandas.DataFrame</em>) – Count data for different genes.</p></li>
+<li><p><strong>datMeta</strong> (<em>pandas.DataFrame</em>) – Metadata for the samples in count_mtx.</p></li>
+<li><p><strong>condition</strong> (<em>str</em>) – Column in datMeta to use for condition separation.</p></li>
+<li><p><strong>n_genes</strong> (<em>int</em>) – Number of top genes to extract from the differential expression result.</p></li>
+<li><p><strong>train_index</strong> (<em>list</em><em>, </em><em>optional</em>) – Indexes for training samples if splitting is required.</p></li>
+<li><p><strong>fit_type</strong> (<em>str</em><em>, </em><em>optional</em>) – Statistical fitting type for VST transformation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An object containing results and configuration of DESeq2 run.
+numpy.ndarray: Variance Stabilized Transformed counts.
+list: Top genes identified in the differential expression analysis.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DeseqDataSet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="preprocess_functions.ElasticNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">ElasticNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#ElasticNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.ElasticNet" title="Link to this definition"></a></dt>
+<dd><p>A PyTorch module that implements an Elastic Net regularization logistic regression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_features</strong> (<em>int</em>) – Number of features in the input dataset.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – Number of classes in the output prediction.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Mixing parameter for L1 (Lasso) and L2 (Ridge) regularization.</p></li>
+<li><p><strong>lam</strong> (<em>float</em>) – Overall regularization strength.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="preprocess_functions.ElasticNet.linear">
+<span class="sig-name descname"><span class="pre">linear</span></span><a class="headerlink" href="#preprocess_functions.ElasticNet.linear" title="Link to this definition"></a></dt>
+<dd><p>Linear transformation layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Linear</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess_functions.ElasticNet.accuracy">
+<span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#ElasticNet.accuracy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.ElasticNet.accuracy" title="Link to this definition"></a></dt>
+<dd><p>Calculates the accuracy of the model’s predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logits</strong> (<em>torch.Tensor</em>) – The logits as predicted by the model.</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – The true labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The calculated accuracy.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess_functions.ElasticNet.calculate_loss">
+<span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#ElasticNet.calculate_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.ElasticNet.calculate_loss" title="Link to this definition"></a></dt>
+<dd><p>Calculates the combined cross-entropy and regularized loss for the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logits</strong> (<em>torch.Tensor</em>) – The logits as predicted by the model.</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – The true labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The calculated loss value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess_functions.ElasticNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#ElasticNet.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.ElasticNet.forward" title="Link to this definition"></a></dt>
+<dd><p>Forward pass of the neural network model that makes predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>torch.Tensor</em>) – Tensor containing input features.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor containing the output logits.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.SNF">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">SNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">networks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#SNF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.SNF" title="Link to this definition"></a></dt>
+<dd><p>Performs Similarity Network Fusion over multiple networks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>networks</strong> (<em>list</em><em> of </em><em>pd.DataFrames</em>) – The individual networks to fuse, represented as similarity or distance matrices.</p></li>
+<li><p><strong>K</strong> (<em>int</em>) – Number of nearest neighbors to retain in the diffusion process.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Number of iterations for the fusion process.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A fused network represented as a similarity matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.abs_bicorr">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">abs_bicorr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_means</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#abs_bicorr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.abs_bicorr" title="Link to this definition"></a></dt>
+<dd><p>Calculates the absolute bicorrelation matrix for the given data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data for which to compute the bicorrelation.</p></li>
+<li><p><strong>mat_means</strong> (<em>bool</em>) – If True, subtract the mean from each column before computing the correlation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bicorrelation matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.check_wall_names">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">check_wall_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wall</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#check_wall_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.check_wall_names" title="Link to this definition"></a></dt>
+<dd><p>Checks whether all matrices in a list share the same row and column names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>wall</strong> (<em>list</em><em> of </em><em>pd.DataFrame</em>) – List of matrices to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns True if all matrices have consistent names, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.convert_dataframe_to_numpy">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">convert_dataframe_to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#convert_dataframe_to_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.convert_dataframe_to_numpy" title="Link to this definition"></a></dt>
+<dd><p>Converts a pandas DataFrame to a numpy array. If the input is not a DataFrame, returns it as is.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_data</strong> (<em>pd.DataFrame</em><em> or </em><em>any</em>) – Data to be converted to numpy array.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting numpy array from conversion or the original input if conversion isn’t applicable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array or original data type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.cosine_corr">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">cosine_corr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_means</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#cosine_corr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.cosine_corr" title="Link to this definition"></a></dt>
+<dd><p>Computes cosine correlations for the given data, treated as vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data for which to compute cosine correlations.</p></li>
+<li><p><strong>mat_means</strong> (<em>bool</em>) – If True, normalizes the data before computing correlation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cosine correlation matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.create_similarity_matrix">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">create_similarity_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'euclidean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#create_similarity_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.create_similarity_matrix" title="Link to this definition"></a></dt>
+<dd><p>Creates a similarity matrix from the given data matrix using specified methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>pd.DataFrame</em>) – The matrix from which to calculate similarities (e.g., gene expression levels).</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – The method to use for calculating similarities. Supported methods are ‘bicorr’, ‘pearson’, and ‘euclidean’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A DataFrame representing the similarity matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.custom_cpm">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">custom_cpm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lib_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#custom_cpm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.custom_cpm" title="Link to this definition"></a></dt>
+<dd><p>Computes Counts Per Million (CPM) normalization on count data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>counts</strong> (<em>np.array</em>) – An array of raw gene counts.</p></li>
+<li><p><strong>lib_size</strong> (<em>float</em><em> or </em><em>np.array</em>) – The total counts in each library (sample).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Normalized counts expressed as counts per million.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.data_preprocess">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">data_preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#data_preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.data_preprocess" title="Link to this definition"></a></dt>
+<dd><p>Processes count matrix data by removing genes with zero expression across all samples.
+Optionally filters genes based on expression levels and calculates similarity matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>count_mtx</strong> (<em>pd.DataFrame</em>) – A DataFrame containing the gene count data.</p></li>
+<li><p><strong>datMeta</strong> (<em>pd.Series</em><em> or </em><em>pd.DataFrame</em>) – Metadata associated with the samples in count_mtx.</p></li>
+<li><p><strong>gene_exp</strong> (<em>bool</em>) – If true, performs additional gene filtering and similarity matrix calculations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The processed count matrix.
+pd.Series or pd.DataFrame: The corresponding processed metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.dominateset">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">dominateset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">KK</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#dominateset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.dominateset" title="Link to this definition"></a></dt>
+<dd><p>Extracts a dominant set from a similarity matrix, setting all but the top KK connections per row to zero and re-normalizes rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xx</strong> (<em>np.array</em><em> or </em><em>pd.DataFrame</em>) – The input similarity or distance matrix.</p></li>
+<li><p><strong>KK</strong> (<em>int</em>) – Number of top values to keep in each row of the matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extracted dominant set matrix with top KK neighbors per row.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.elastic_net">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">elastic_net</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_mtx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l1_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cuda'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#elastic_net"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.elastic_net" title="Link to this definition"></a></dt>
+<dd><p>Trains an Elastic Net model given count data and metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>count_mtx</strong> (<em>pandas.DataFrame</em>) – Matrix containing gene expression or count data.</p></li>
+<li><p><strong>datMeta</strong> (<em>pandas.Series</em><em> or </em><em>DataFrame</em>) – Metadata corresponding to count_mtx samples.</p></li>
+<li><p><strong>train_index</strong> (<em>list</em><em>, </em><em>optional</em>) – Indexes for training samples.</p></li>
+<li><p><strong>val_index</strong> (<em>list</em><em>, </em><em>optional</em>) – Indexes for validation samples.</p></li>
+<li><p><strong>l1_ratio</strong> (<em>float</em><em>, </em><em>optional</em>) – The balance between L1 and L2 regularization.</p></li>
+<li><p><strong>num_epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of training epochs.</p></li>
+<li><p><strong>lam</strong> (<em>float</em><em>, </em><em>optional</em>) – Regularization strength.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – Device to run the training on (‘cuda’ or ‘cpu’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Extracted features based on weight importance.
+ElasticNet: Trained ElasticNet model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.filter_genes">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">filter_genes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">design</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lib_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_total_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">large_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#filter_genes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.filter_genes" title="Link to this definition"></a></dt>
+<dd><p>Filters genes based on several criteria including minimum count thresholds and proportions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>np.array</em>) – Expression data for the genes.</p></li>
+<li><p><strong>design</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Design matrix for the samples if available.</p></li>
+<li><p><strong>group</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Group information for samples.</p></li>
+<li><p><strong>lib_size</strong> (<em>np.array</em><em>, </em><em>optional</em>) – Library sizes for the samples.</p></li>
+<li><p><strong>min_count</strong> (<em>int</em>) – Minimum count threshold for including a gene.</p></li>
+<li><p><strong>min_total_count</strong> (<em>int</em>) – Minimum total count across all samples for a gene.</p></li>
+<li><p><strong>large_n</strong> (<em>int</em>) – Cutoff for considering a sample ‘large’.</p></li>
+<li><p><strong>min_prop</strong> (<em>float</em>) – Minimum proportion used in calculations for large sample consideration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean array indicating which genes to keep.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.gen_new_graph">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">gen_new_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pnet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#gen_new_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.gen_new_graph" title="Link to this definition"></a></dt>
+<dd><p>Generates a new graph from learned features using a provided model, handling multi-modal data and integrating them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>nn.Module</em>) – The trained model which contains the learned parameters.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Tensor containing features of the data.</p></li>
+<li><p><strong>meta</strong> (<em>pd.DataFrame</em><em> or </em><em>pd.Series</em>) – Metadata associated with the features.</p></li>
+<li><p><strong>pnet</strong> (<em>bool</em>) – Flag indicating whether or not pathway network transformations have been used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A graph object representing the new graph generated from the features.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nx.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.get_k_neighbors">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">get_k_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#get_k_neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.get_k_neighbors" title="Link to this definition"></a></dt>
+<dd><p>Finds k-nearest neighbors for each row in the given matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>pd.DataFrame</em>) – The matrix from which neighbors are to be found.</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – The number of neighbors to find for each row.</p></li>
+<li><p><strong>corr</strong> (<em>bool</em>) – Indicates whether to use correlation rather than distance for finding neighbors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary where keys are indices (or node names) and values are lists of k-nearest neighbors’ indices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.knn_graph_generation">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">knn_graph_generation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datExpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">knn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'euclidean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extracted_feats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#knn_graph_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.knn_graph_generation" title="Link to this definition"></a></dt>
+<dd><p>Generates a k-nearest neighbor graph based on the specified data and method of similarity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datExpr</strong> (<em>pd.DataFrame</em>) – DataFrame containing expression data or other numerical data.</p></li>
+<li><p><strong>datMeta</strong> (<em>pd.DataFrame</em><em> or </em><em>pd.Series</em>) – Metadata for the nodes in the graph.</p></li>
+<li><p><strong>knn</strong> (<em>int</em>) – Number of nearest neighbors to connect to each node.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – Method used for calculating similarity or distance (‘euclidean’, ‘bicorr’, ‘pearson’, ‘cosine’).</p></li>
+<li><p><strong>extracted_feats</strong> (<em>[</em><em>type</em><em>]</em>) – Specific features extracted from the data to use for graph construction.</p></li>
+<li><p><strong>**args</strong> – Additional arguments for customizing the node visualization (e.g., <cite>node_colour</cite>, <cite>node_size</cite>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A NetworkX graph object representing the k-nearest neighbors graph.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nx.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.normalize">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.normalize" title="Link to this definition"></a></dt>
+<dd><p>Normalizes a square matrix by scaling each row by its total minus the diagonal value, handling it in-place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>np.array</em>) – The square matrix to normalize.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The normalized matrix with diagonal set to 0.5.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.pearson_corr">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">pearson_corr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_means</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#pearson_corr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.pearson_corr" title="Link to this definition"></a></dt>
+<dd><p>Computes the Pearson correlation matrix for the given data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data for which to compute the Pearson correlation.</p></li>
+<li><p><strong>mat_means</strong> (<em>bool</em>) – Normalizes data by its mean if set to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pearson correlation matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocess_functions.plot_knn_network">
+<span class="sig-prename descclassname"><span class="pre">preprocess_functions.</span></span><span class="sig-name descname"><span class="pre">plot_knn_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_colours</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'skyblue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/preprocess_functions.html#plot_knn_network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocess_functions.plot_knn_network" title="Link to this definition"></a></dt>
+<dd><p>Plots a k-nearest neighbors network using NetworkX.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – The similarity or distance matrix used to determine neighbors.</p></li>
+<li><p><strong>K</strong> (<em>int</em>) – The number of nearest neighbors for network connections.</p></li>
+<li><p><strong>labels</strong> (<em>pd.Series</em>) – Labels or categories for the nodes used in plotting.</p></li>
+<li><p><strong>node_colours</strong> (<em>str</em><em> or </em><em>list</em>) – Color or list of colors for the nodes.</p></li>
+<li><p><strong>node_size</strong> (<em>int</em>) – Size of the nodes in the plot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A NetworkX graph object that has been plotted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nx.Graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\MAIN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../PreProcessing/SNF.html" class="btn btn-neutral float-left" title="Similarity Network Fusion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../Executing_MOGDx.html" class="btn btn-neutral float-right" title="Executing MOGDx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

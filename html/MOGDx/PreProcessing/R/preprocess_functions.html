@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preprocess Functions &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Processing in Python" href="../../../Processing_in_Python.html" />
+    <link rel="prev" title="Similarity Network Fusion (SNF)" href="SNF.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../intro.html">
+            
+              <img src="../../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../Processing_in_R.html">Processing in R</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Preprocessing.html">MOGDx Modality Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Graph_Generation.html">Modality Graph Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SNF.html">Similarity Network Fusion (SNF)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocess Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../Processing_in_R.html">Processing in R</a></li>
+      <li class="breadcrumb-item active">Preprocess Functions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/PreProcessing/R/preprocess_functions.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="preprocess-functions">
+<h1>Preprocess Functions<a class="headerlink" href="#preprocess-functions" title="Link to this heading"></a></h1>
+<p>This document contains the functions used to process data in the MOGDx
+pipeline.</p>
+<section id="import-libraries">
+<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Link to this heading"></a></h2>
+<section id="removetraitnas">
+<h3>removeTraitNAs<a class="headerlink" href="#removetraitnas" title="Link to this heading"></a></h3>
+<p>Remove NAs from trait data</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>removeTraitNAs &lt;- function(traitDF, otherDFs, trait) {
+  rowsToKeep &lt;- !is.na(traitDF[[trait]])
+  traitDF &lt;- traitDF[rowsToKeep, ]
+  otherDFs &lt;- lapply(otherDFs, function(df) {
+    if (is.data.frame(df) || is.matrix(df)) {
+      df[rowsToKeep, ]
+    } else if (is.null(df)) {
+      # For example, if foldID is NULL in cvTrait
+      df
+    } else {
+      # Assumes df is a vector
+      df[rowsToKeep]
+    }
+  })
+  list(traitDF = traitDF, otherDFs = otherDFs)
+}
+</pre></div>
+</div>
+</section>
+<section id="cvtrait">
+<h3>cvTrait<a class="headerlink" href="#cvtrait" title="Link to this heading"></a></h3>
+<p>Perform cross validated lasso regression on trait of interest</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cvTrait &lt;- function(trainMethyl, trainPhenotypes, trait, nFolds) {
+  print(paste0(&#39;Removing rows with missing &#39;, trait, &#39; from training data.&#39;))
+  trainRemoveNAResult &lt;- removeTraitNAs(trainPhenotypes, list(trainMethyl = trainMethyl), trait)
+  trainPhenotypes &lt;- trainRemoveNAResult$traitDF
+  trainMethyl &lt;- trainRemoveNAResult$otherDFs$trainMethyl
+  
+  print(&#39;Fitting lasso model&#39;)
+  methylModel &lt;- cv.glmnet(x = trainMethyl,
+                           y = as.factor(trainPhenotypes[[trait]]),
+                           seed = 42,
+                           family = &#39;multinomial&#39;,
+                           type.measure = &quot;class&quot;,
+                           alpha = 1,
+                           nFolds = nFolds,
+                           parallel = TRUE,
+                           trace.it = 1)
+  print(methylModel)
+  list(trait = trait, model = methylModel)
+}
+</pre></div>
+</div>
+</section>
+<section id="diff-expr">
+<h3>diff_expr<a class="headerlink" href="#diff-expr" title="Link to this heading"></a></h3>
+<p>Perfrorm differential expression analysis and return differentially expressed genes</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>diff_expr &lt;- function(count_mtx , datMeta , trait , n_genes , modality) {
+  
+  # Remove Genes with low level of expression -------------------------------
+  to_keep = rowSums(count_mtx) &gt; 0 #removed 1157 genes
+  print(paste0(&#39;Removing &#39;,length(to_keep) - sum(to_keep),&#39; Genes with all 0&#39;))
+  
+  count_mtx &lt;- count_mtx[to_keep,]
+  datExpr &lt;- count_mtx
+  
+  if (modality != &#39;miRNA&#39;) {
+    to_keep = filterByExpr(datExpr , group = datMeta[[trait]])
+    
+    print(paste0(&#39;keeping &#39;,sum(to_keep) ,&#39; genes&#39;))
+    print(paste0(&quot;Removing &quot;,length(to_keep) - sum(to_keep),&quot; Genes&quot;))
+    
+    count_mtx = count_mtx[to_keep,]
+  }
+  
+  # Remove Outliers ---------------------------------------------------------
+  print(&#39;removing outliers&#39;)
+  absadj = count_mtx %&gt;% bicor %&gt;% abs
+  netsummary = fundamentalNetworkConcepts(absadj)
+  ku = netsummary$Connectivity
+  z.ku = (ku-mean(ku))/sqrt(var(ku))
+
+  to_keep = z.ku &gt; -2
+  print(paste0(&quot;Keeping &quot;,sum(to_keep),&quot; Samples&quot;))
+  print(paste0(&quot;Removed &quot;,length(to_keep) - sum(to_keep), &quot; Samples&quot;))
+
+  count_mtx &lt;- count_mtx[,to_keep] #removed 36
+  datMeta &lt;- datMeta[to_keep,]
+  
+  # Normalisation Using DESeq -----------------------------------------------
+  plot_data = data.frame(&#39;ID&#39;=rownames(count_mtx), &#39;Mean&#39;=rowMeans(count_mtx), &#39;SD&#39;=apply(count_mtx,1,sd))
+  
+  plot_data %&gt;% ggplot(aes(Mean, SD)) + geom_point(color=&#39;#0099cc&#39;, alpha=0.1) + geom_abline(color=&#39;black&#39;) +
+    scale_x_log10() + scale_y_log10() + theme_minimal()  + theme(plot.title = element_text(hjust = 0.5)) 
+  
+  datMeta[[trait]] &lt;- as.factor(datMeta[[trait]])
+  dds = DESeqDataSetFromMatrix(countData = count_mtx, colData = datMeta , design = formula(paste(&quot;~ 0 +&quot;,trait)))
+  
+  print(&#39;performing DESeq&#39;)
+  dds = DESeq(dds)
+  
+  # DEA Plots ---------------------------------------------------------------
+  DE_info = results(dds)
+  DESeq2::plotMA(DE_info, main= &#39;Original LFC values&#39;)
+  
+  # VST Transformation of Data ----------------------------------------------
+  nsub_check = sum( rowMeans( counts(dds, normalized=TRUE)) &gt; 5 )
+  if (nsub_check &lt; 1000) {
+    vsd = vst(dds , nsub= nsub_check)
+  } else {
+    vsd = vst(dds)
+  }
+  
+  datExpr_vst = assay(vsd)
+  datMeta_vst = colData(vsd)
+  
+  meanSdPlot(datExpr_vst, plot=FALSE)$gg + theme_minimal() + ylim(c(0,2))
+  
+  plot_data = data.frame(&#39;ID&#39;=rownames(datExpr_vst), &#39;Mean&#39;=rowMeans(datExpr_vst), &#39;SD&#39;=apply(datExpr_vst,1,sd))
+  
+  plot_data %&gt;% ggplot(aes(Mean, SD)) + geom_point(color=&#39;#0099cc&#39;, alpha=0.2) + geom_smooth(color = &#39;gray&#39;) +
+    scale_x_log10() + scale_y_log10() + theme_minimal()
+  
+  subtypes &lt;- levels(as.factor(datMeta[[trait]]))
+  top_genes = c()
+  for (subtype1 in subtypes[1:length(subtypes)-1]) {
+    subtypes = subtypes[subtypes != subtype1]
+    for (subtype2 in subtypes)  {
+      if (subtype1 != subtype2) {
+        res &lt;- results(dds , contrast = c(trait , subtype1 , subtype2))
+      }
+      top_genes = unique(c(top_genes , head(order(res$padj) , n_genes) ))
+    }
+  }
+  
+  list(dds = dds , datExpr = datExpr_vst, datMeta = datMeta_vst , top_genes = top_genes)
+}
+</pre></div>
+</div>
+</section>
+<section id="make-knn-graph">
+<h3>make.knn.graph<a class="headerlink" href="#make-knn-graph" title="Link to this heading"></a></h3>
+<p>Perform K Nearest Neighbour calculation and return igraph object</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>make.knn.graph&lt;-function(D,k){
+  # calculate euclidean distances between cells
+  dist&lt;-as.matrix(dist(D))
+  # make a list of edges to k nearest neighbors for each cell
+  edges &lt;- mat.or.vec(0,2)
+  for (i in 1:nrow(dist)){
+    # find closes neighbours
+    matches &lt;- setdiff(order(dist[i,],decreasing = F)[1:(k+1)],i)
+    if (length(matches) &gt; k) {
+      edges &lt;- rbind(edges,cbind(rep(i,length(matches)),matches))
+      #edges &lt;- rbind(edges,cbind(matches,rep(i,length(matches))))
+    } else {
+      edges &lt;- rbind(edges,cbind(rep(i,k),matches))
+      #edges &lt;- rbind(edges,cbind(matches,rep(i,k)))
+    }
+    # add edges in both directions
+    
+    #edges &lt;- rbind(edges,cbind(matches,rep(i,k)))  
+  }
+  # create a graph from the edgelist
+  graph &lt;- graph_from_edgelist(edges,directed=F)
+  V(graph)$frame.color &lt;- NA
+  # make a layout for visualizing in 2D
+  set.seed(1)
+  g.layout&lt;-layout_with_fr(graph)
+  return(list(graph=graph,layout=g.layout))        
+}
+</pre></div>
+</div>
+</section>
+<section id="expr-to-graph">
+<h3>expr.to.graph<a class="headerlink" href="#expr-to-graph" title="Link to this heading"></a></h3>
+<p>Perform KNN graph generation, plot graph and save as long data frame</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>expr.to.graph&lt;-function(datExpr , datMeta , trait , top_genes , modality){
+  
+  if (modality %in% c(&#39;mRNA&#39; , &#39;miRNA&#39;)) {
+    mat &lt;- datExpr[top_genes, ]
+  } else {
+    mat &lt;- t(datExpr[ , top_genes[[trait]]])
+  }
+  
+  if (modality %in% c(&#39;mRNA&#39; , &#39;miRNA&#39; , &#39;DNAm&#39; , &#39;RPPA&#39; , &#39;CSF&#39;)) {
+    mat &lt;- mat - rowMeans(mat)
+    corr_mat &lt;- cor(mat, method=&quot;pearson&quot;)
+  } else {
+    corr_mat &lt;- t(mat)
+  }
+  
+  print(dim(mat))
+  g &lt;- make.knn.graph(corr_mat , 15)
+  
+  plot.igraph(g$graph,layout=g$layout, vertex.frame.color=&#39;black&#39;, vertex.color=as.factor(datMeta[[trait]]),
+              vertex.size=5,vertex.label=NA, vertex.label.cex = 0.3 , main=modality )
+  
+  g &lt;- g$graph
+  g &lt;- simplify(g, remove.multiple=TRUE, remove.loops=TRUE)
+  
+  # Remove any vertices remaining that have no edges
+  g &lt;- delete.vertices(g, degree(g)==0)
+  
+  # Assign names to the graph vertices 
+  V(g)$name &lt;- rownames(datMeta)
+  V(g)$class &lt;- as.character(datMeta[[trait]])
+  V(g)$color &lt;- as.numeric(as.factor(V(g)$class))
+  V(g)$vertex.frame.color &lt;- &quot;black&quot;
+  
+  return(as_long_data_frame(g))
+}
+</pre></div>
+</div>
+</section>
+<section id="snf-to-graph">
+<h3>snf.to.graph<a class="headerlink" href="#snf-to-graph" title="Link to this heading"></a></h3>
+<p>Perform KNN on SNF adjacenecy matrix and return igraph object</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>snf.to.graph &lt;- function(W , datMeta , trait , idx , sub_mod_list) {
+  
+  g &lt;- make.knn.graph(W , 15)
+  
+  plot.igraph(g$graph,layout=g$layout, vertex.frame.color=&#39;black&#39;, vertex.color=as.numeric(as.factor(datMeta[idx,][[trait]])),
+              vertex.size=5,vertex.label=NA,main=paste0(sub_mod_list , collapse = &#39;_&#39;))
+  
+  g &lt;- g$graph
+  g &lt;- simplify(g, remove.multiple=TRUE, remove.loops=TRUE)
+  
+  # Remove any vertices remaining that have no edges
+  g &lt;- delete.vertices(g, degree(g)==0)
+  
+  # Assign names to the graph vertices 
+  V(g)$name &lt;- rownames(datMeta[idx,])
+  V(g)$class &lt;- as.character(datMeta[idx,][[trait]])
+  V(g)$color &lt;- as.numeric(as.factor(V(g)$class))
+  V(g)$vertex.frame.color &lt;- &quot;black&quot;
+  
+  return(g)
+}
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\PreProcessing\R"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SNF.html" class="btn btn-neutral float-left" title="Similarity Network Fusion (SNF)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../Processing_in_Python.html" class="btn btn-neutral float-right" title="Processing in Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application of PNet to TCGA BRCA &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../intro.html">
+            
+              <img src="../../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Application of PNet to TCGA BRCA</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/Modules/PNetTorch/PNet_BRCA.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="application-of-pnet-to-tcga-brca">
+<h1>Application of PNet to TCGA BRCA<a class="headerlink" href="#application-of-pnet-to-tcga-brca" title="Link to this heading"></a></h1>
+<p>The <a class="reference external" href="https://portal.gdc.cancer.gov/projects/TCGA-BRCA">TCGA-BRCA</a> project comes from <a class="reference external" href="https://portal.gdc.cancer.gov/">The Cancer Genome Atlas</a>. This dataset consists of clinical, genomic and more data types. In this tutorial we explore the use of two data types :</p>
+<ul class="simple">
+<li><p>mRNA</p></li>
+<li><p>Reverse Phase Protein Array (RPPA)</p></li>
+</ul>
+<p>BRCA breast cancer refers to breast cancer that is linked with mutations in either the BRCA1 or BRCA2 genes. These genes—BRCA1 (Breast Cancer gene one) and BRCA2 (Breast Cancer gene two)—are important in the body’s mechanism for repairing DNA damage. Normally, they help ensure the stability of the cell’s genetic material and prevent uncontrolled cell growth. Mutation in these genes can lead to damaged DNA not being properly repaired, leading to further genetic alterations that can cause cancer.</p>
+<section id="key-points-about-brca-related-breast-cancer">
+<h2>Key Points about BRCA-Related Breast Cancer:<a class="headerlink" href="#key-points-about-brca-related-breast-cancer" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Hereditary Cancer</strong>: <br>
+Mutations in these genes are hereditary (inherited from a parent), making BRCA1 or BRCA2 mutations a strong risk factor for developing breast cancer, as well as other types of cancer, such as ovarian cancer.</p></li>
+<li><p><strong>Increased Risk</strong>: <br>
+Individuals with BRCA1 or BRCA2 gene mutations have a higher risk of developing breast cancer at a younger age than those without such mutations. The lifetime risk of breast cancer in women with a BRCA1 mutation is estimated to be between 55% and 65%, and for BRCA2 mutations, it is around 45%.</p></li>
+</ul>
+<p>In this tutorial we will aim to predict 5 different subtypes of BRCA breast cancer outlined by the TCGA. These subtypes are :</p>
+<ul class="simple">
+<li><p>Luminal A</p></li>
+<li><p>Luminal B</p></li>
+<li><p>HER2</p></li>
+<li><p>Basal</p></li>
+<li><p>Normal</p></li>
+</ul>
+<p>These subtypes are defined by an array of 50 gene expression signatures making this problem a suitable task for validating a genomic algorithm like PNet</p>
+</section>
+<section id="import-packages-and-pnettorch-modules">
+<h2>Import Packages and PNetTorch Modules<a class="headerlink" href="#import-packages-and-pnettorch-modules" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span> <span class="s1">&#39;./../../&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MAIN.utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MAIN.train</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">MAIN.preprocess_functions</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.reactome</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactomeNetwork</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.Pnet</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaskedLinear</span> <span class="p">,</span> <span class="n">PNET</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">numpy_array_to_one_hot</span><span class="p">,</span> <span class="n">get_gpu_memory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.train</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Modules.PNetTorch.MAIN.interpret</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span> <span class="p">,</span> <span class="n">evaluate_interpret_save</span> <span class="p">,</span> <span class="n">visualize_importances</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-data">
+<h2>Import Data<a class="headerlink" href="#import-data" title="Link to this heading"></a></h2>
+<p>Data can be downloaded from <a class="reference external" href="https://portal.gdc.cancer.gov/projects/TCGA-BRCA">https://portal.gdc.cancer.gov/projects/TCGA-BRCA</a></p>
+<p>mRNA data was previously processed using DESeq packages for gene expression normalisation and gene expression filtering.</p>
+<p>RPPA data was processed by normalisation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datMeta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([])</span>
+<span class="n">datExpr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([])</span>
+
+<span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mRNA&#39;</span> <span class="p">,</span> <span class="s1">&#39;RPPA&#39;</span>  <span class="p">]</span> <span class="p">:</span> 
+    
+    <span class="c1"># Reading from a pickle file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/home/s2180082/data/TCGA/BRCA/raw/</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_processed.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;datExpr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;datMeta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;datExpr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;datExpr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">datMeta</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+        <span class="n">datExpr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;datExpr&#39;</span><span class="p">]</span>
+        <span class="n">datMeta</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;datMeta&#39;</span><span class="p">]</span>
+    <span class="k">else</span> <span class="p">:</span> 
+        <span class="n">datExpr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">datExpr</span> <span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;datExpr&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">datMeta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">datMeta</span> <span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;datMeta&#39;</span><span class="p">]</span>  <span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span> <span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+<span class="n">datMeta</span> <span class="o">=</span> <span class="n">datMeta</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;paper_BRCA_Subtype_PAM50_y&#39;</span> <span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">datMeta</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;paper_BRCA_Subtype_PAM50&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datExpr</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(840, 30459)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datMeta</span> <span class="o">=</span> <span class="n">datMeta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datExpr</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-pnettorch-on-data">
+<h2>Run PNetTorch on Data<a class="headerlink" href="#run-pnettorch-on-data" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">datMeta</span><span class="p">[</span><span class="s1">&#39;paper_BRCA_Subtype_PAM50&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="c1"># List of cancer genes was taken from the PNet paper dataset</span>
+<span class="n">genes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/data/TCGA/BRCA/ext_data/cancer_genelist.txt&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span> <span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Highly recommend running on GPU or in HPC environment</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="c1">#device = torch.device(&#39;mps&#39;)</span>
+
+<span class="c1"># Build network to obtain gene and pathway relationships</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">ReactomeNetwork</span><span class="p">(</span><span class="n">genes_of_interest</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">genes</span><span class="p">[</span><span class="s1">&#39;genes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span> <span class="p">,</span> <span class="n">n_levels</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Build PNet model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PNET</span><span class="p">(</span><span class="n">reactome_network</span><span class="o">=</span><span class="n">net</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                  <span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span> <span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span> <span class="p">,</span> <span class="n">filter_pathways</span><span class="o">=</span><span class="kc">False</span> <span class="p">,</span> <span class="n">input_layer_mask</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Convert classifications to One Hot Encodings</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">numpy_array_to_one_hot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Train Model</span>
+<span class="n">model</span> <span class="p">,</span> <span class="n">train_loader</span> <span class="p">,</span> <span class="n">test_loader</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">device</span> <span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">256</span> <span class="p">,</span> <span class="n">lr_decay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                                 <span class="n">num_epochs</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span> <span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Evaluate</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PNET(
+  (dropout): Dropout(p=0.1, inplace=False)
+  (layers): ModuleList(
+    (0): Linear(in_features=30459, out_features=519, bias=True)
+    (1): MaskedLinear(in_features=519, out_features=1613, bias=True)
+    (2): MaskedLinear(in_features=1613, out_features=1107, bias=True)
+    (3): MaskedLinear(in_features=1107, out_features=488, bias=True)
+    (4): MaskedLinear(in_features=488, out_features=159, bias=True)
+    (5): MaskedLinear(in_features=159, out_features=28, bias=True)
+  )
+  (skip): ModuleList(
+    (0): Linear(in_features=519, out_features=5, bias=True)
+    (1): Linear(in_features=1613, out_features=5, bias=True)
+    (2): Linear(in_features=1107, out_features=5, bias=True)
+    (3): Linear(in_features=488, out_features=5, bias=True)
+    (4): Linear(in_features=159, out_features=5, bias=True)
+    (5): Linear(in_features=28, out_features=5, bias=True)
+  )
+  (act_layers): ModuleList(
+    (0-5): 6 x ReLU()
+  )
+  (norm_layers): ModuleList(
+    (0): BatchNorm1d(519, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): BatchNorm1d(1613, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): BatchNorm1d(1107, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): BatchNorm1d(488, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): BatchNorm1d(159, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): BatchNorm1d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00&lt;00:00, 14.25epoch/s, loss=0.358]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training complete.
+              precision    recall  f1-score   support
+
+           0     0.1667    1.0000    0.2857        14
+           1     0.0000    0.0000    0.0000         8
+           2     0.0000    0.0000    0.0000        42
+           3     0.0000    0.0000    0.0000        17
+           4     0.0000    0.0000    0.0000         3
+
+    accuracy                         0.1667        84
+   macro avg     0.0333    0.2000    0.0571        84
+weighted avg     0.0278    0.1667    0.0476        84
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actuals</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">),</span> <span class="n">test_loader</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">actuals</span> <span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="n">actuals</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="n">get_probabilities</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">),</span> <span class="n">test_loader</span><span class="p">)</span>
+<span class="c1"># Assuming `probs` has been calculated as the probability outcomes for class 1, if not implement it</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">actuals</span><span class="p">,</span> <span class="n">probs</span> <span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)</span>
+
+<span class="n">roc</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">actuals</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span> <span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">datMeta</span><span class="p">[</span><span class="s1">&#39;paper_BRCA_Subtype_PAM50&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/eea94e726fa9386d235c95011de1112254edaf81781c6746741fd6dc21f910a7.png" src="../../../_images/eea94e726fa9386d235c95011de1112254edaf81781c6746741fd6dc21f910a7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Micro-averaged One-vs-Rest ROC AUC score:
+0.96
+</pre></div>
+</div>
+<img alt="../../../_images/88a71e05d5df9009404e9ddfed273ca225ee2b22b0553325c6db347618da5834.png" src="../../../_images/88a71e05d5df9009404e9ddfed273ca225ee2b22b0553325c6db347618da5834.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_zero_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">non_zero_elements</span> <span class="o">=</span> <span class="p">(</span><span class="n">param</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># filter non-zero elements</span>
+    <span class="n">non_zero_sum</span> <span class="o">+=</span> <span class="n">non_zero_elements</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># sum them up</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of non-zero parameters:&quot;</span><span class="p">,</span> <span class="n">non_zero_sum</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sum of non-zero parameters: 15847525
+</pre></div>
+</div>
+</div>
+</div>
+<section id="functions-for-checking-and-clearing-gpu-memory-if-required">
+<h3>Functions for checking and clearing GPU memory if required<a class="headerlink" href="#functions-for-checking-and-clearing-gpu-memory-if-required" title="Link to this heading"></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_gpu_memory</span><span class="p">()</span>
+<span class="c1">#del model , train_loader , test_loader</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">reset_accumulated_memory_stats</span><span class="p">()</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+<span class="n">get_gpu_memory</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total = 11.5Gb 	 Reserved = 0.5Gb 	 Allocated = 0.0Gb
+Total = 11.5Gb 	 Reserved = 0.0Gb 	 Allocated = 0.0Gb
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="interpretability">
+<h2>Interpretability<a class="headerlink" href="#interpretability" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MAIN.interpret</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span> <span class="p">,</span> <span class="n">evaluate_interpret_save</span><span class="p">,</span> <span class="n">permutation_test</span><span class="p">,</span><span class="n">calculate_es</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract all data and targets using list comprehensions</span>
+<span class="n">data_batches</span><span class="p">,</span> <span class="n">target_batches</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">])</span>
+
+<span class="c1"># Convert lists of batches into single tensors</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">data_batches</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">test_targets</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">target_batches</span> <span class="p">,</span> <span class="n">dim</span> <span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Assign the model features to the columns</span>
+<span class="n">model</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">model_importances</span> <span class="o">=</span> <span class="n">interpret</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">test_predictions</span><span class="p">,</span> <span class="n">savedir</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Save Path Not Found - Plots will not be saved
+</pre></div>
+</div>
+<img alt="../../../_images/b327588ba8486e92ac7d2244e03bfaa3f549623f1b3674b2827948095dded137.png" src="../../../_images/b327588ba8486e92ac7d2244e03bfaa3f549623f1b3674b2827948095dded137.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear(in_features=30459, out_features=519, bias=True)
+MaskedLinear(in_features=519, out_features=1613, bias=True)
+MaskedLinear(in_features=1613, out_features=1107, bias=True)
+MaskedLinear(in_features=1107, out_features=488, bias=True)
+MaskedLinear(in_features=488, out_features=159, bias=True)
+MaskedLinear(in_features=159, out_features=28, bias=True)
+</pre></div>
+</div>
+<img alt="../../../_images/2c19b2faf3bcc0bdbc0658404a8449217d6bd3fc2569bde66d70acaded979e15.png" src="../../../_images/2c19b2faf3bcc0bdbc0658404a8449217d6bd3fc2569bde66d70acaded979e15.png" />
+<img alt="../../../_images/c05da9e992ac840facb43196500724abb6d896cef20f73356c7ad86a3f3962b3.png" src="../../../_images/c05da9e992ac840facb43196500724abb6d896cef20f73356c7ad86a3f3962b3.png" />
+<img alt="../../../_images/286828c2517d6cd4e39398c91a236426676b00097455232a1a79ceddd13caa6b.png" src="../../../_images/286828c2517d6cd4e39398c91a236426676b00097455232a1a79ceddd13caa6b.png" />
+<img alt="../../../_images/4c5361e8d60f417f4078fd7545dfae65304ac54aff85edb7dc02c58f6842d171.png" src="../../../_images/4c5361e8d60f417f4078fd7545dfae65304ac54aff85edb7dc02c58f6842d171.png" />
+<img alt="../../../_images/12208a05506e250101d39003b26515c2989774224c4db9576aef9f73d90886a2.png" src="../../../_images/12208a05506e250101d39003b26515c2989774224c4db9576aef9f73d90886a2.png" />
+<img alt="../../../_images/758865d22f34b6c436365d678c5750c8f1a475e86227cf2fbccdae00412d8a7a.png" src="../../../_images/758865d22f34b6c436365d678c5750c8f1a475e86227cf2fbccdae00412d8a7a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_avg_scores</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model_importances</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="p">:</span>     
+    <span class="n">model_avg_scores</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_importances</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">model_importances</span><span class="p">[</span><span class="n">layer</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_importance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">model_avg_scores</span><span class="p">[</span><span class="s1">&#39;Gene Importance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="p">,</span> <span class="n">genes</span> <span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;index&#39;</span> <span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span><span class="s1">&#39;genes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_importance</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>0</th>
+      <th>genes</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>404</th>
+      <td>PRLR</td>
+      <td>1.000000</td>
+      <td>PRLR</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>CCND1</td>
+      <td>0.201686</td>
+      <td>CCND1</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>CDK1</td>
+      <td>0.106182</td>
+      <td>CDK1</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>ERBB2</td>
+      <td>0.042887</td>
+      <td>ERBB2</td>
+      <td>neg</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>CTNNB1</td>
+      <td>0.039144</td>
+      <td>CTNNB1</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>RPL10</td>
+      <td>0.021930</td>
+      <td>RPL10</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>HDC</td>
+      <td>0.019197</td>
+      <td>HDC</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>485</th>
+      <td>TMLHE</td>
+      <td>0.011727</td>
+      <td>TMLHE</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>CLK2</td>
+      <td>0.008796</td>
+      <td>CLK2</td>
+      <td>pos</td>
+    </tr>
+    <tr>
+      <th>312</th>
+      <td>LEO1</td>
+      <td>0.008541</td>
+      <td>LEO1</td>
+      <td>pos</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">real_es_pos</span><span class="p">,</span> <span class="n">perm_es_scores</span><span class="p">,</span> <span class="n">p_value_pos</span> <span class="o">=</span> <span class="n">permutation_test</span><span class="p">(</span><span class="n">model_avg_scores</span><span class="p">[</span><span class="s1">&#39;Gene Importance&#39;</span><span class="p">],</span> <span class="n">genes</span><span class="p">[</span><span class="n">genes</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;neg&#39;</span><span class="p">][</span><span class="s1">&#39;genes&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The Observed Effect Size (ES) of genes related to outcome is </span><span class="si">{</span><span class="n">real_es_pos</span><span class="si">}</span><span class="s1"> with significance p-value </span><span class="si">{</span><span class="n">p_value_pos</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plotting the permutation ES scores</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">perm_es_scores</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Permutation ES&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">real_es_pos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed ES&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Permutation Test for Gene Set Enrichment&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Enrichment Score (ES)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enrichment Score for Pos: 0.9259446263313293
+The Observed Effect Size (ES) of genes related to outcome is 0.9259446263313293 with significance p-value 0.08491508491508491
+</pre></div>
+</div>
+<img alt="../../../_images/132cca6f877b049e5edd80cb55c61c3ff490280280a199d169ca165dc27099e9.png" src="../../../_images/132cca6f877b049e5edd80cb55c61c3ff490280280a199d169ca165dc27099e9.png" />
+</div>
+</div>
+</section>
+<section id="generate-and-save-metrics-importance">
+<h2>Generate and Save Metrics + Importance<a class="headerlink" href="#generate-and-save-metrics-importance" title="Link to this heading"></a></h2>
+<p>Single function to generate and save all model metrics and importances</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate_interpret_save</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">test_loader</span> <span class="p">,</span> <span class="s1">&#39;./Output/Prostate&#39;</span> <span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">datMeta</span><span class="p">[</span><span class="s1">&#39;paper_BRCA_Subtype_PAM50&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f3068a673fb537c6b43768971813de5c78151b7e765c07e800823b998cd50157.png" src="../../../_images/f3068a673fb537c6b43768971813de5c78151b7e765c07e800823b998cd50157.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC Score: 0.9531787520124766
+Micro-averaged One-vs-Rest ROC AUC score:
+0.96
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Barry\anaconda3\lib\site-packages\captum\_utils\gradient.py:57: UserWarning: Input Tensor 0 did not already require gradients, required_grads has been set automatically.
+  warnings.warn(
+C:\Users\Barry\anaconda3\lib\site-packages\captum\attr\_core\deep_lift.py:304: UserWarning: Setting forward, backward hooks and attributes on non-linear
+               activations. The hooks and attributes will be removed
+            after the attribution is finished
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../../../_images/9c35da55aee4e2a98c0e7947604348a9dadbb87707cad4f6cb50e6ab7d3a4751.png" src="../../../_images/9c35da55aee4e2a98c0e7947604348a9dadbb87707cad4f6cb50e6ab7d3a4751.png" />
+<img alt="../../../_images/6cf78c418d56c4f019e2dbca260030bdd488ac52a20e60353cda98ec1831488a.png" src="../../../_images/6cf78c418d56c4f019e2dbca260030bdd488ac52a20e60353cda98ec1831488a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear(in_features=30459, out_features=723, bias=True)
+MaskedLinear(in_features=723, out_features=1397, bias=True)
+MaskedLinear(in_features=1397, out_features=1066, bias=True)
+MaskedLinear(in_features=1066, out_features=447, bias=True)
+MaskedLinear(in_features=447, out_features=147, bias=True)
+MaskedLinear(in_features=147, out_features=26, bias=True)
+</pre></div>
+</div>
+<img alt="../../../_images/fa4bae8f99442ad243cd19360d301bf91b781ba5ab1e13f7490aa21e43b6d71a.png" src="../../../_images/fa4bae8f99442ad243cd19360d301bf91b781ba5ab1e13f7490aa21e43b6d71a.png" />
+<img alt="../../../_images/f8b1e9c07fba3d2b2c17bc8a012ac6fb52fcd43f0e5554698cedc7a0cad606f2.png" src="../../../_images/f8b1e9c07fba3d2b2c17bc8a012ac6fb52fcd43f0e5554698cedc7a0cad606f2.png" />
+<img alt="../../../_images/7e7132f1fee5541b76b094e6027a11099f3517aeacf3459df70cdd7c6cfe5c96.png" src="../../../_images/7e7132f1fee5541b76b094e6027a11099f3517aeacf3459df70cdd7c6cfe5c96.png" />
+<img alt="../../../_images/a7c19b3b3f08153f94e10746837e88aa06380583ac0beb866a3385b5d2a3f570.png" src="../../../_images/a7c19b3b3f08153f94e10746837e88aa06380583ac0beb866a3385b5d2a3f570.png" />
+<img alt="../../../_images/227567b6e2d94df40ba7adf8ee059015d1b1a111a76a0521f987a54e77b496fa.png" src="../../../_images/227567b6e2d94df40ba7adf8ee059015d1b1a111a76a0521f987a54e77b496fa.png" />
+<img alt="../../../_images/bdc98ffceb0f8f717fc73d790e99d0d46071db3d76313f1c93353998076d0425.png" src="../../../_images/bdc98ffceb0f8f717fc73d790e99d0d46071db3d76313f1c93353998076d0425.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\Modules\PNetTorch"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

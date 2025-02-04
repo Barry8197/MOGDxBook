@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graph Neural Network with Multi Modal Encoder &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Training MOGDx" href="Training.html" />
+    <link rel="prev" title="MOGDx Main Functions and Classes" href="../../Training_MOGDx.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../intro.html">
+            
+              <img src="../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Training_MOGDx.html">MOGDx Main Functions and Classes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Graph Neural Network with Multi Modal Encoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Training.html">Training MOGDx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Utils.html">Utility Functions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+      <li class="breadcrumb-item active">Graph Neural Network with Multi Modal Encoder</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/MAIN/GNN_MME.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-GNN_MME">
+<span id="graph-neural-network-with-multi-modal-encoder"></span><h1>Graph Neural Network with Multi Modal Encoder<a class="headerlink" href="#module-GNN_MME" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="GNN_MME.Encoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GNN_MME.</span></span><span class="sig-name descname"><span class="pre">Encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#Encoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.Encoder" title="Link to this definition"></a></dt>
+<dd><p>A simple feed-forward neural network used as an encoder with two linear layers separated by dropout and batch normalization.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.Encoder.encoder">
+<span class="sig-name descname"><span class="pre">encoder</span></span><a class="headerlink" href="#GNN_MME.Encoder.encoder" title="Link to this definition"></a></dt>
+<dd><p>Contains the linear layers of the encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.Encoder.norm">
+<span class="sig-name descname"><span class="pre">norm</span></span><a class="headerlink" href="#GNN_MME.Encoder.norm" title="Link to this definition"></a></dt>
+<dd><p>Contains the batch normalization layers corresponding to each encoder layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.Encoder.decoder">
+<span class="sig-name descname"><span class="pre">decoder</span></span><a class="headerlink" href="#GNN_MME.Encoder.decoder" title="Link to this definition"></a></dt>
+<dd><p>A sequential module containing the decoder part of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Sequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.Encoder.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><a class="headerlink" href="#GNN_MME.Encoder.drop" title="Link to this definition"></a></dt>
+<dd><p>Dropout layer to prevent overfitting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Dropout</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dim</strong> (<em>int</em>) – Dimensionality of the input features.</p></li>
+<li><p><strong>latent_dim</strong> (<em>int</em>) – Dimensionality of the latent space (middle layer’s output).</p></li>
+<li><p><strong>output_dim</strong> (<em>int</em>) – Dimensionality of the output features after decoding.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.Encoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#Encoder.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.Encoder.forward" title="Link to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GNN_MME.</span></span><span class="sig-name descname"><span class="pre">GAT_MME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoder_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_feats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PNet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GAT_MME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GAT_MME" title="Link to this definition"></a></dt>
+<dd><p>A multi-modal GAT (Graph Attention Network) model utilizing encoder modules for initial feature transformation, applying GATConv  convolution over the graph structure.</p>
+<p>This model combines several data modalities, each processed by separate encoders, integrates the encoded features, and performs graph-based learning to produce node embeddings or class scores.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.encoder_dims">
+<span class="sig-name descname"><span class="pre">encoder_dims</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.encoder_dims" title="Link to this definition"></a></dt>
+<dd><p>List of encoder modules for each modality of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.gnnlayers">
+<span class="sig-name descname"><span class="pre">gnnlayers</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.gnnlayers" title="Link to this definition"></a></dt>
+<dd><p>List of GATConv convolution layers for propagating and transforming node features across the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.batch_norms">
+<span class="sig-name descname"><span class="pre">batch_norms</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.batch_norms" title="Link to this definition"></a></dt>
+<dd><p>Batch normalization applied to the outputs of GNN layers except the last layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.num_layers">
+<span class="sig-name descname"><span class="pre">num_layers</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.num_layers" title="Link to this definition"></a></dt>
+<dd><p>Total number of GNN layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.input_dims">
+<span class="sig-name descname"><span class="pre">input_dims</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.input_dims" title="Link to this definition"></a></dt>
+<dd><p>List of input dimensions, one for each data modality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.hidden_feats">
+<span class="sig-name descname"><span class="pre">hidden_feats</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.hidden_feats" title="Link to this definition"></a></dt>
+<dd><p>List of the feature dimensions for each hidden layer in the GNN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.num_classes">
+<span class="sig-name descname"><span class="pre">num_classes</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.num_classes" title="Link to this definition"></a></dt>
+<dd><p>Number of output classes or the dimension of the output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><a class="headerlink" href="#GNN_MME.GAT_MME.drop" title="Link to this definition"></a></dt>
+<dd><p>Dropout layer applied after each GNN layer for regularization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Dropout</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dims</strong> (<em>list</em>) – Input dimensions for each modality of input data.</p></li>
+<li><p><strong>latent_dims</strong> (<em>list</em>) – Latent dimensions for corresponding encoders processing each modality of input data.</p></li>
+<li><p><strong>decoder_dim</strong> (<em>int</em>) – Unified dimension to which all modalities are decoded.</p></li>
+<li><p><strong>hidden_feats</strong> (<em>list</em>) – Dimensions for hidden layers of the GNN.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – Number of classes for classification tasks.</p></li>
+<li><p><strong>PNet</strong> (<em>optional</em>) – A PNet model for embedding pathway networks, used as an optional modality-specific encoder.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.embedding_extraction">
+<span class="sig-name descname"><span class="pre">embedding_extraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GAT_MME.embedding_extraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GAT_MME.embedding_extraction" title="Link to this definition"></a></dt>
+<dd><p>Extract embeddings for the nodes in the graph. This method is typically used to retrieve node embeddings that can then be used for visualization, clustering, or as input for downstream tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – The graph for which embeddings are to be retrieved.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Node features tensor.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – The device to perform computations on.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Size of the batches to use during the computation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node embeddings extracted by the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GAT_MME.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GAT_MME.forward" title="Link to this definition"></a></dt>
+<dd><p>Forward pass for GSage_MME embedding computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – Input graph.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Feature matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output after passing through the GNN layers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GAT_MME.inference">
+<span class="sig-name descname"><span class="pre">inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GAT_MME.inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GAT_MME.inference" title="Link to this definition"></a></dt>
+<dd><p>Perform a forward pass using the model for inference, without computing gradients. Usually used after the model has been trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – The DGL graph on which inference is performed.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Node features for all nodes in the graph.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – The device tensors will be sent to.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – The size of batches to use during inference.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The outputs of the inference.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GNN_MME.</span></span><span class="sig-name descname"><span class="pre">GCN_MME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoder_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_feats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PNet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GCN_MME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GCN_MME" title="Link to this definition"></a></dt>
+<dd><p>A multi-modal GraphSAGE model utilizing encoder modules for initial feature transformation, applying GraphConv convolution over the graph structure.</p>
+<p>This model combines several data modalities, each processed by separate encoders, integrates the encoded features, and performs graph-based learning to produce node embeddings or class scores.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.encoder_dims">
+<span class="sig-name descname"><span class="pre">encoder_dims</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.encoder_dims" title="Link to this definition"></a></dt>
+<dd><p>List of encoder modules for each modality of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.gnnlayers">
+<span class="sig-name descname"><span class="pre">gnnlayers</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.gnnlayers" title="Link to this definition"></a></dt>
+<dd><p>List of GraphConv convolution layers for propagating and transforming node features across the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.batch_norms">
+<span class="sig-name descname"><span class="pre">batch_norms</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.batch_norms" title="Link to this definition"></a></dt>
+<dd><p>Batch normalization applied to the outputs of GNN layers except the last layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.num_layers">
+<span class="sig-name descname"><span class="pre">num_layers</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.num_layers" title="Link to this definition"></a></dt>
+<dd><p>Total number of GNN layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.input_dims">
+<span class="sig-name descname"><span class="pre">input_dims</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.input_dims" title="Link to this definition"></a></dt>
+<dd><p>List of input dimensions, one for each data modality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.hidden_feats">
+<span class="sig-name descname"><span class="pre">hidden_feats</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.hidden_feats" title="Link to this definition"></a></dt>
+<dd><p>List of the feature dimensions for each hidden layer in the GNN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.num_classes">
+<span class="sig-name descname"><span class="pre">num_classes</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.num_classes" title="Link to this definition"></a></dt>
+<dd><p>Number of output classes or the dimension of the output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><a class="headerlink" href="#GNN_MME.GCN_MME.drop" title="Link to this definition"></a></dt>
+<dd><p>Dropout layer applied after each GNN layer for regularization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Dropout</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dims</strong> (<em>list</em>) – Input dimensions for each modality of input data.</p></li>
+<li><p><strong>latent_dims</strong> (<em>list</em>) – Latent dimensions for corresponding encoders processing each modality of input data.</p></li>
+<li><p><strong>decoder_dim</strong> (<em>int</em>) – Unified dimension to which all modalities are decoded.</p></li>
+<li><p><strong>hidden_feats</strong> (<em>list</em>) – Dimensions for hidden layers of the GNN.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – Number of classes for classification tasks.</p></li>
+<li><p><strong>PNet</strong> (<em>optional</em>) – A PNet model for embedding pathway networks, used as an optional modality-specific encoder.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.embedding_extraction">
+<span class="sig-name descname"><span class="pre">embedding_extraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GCN_MME.embedding_extraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GCN_MME.embedding_extraction" title="Link to this definition"></a></dt>
+<dd><p>Extract embeddings for the nodes in the graph. This method is typically used to retrieve node embeddings that can then be used for visualization, clustering, or as input for downstream tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – The graph for which embeddings are to be retrieved.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Node features tensor.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – The device to perform computations on.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Size of the batches to use during the computation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node embeddings extracted by the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.feature_importance">
+<span class="sig-name descname"><span class="pre">feature_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GCN_MME.feature_importance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GCN_MME.feature_importance" title="Link to this definition"></a></dt>
+<dd><p>Calculate feature importances using the Conductance algorithm through Captum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_dataset</strong> (<em>torch.Tensor</em>) – The dataset for which to calculate importances.</p></li>
+<li><p><strong>target_class</strong> (<em>int</em>) – The target class index for which to calculate importances.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dataframe containing the feature importances.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GCN_MME.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GCN_MME.forward" title="Link to this definition"></a></dt>
+<dd><p>Forward pass for GSage_MME embedding computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – Input graph.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Feature matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output after passing through the GNN layers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.inference">
+<span class="sig-name descname"><span class="pre">inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GCN_MME.inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GCN_MME.inference" title="Link to this definition"></a></dt>
+<dd><p>Perform a forward pass using the model for inference, without computing gradients. Usually used after the model has been trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – The DGL graph on which inference is performed.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Node features for all nodes in the graph.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – The device tensors will be sent to.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – The size of batches to use during inference.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The outputs of the inference.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GCN_MME.layerwise_importance">
+<span class="sig-name descname"><span class="pre">layerwise_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GCN_MME.layerwise_importance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GCN_MME.layerwise_importance" title="Link to this definition"></a></dt>
+<dd><p>Compute layer-wise importance scores across all layers for given targets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>test_dataset</strong> (<em>torch.Tensor</em>) – The dataset for which to calculate importances.</p></li>
+<li><p><strong>target_class</strong> (<em>int</em>) – The target class index for importance calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the importance scores for each layer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[pd.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GNN_MME.</span></span><span class="sig-name descname"><span class="pre">GSage_MME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">latent_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decoder_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_feats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PNet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GSage_MME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GSage_MME" title="Link to this definition"></a></dt>
+<dd><p>A multi-modal GraphSAGE model utilizing encoder modules for initial feature transformation, applying GraphSAGE convolution over the graph structure.</p>
+<p>This model combines several data modalities, each processed by separate encoders, integrates the encoded features, and performs graph-based learning to produce node embeddings or class scores.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.encoder_dims">
+<span class="sig-name descname"><span class="pre">encoder_dims</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.encoder_dims" title="Link to this definition"></a></dt>
+<dd><p>List of encoder modules for each modality of data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.gnnlayers">
+<span class="sig-name descname"><span class="pre">gnnlayers</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.gnnlayers" title="Link to this definition"></a></dt>
+<dd><p>List of GraphSAGE convolution layers for propagating and transforming node features across the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.batch_norms">
+<span class="sig-name descname"><span class="pre">batch_norms</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.batch_norms" title="Link to this definition"></a></dt>
+<dd><p>Batch normalization applied to the outputs of GNN layers except the last layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.ModuleList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.num_layers">
+<span class="sig-name descname"><span class="pre">num_layers</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.num_layers" title="Link to this definition"></a></dt>
+<dd><p>Total number of GNN layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.input_dims">
+<span class="sig-name descname"><span class="pre">input_dims</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.input_dims" title="Link to this definition"></a></dt>
+<dd><p>List of input dimensions, one for each data modality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.hidden_feats">
+<span class="sig-name descname"><span class="pre">hidden_feats</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.hidden_feats" title="Link to this definition"></a></dt>
+<dd><p>List of the feature dimensions for each hidden layer in the GNN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.num_classes">
+<span class="sig-name descname"><span class="pre">num_classes</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.num_classes" title="Link to this definition"></a></dt>
+<dd><p>Number of output classes or the dimension of the output features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.drop">
+<span class="sig-name descname"><span class="pre">drop</span></span><a class="headerlink" href="#GNN_MME.GSage_MME.drop" title="Link to this definition"></a></dt>
+<dd><p>Dropout layer applied after each GNN layer for regularization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Dropout</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dims</strong> (<em>list</em>) – Input dimensions for each modality of input data.</p></li>
+<li><p><strong>latent_dims</strong> (<em>list</em>) – Latent dimensions for corresponding encoders processing each modality of input data.</p></li>
+<li><p><strong>decoder_dim</strong> (<em>int</em>) – Unified dimension to which all modalities are decoded.</p></li>
+<li><p><strong>hidden_feats</strong> (<em>list</em>) – Dimensions for hidden layers of the GNN.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – Number of classes for classification tasks.</p></li>
+<li><p><strong>PNet</strong> (<em>optional</em>) – A PNet model for embedding pathway networks, used as an optional modality-specific encoder.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.embedding_extraction">
+<span class="sig-name descname"><span class="pre">embedding_extraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GSage_MME.embedding_extraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GSage_MME.embedding_extraction" title="Link to this definition"></a></dt>
+<dd><p>Extract embeddings for the nodes in the graph. This method is typically used to retrieve node embeddings that can then be used for visualization, clustering, or as input for downstream tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – The graph for which embeddings are to be retrieved.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Node features tensor.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – The device to perform computations on.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Size of the batches to use during the computation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node embeddings extracted by the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GSage_MME.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GSage_MME.forward" title="Link to this definition"></a></dt>
+<dd><p>Forward pass for GSage_MME embedding computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – Input graph.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Feature matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output after passing through the GNN layers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GNN_MME.GSage_MME.inference">
+<span class="sig-name descname"><span class="pre">inference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/GNN_MME.html#GSage_MME.inference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#GNN_MME.GSage_MME.inference" title="Link to this definition"></a></dt>
+<dd><p>Perform a forward pass using the model for inference, without computing gradients. Usually used after the model has been trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>dgl.DGLGraph</em>) – The DGL graph on which inference is performed.</p></li>
+<li><p><strong>h</strong> (<em>torch.Tensor</em>) – Node features for all nodes in the graph.</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em>) – The device tensors will be sent to.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – The size of batches to use during inference.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The outputs of the inference.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\MAIN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../Training_MOGDx.html" class="btn btn-neutral float-left" title="MOGDx Main Functions and Classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Training.html" class="btn btn-neutral float-right" title="Training MOGDx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

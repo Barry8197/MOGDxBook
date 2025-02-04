@@ -1,0 +1,1590 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../intro.html">
+            
+              <img src="../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/Notebooks/MOGDx_NetGen.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>  
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;./../MAIN/&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">GNN_MME</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">train</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">preprocess_functions</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span> <span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">palettable</span><span class="w"> </span><span class="kn">import</span> <span class="n">wesanderson</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished Library Import </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finished Library Import 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_input</span> <span class="o">=</span> <span class="s1">&#39;./../../data/TCGA/BRCA/raw/&#39;</span>
+<span class="n">snf_net</span> <span class="o">=</span> <span class="s1">&#39;RPPA_mRNA_graph.graphml&#39;</span>
+<span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;patient&#39;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;paper_BRCA_Subtype_PAM50&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span> <span class="k">if</span> <span class="kc">False</span> <span class="k">else</span> <span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="c1"># Get GPU device name, else use CPU</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using </span><span class="si">%s</span><span class="s2"> device&quot;</span> <span class="o">%</span> <span class="n">device</span><span class="p">)</span>
+<span class="n">get_gpu_memory</span><span class="p">()</span>
+
+
+<span class="n">datModalities</span> <span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">data_parsing</span><span class="p">(</span><span class="n">data_input</span> <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;RPPA&#39;</span> <span class="p">,</span> <span class="s1">&#39;mRNA&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">target</span> <span class="p">,</span> <span class="n">index_col</span> <span class="p">,</span> <span class="n">PROCESSED</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+<span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">2</span> <span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">skf</span><span class="p">)</span>
+
+<span class="n">data_to_save</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">output_metrics</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_logits</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">meta</span><span class="p">))</span> <span class="p">:</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">MME_input_shapes</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="n">train_index</span> <span class="p">,</span> <span class="n">val_index</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">train_index</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">meta</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+    <span class="p">)</span>
+    
+    <span class="n">train_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">val_idx</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_index</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">test_idx</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="n">all_graphs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">data_to_save</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">datModalities</span> <span class="p">:</span> 
+        <span class="n">count_mtx</span> <span class="o">=</span> <span class="n">datModalities</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span>
+        
+        <span class="n">datMeta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">count_mtx</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">datMeta</span> <span class="o">=</span> <span class="n">datMeta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">datMeta</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+        <span class="n">count_mtx</span> <span class="o">=</span> <span class="n">count_mtx</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datMeta</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+        
+        <span class="n">train_index_mod</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">train_idx</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">datMeta</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+        <span class="n">val_index_mod</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">val_idx</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">datMeta</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">mod</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mRNA&#39;</span> <span class="p">,</span> <span class="s1">&#39;miRNA&#39;</span><span class="p">]</span> <span class="p">:</span> 
+            <span class="n">pipeline</span> <span class="o">=</span> <span class="s1">&#39;DESeq&#39;</span> 
+            <span class="k">if</span> <span class="n">mod</span> <span class="o">==</span> <span class="s1">&#39;mRNA&#39;</span> <span class="p">:</span> 
+                <span class="n">gene_exp</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span> <span class="p">:</span> 
+                <span class="n">gene_exp</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span> <span class="p">:</span> 
+            <span class="n">pipeline</span> <span class="o">=</span> <span class="s1">&#39;LogReg&#39;</span>
+
+        <span class="k">if</span> <span class="n">pipeline</span> <span class="o">==</span> <span class="s1">&#39;DESeq&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Performing Differential Gene Expression for Feature Selection&#39;</span><span class="p">)</span>
+            
+            <span class="n">count_mtx</span> <span class="p">,</span> <span class="n">datMeta</span> <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">data_preprocess</span><span class="p">(</span><span class="n">count_mtx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> 
+                                                        <span class="n">datMeta</span> <span class="p">,</span> <span class="n">gene_exp</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+            
+            <span class="n">train_index_mod</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">train_index_mod</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">count_mtx</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+            <span class="n">dds</span><span class="p">,</span> <span class="n">vsd</span><span class="p">,</span> <span class="n">top_genes</span> <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">DESEQ</span><span class="p">(</span><span class="n">count_mtx</span> <span class="p">,</span> <span class="n">datMeta</span> <span class="p">,</span> <span class="n">target</span> <span class="p">,</span> 
+                                        <span class="n">n_genes</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">train_index</span><span class="o">=</span><span class="n">train_index_mod</span><span class="p">)</span>
+
+            <span class="n">data_to_save</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_extracted_feats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">top_genes</span><span class="p">))</span>
+            <span class="n">datExpr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">vsd</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">count_mtx</span><span class="o">.</span><span class="n">index</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">count_mtx</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">pipeline</span> <span class="o">==</span> <span class="s1">&#39;LogReg&#39;</span> <span class="p">:</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Performing Logistic Regression for Feature Selection&#39;</span><span class="p">)</span>
+            
+            <span class="n">n_genes</span> <span class="o">=</span> <span class="n">count_mtx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">datExpr</span> <span class="o">=</span> <span class="n">count_mtx</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="p">(</span><span class="n">count_mtx</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span> <span class="c1"># remove any genes with all 0 expression</span>
+            
+            <span class="n">train_index_mod</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">train_index_mod</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">datExpr</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+            <span class="n">val_index_mod</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">val_index_mod</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">datExpr</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+            
+            <span class="n">extracted_feats</span> <span class="p">,</span> <span class="n">model</span>  <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">elastic_net</span><span class="p">(</span><span class="n">datExpr</span> <span class="p">,</span> <span class="n">datMeta</span> <span class="p">,</span> 
+                                                         <span class="n">train_index</span><span class="o">=</span><span class="n">train_index_mod</span> <span class="p">,</span> 
+                                                         <span class="n">val_index</span><span class="o">=</span><span class="n">val_index_mod</span> <span class="p">,</span>
+                                                         <span class="n">l1_ratio</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+            <span class="n">data_to_save</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_extracted_feats&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">extracted_feats</span><span class="p">))</span>
+            <span class="n">data_to_save</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_model&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;model&#39;</span> <span class="p">:</span> <span class="n">model</span><span class="p">}</span>
+            
+            <span class="k">del</span> <span class="n">model</span>
+
+        <span class="k">if</span> <span class="n">mod</span> <span class="ow">in</span> <span class="p">[]</span> <span class="p">:</span> 
+            <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;bicorr&#39;</span>
+        <span class="k">elif</span> <span class="n">mod</span> <span class="ow">in</span> <span class="p">[</span> <span class="s1">&#39;mRNA&#39;</span> <span class="p">,</span> <span class="s1">&#39;RPPA&#39;</span> <span class="p">,</span> <span class="s1">&#39;miRNA&#39;</span> <span class="p">,</span> <span class="s1">&#39;CNV&#39;</span> <span class="p">,</span> <span class="s1">&#39;DNAm&#39;</span><span class="p">]</span> <span class="p">:</span> 
+            <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;pearson&#39;</span>
+        <span class="k">elif</span> <span class="n">mod</span> <span class="ow">in</span> <span class="p">[]</span> <span class="p">:</span> 
+            <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span>
+            
+        <span class="n">datExpr</span> <span class="o">=</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">datMeta</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_to_save</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_extracted_feats&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span> 
+            <span class="n">G</span>  <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">knn_graph_generation</span><span class="p">(</span><span class="n">datExpr</span> <span class="p">,</span> <span class="n">datMeta</span> <span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span> <span class="p">,</span> 
+                                                <span class="n">extracted_feats</span><span class="o">=</span><span class="n">data_to_save</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_extracted_feats&#39;</span><span class="p">],</span>
+                                                <span class="n">node_size</span> <span class="o">=</span><span class="mi">150</span> <span class="p">,</span> <span class="n">knn</span> <span class="o">=</span> <span class="mi">15</span> <span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span> 
+            <span class="n">G</span>  <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">knn_graph_generation</span><span class="p">(</span><span class="n">datExpr</span> <span class="p">,</span> <span class="n">datMeta</span> <span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span> <span class="p">,</span> 
+                                            <span class="n">extracted_feats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_size</span> <span class="o">=</span><span class="mi">150</span> <span class="p">,</span> <span class="n">knn</span> <span class="o">=</span> <span class="mi">15</span> <span class="p">)</span>
+                
+        <span class="n">all_graphs</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span>
+
+        <span class="n">h</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span> <span class="o">=</span> <span class="n">datExpr</span>
+        <span class="n">MME_input_shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datExpr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        
+    <span class="n">all_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">()</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">h</span><span class="p">]))</span>
+    <span class="n">train_index</span> <span class="o">=</span> <span class="n">indices_removal_adjust</span><span class="p">(</span><span class="n">train_index</span> <span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">index_col</span><span class="p">]</span> <span class="p">,</span> <span class="n">all_idx</span><span class="p">)</span>
+    <span class="n">val_index</span> <span class="o">=</span> <span class="n">indices_removal_adjust</span><span class="p">(</span><span class="n">val_index</span> <span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">index_col</span><span class="p">]</span> <span class="p">,</span> <span class="n">all_idx</span><span class="p">)</span>
+    <span class="n">test_index</span> <span class="o">=</span> <span class="n">indices_removal_adjust</span><span class="p">(</span><span class="n">test_index</span> <span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">index_col</span><span class="p">]</span> <span class="p">,</span> <span class="n">all_idx</span><span class="p">)</span>
+    
+    <span class="n">train_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">train_index</span> <span class="p">,</span> <span class="n">val_index</span><span class="p">))</span>
+    
+    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Clearing gpu memory&#39;</span><span class="p">)</span>
+    <span class="n">get_gpu_memory</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_graphs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">:</span> 
+        <span class="n">full_graphs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">mod</span> <span class="p">,</span> <span class="n">graph</span> <span class="ow">in</span> <span class="n">all_graphs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="p">:</span> 
+            <span class="n">full_graph</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">all_idx</span><span class="p">)</span> <span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_idx</span><span class="p">)))</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">all_idx</span> <span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">all_idx</span><span class="p">)</span>
+            <span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_adjacency</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+            <span class="n">full_graph</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">graph</span><span class="o">.</span><span class="n">index</span> <span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="n">full_graphs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">full_graph</span><span class="p">)</span>
+
+        <span class="n">adj_snf</span> <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">SNF</span><span class="p">(</span><span class="n">full_graphs</span><span class="p">)</span>
+
+        <span class="n">node_colour</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adj_snf</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">set_categories</span><span class="p">(</span><span class="n">wesanderson</span><span class="o">.</span><span class="n">FantasticFox2_5</span><span class="o">.</span><span class="n">hex_colors</span> <span class="p">,</span> <span class="n">rename</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">g</span>  <span class="o">=</span> <span class="n">preprocess_functions</span><span class="o">.</span><span class="n">plot_knn_network</span><span class="p">(</span><span class="n">adj_snf</span> <span class="p">,</span> <span class="mi">15</span> <span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adj_snf</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="p">,</span>
+                                               <span class="n">node_colours</span><span class="o">=</span><span class="n">node_colour</span> <span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span> 
+        <span class="n">g</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_graphs</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        
+    <span class="n">label</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">all_idx</span><span class="p">)]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span>
+        
+    <span class="n">h</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">merge_dfs</span> <span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">dgl</span><span class="o">.</span><span class="n">from_networkx</span><span class="p">(</span><span class="n">g</span> <span class="p">,</span> <span class="n">node_attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;idx&#39;</span> <span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">])</span>
+
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+    <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">GCN_MME</span><span class="p">(</span><span class="n">MME_input_shapes</span> <span class="p">,</span> <span class="p">[</span><span class="mi">16</span> <span class="p">,</span> <span class="mi">16</span><span class="p">]</span> <span class="p">,</span> <span class="mi">64</span> <span class="p">,</span> <span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">loss_plot</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">device</span> <span class="p">,</span>  <span class="n">model</span> <span class="p">,</span> <span class="n">label</span> <span class="p">,</span> <span class="mi">2000</span> <span class="p">,</span> <span class="mf">1e-3</span> <span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loss for split </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    
+    <span class="n">sampler</span> <span class="o">=</span> <span class="n">NeighborSampler</span><span class="p">(</span>
+        <span class="p">[</span><span class="mi">15</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">gnnlayers</span><span class="p">))],</span>  <span class="c1"># fanout for each layer</span>
+        <span class="n">prefetch_node_feats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">],</span>
+        <span class="n">prefetch_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+        <span class="n">g</span><span class="p">,</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">test_index</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span>
+        <span class="n">sampler</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">use_uva</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="n">test_output_metrics</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">test_dataloader</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Fold : </span><span class="si">{:01d}</span><span class="s2"> | Test Accuracy = </span><span class="si">{:.4f}</span><span class="s2"> | F1 = </span><span class="si">{:.4f}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="p">,</span> <span class="n">test_output_metrics</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">test_output_metrics</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="n">test_logits</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">test_output_metrics</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">test_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">test_output_metrics</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="n">output_metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_output_metrics</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">best_idx</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">elif</span> <span class="n">output_metrics</span><span class="p">[</span><span class="n">best_idx</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">test_output_metrics</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> 
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">best_idx</span>   <span class="o">=</span> <span class="n">i</span>
+
+    <span class="n">get_gpu_memory</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">model</span>
+    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Clearing gpu memory&#39;</span><span class="p">)</span>
+    <span class="n">get_gpu_memory</span><span class="p">()</span>
+
+<span class="n">test_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">test_logits</span><span class="p">)</span>
+<span class="n">test_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using cuda device
+Total = 11.5Gb 	 Reserved = 0.0Gb 	 Allocated = 0.0Gb
+StratifiedKFold(n_splits=2, random_state=None, shuffle=True)
+Performing Logistic Regression for Feature Selection
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss : 0.6043: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:07&lt;00:00, 127.00epoch/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model score : 0.873
+</pre></div>
+</div>
+<img alt="../../_images/a7617b319aa1cc17dd356ee20332a262520a6509f897d0b3110902d4a7968a18.png" src="../../_images/a7617b319aa1cc17dd356ee20332a262520a6509f897d0b3110902d4a7968a18.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing Differential Gene Expression for Feature Selection
+Keeping 29995 genes
+Removed 30665 genes
+Keeping 1047 Samples
+Removed 36 Samples
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting size factors...
+... done in 1.31 seconds.
+
+Fitting dispersions...
+... done in 81.41 seconds.
+
+Fitting dispersion trend curve...
+... done in 1.02 seconds.
+
+Fitting MAP dispersions...
+... done in 86.25 seconds.
+
+Fitting LFCs...
+... done in 58.14 seconds.
+
+Replacing 2948 outlier genes.
+
+Fitting dispersions...
+... done in 8.48 seconds.
+
+Fitting MAP dispersions...
+... done in 7.87 seconds.
+
+Fitting LFCs...
+... done in 8.77 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing contrastive analysis for LumA vs. Her2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.61 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs Her2
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.045843  0.109944 -0.416972   
+ENSG00000000005.6     72.999641        2.364056  0.293465  8.055672   
+ENSG00000000419.13  2386.496112       -0.604066  0.062602 -9.649258   
+ENSG00000000457.14  1596.783158       -0.062327  0.063247 -0.985453   
+ENSG00000000460.17   715.140714       -0.435593  0.080773 -5.392794   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026       -0.955682  0.240269 -3.977558   
+ENSG00000288663.1     29.867524        0.627702  0.099567  6.304315   
+ENSG00000288670.1    422.158728       -0.075705  0.079346 -0.954105   
+ENSG00000288674.1      8.197550        0.337858  0.120301  2.808438   
+ENSG00000288675.1     32.370671       -0.912699  0.116411 -7.840289   
+
+                          pvalue          padj  
+ENSG00000000003.15  6.766989e-01  7.320512e-01  
+ENSG00000000005.6   7.904344e-16  9.221735e-15  
+ENSG00000000419.13  4.951245e-22  1.091202e-20  
+ENSG00000000457.14  3.244017e-01  3.944235e-01  
+ENSG00000000460.17  6.937039e-08  3.022171e-07  
+...                          ...           ...  
+ENSG00000288658.1   6.962672e-05  1.878275e-04  
+ENSG00000288663.1   2.894705e-10  1.756203e-09  
+ENSG00000288670.1   3.400304e-01  4.104476e-01  
+ENSG00000288674.1   4.978246e-03  9.501304e-03  
+ENSG00000288675.1   4.495109e-15  4.869295e-14  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumA vs. LumB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.60 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs LumB
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130        0.510947  0.075755   6.744708   
+ENSG00000000005.6     72.999641        0.680790  0.200628   3.393292   
+ENSG00000000419.13  2386.496112       -0.496193  0.043131 -11.504244   
+ENSG00000000457.14  1596.783158        0.070789  0.043570   1.624719   
+ENSG00000000460.17   715.140714       -0.607113  0.055622 -10.914921   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -0.808325  0.165651  -4.879701   
+ENSG00000288663.1     29.867524       -0.053662  0.066356  -0.808702   
+ENSG00000288670.1    422.158728       -0.228263  0.054607  -4.180138   
+ENSG00000288674.1      8.197550        0.269729  0.080393   3.355137   
+ENSG00000288675.1     32.370671        0.324366  0.081632   3.973539   
+
+                          pvalue          padj  
+ENSG00000000003.15  1.533353e-11  1.663397e-10  
+ENSG00000000005.6   6.905787e-04  1.839928e-03  
+ENSG00000000419.13  1.255854e-30  1.034872e-28  
+ENSG00000000457.14  1.042225e-01  1.570695e-01  
+ENSG00000000460.17  9.781451e-28  6.378144e-26  
+...                          ...           ...  
+ENSG00000288658.1   1.062466e-06  5.131002e-06  
+ENSG00000288663.1   4.186868e-01  5.071212e-01  
+ENSG00000288670.1   2.913319e-05  1.041538e-04  
+ENSG00000288674.1   7.932558e-04  2.084242e-03  
+ENSG00000288675.1   7.081250e-05  2.341293e-04  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumA vs. Normal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.62 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs Normal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.149391  0.151267 -0.987602   
+ENSG00000000005.6     72.999641       -0.070272  0.400423 -0.175495   
+ENSG00000000419.13  2386.496112        0.052635  0.086204  0.610591   
+ENSG00000000457.14  1596.783158        0.460586  0.087118  5.286913   
+ENSG00000000460.17   715.140714        0.442141  0.111457  3.966909   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026       -0.735339  0.331180 -2.220362   
+ENSG00000288663.1     29.867524        0.106228  0.134478  0.789925   
+ENSG00000288670.1    422.158728        0.475525  0.109506  4.342478   
+ENSG00000288674.1      8.197550       -0.105403  0.159991 -0.658811   
+ENSG00000288675.1     32.370671       -0.340401  0.161826 -2.103502   
+
+                          pvalue      padj  
+ENSG00000000003.15  3.233477e-01  0.443638  
+ENSG00000000005.6   8.606910e-01  0.906762  
+ENSG00000000419.13  5.414704e-01  0.651681  
+ENSG00000000457.14  1.243974e-07  0.000002  
+ENSG00000000460.17  7.281077e-05  0.000401  
+...                          ...       ...  
+ENSG00000288658.1   2.639418e-02  0.059055  
+ENSG00000288663.1   4.295718e-01  0.548929  
+ENSG00000288670.1   1.408846e-05  0.000097  
+ENSG00000288674.1   5.100174e-01  0.624223  
+ENSG00000288675.1   3.542193e-02  0.075375  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumA vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.85 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs Basal
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130       -0.445231  0.080360  -5.540470   
+ENSG00000000005.6     72.999641        0.121811  0.212744   0.572570   
+ENSG00000000419.13  2386.496112       -0.502644  0.045765 -10.983185   
+ENSG00000000457.14  1596.783158        0.450413  0.046261   9.736325   
+ENSG00000000460.17   715.140714       -1.016645  0.058992 -17.233550   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -1.948089  0.174997 -11.132159   
+ENSG00000288663.1     29.867524        0.589213  0.072151   8.166405   
+ENSG00000288670.1    422.158728        0.042231  0.058005   0.728062   
+ENSG00000288674.1      8.197550        0.081888  0.085157   0.961607   
+ENSG00000288675.1     32.370671       -0.328268  0.085826  -3.824822   
+
+                          pvalue          padj  
+ENSG00000000003.15  3.016608e-08  5.819227e-08  
+ENSG00000000005.6   5.669362e-01  6.009347e-01  
+ENSG00000000419.13  4.603976e-28  2.082272e-27  
+ENSG00000000457.14  2.110493e-22  7.768345e-22  
+ENSG00000000460.17  1.487367e-66  1.982826e-65  
+...                          ...           ...  
+ENSG00000288658.1   8.748999e-29  4.064213e-28  
+ENSG00000288663.1   3.177145e-16  9.097706e-16  
+ENSG00000288670.1   4.665758e-01  5.029267e-01  
+ENSG00000288674.1   3.362471e-01  3.704857e-01  
+ENSG00000288675.1   1.308665e-04  2.016511e-04  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Her2 vs. LumB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 39.12 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Her2 vs LumB
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130        0.556791  0.121299  4.590231   
+ENSG00000000005.6     72.999641       -1.683266  0.323369 -5.205405   
+ENSG00000000419.13  2386.496112        0.107873  0.069058  1.562060   
+ENSG00000000457.14  1596.783158        0.133116  0.069775  1.907793   
+ENSG00000000460.17   715.140714       -0.171520  0.089082 -1.925423   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026        0.147357  0.264721  0.556650   
+ENSG00000288663.1     29.867524       -0.681364  0.109132 -6.243509   
+ENSG00000288670.1    422.158728       -0.152558  0.087504 -1.743435   
+ENSG00000288674.1      8.197550       -0.068130  0.132312 -0.514919   
+ENSG00000288675.1     32.370671        1.237065  0.128962  9.592484   
+
+                          pvalue          padj  
+ENSG00000000003.15  4.427567e-06  2.483262e-05  
+ENSG00000000005.6   1.935743e-07  1.438262e-06  
+ENSG00000000419.13  1.182739e-01  1.871209e-01  
+ENSG00000000457.14  5.641794e-02  1.010845e-01  
+ENSG00000000460.17  5.417645e-02  9.782221e-02  
+...                          ...           ...  
+ENSG00000288658.1   5.777669e-01  6.693491e-01  
+ENSG00000288663.1   4.278617e-10  5.113032e-09  
+ENSG00000288670.1   8.125761e-02  1.371594e-01  
+ENSG00000288674.1   6.066095e-01  6.935600e-01  
+ENSG00000288675.1   8.598906e-22  4.931629e-20  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Her2 vs. Normal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 39.02 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Her2 vs Normal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.103548  0.178483 -0.580154   
+ENSG00000000005.6     72.999641       -2.434328  0.473977 -5.135962   
+ENSG00000000419.13  2386.496112        0.656701  0.101685  6.458201   
+ENSG00000000457.14  1596.783158        0.522913  0.102761  5.088647   
+ENSG00000000460.17   715.140714        0.877735  0.131394  6.680155   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026        0.220343  0.390279  0.564578   
+ENSG00000288663.1     29.867524       -0.521474  0.159972 -3.259782   
+ENSG00000288670.1    422.158728        0.551230  0.129099  4.269817   
+ENSG00000288674.1      8.197550       -0.443262  0.191417 -2.315689   
+ENSG00000288675.1     32.370671        0.572297  0.190145  3.009796   
+
+                          pvalue          padj  
+ENSG00000000003.15  5.618106e-01  6.612584e-01  
+ENSG00000000005.6   2.807051e-07  2.723076e-06  
+ENSG00000000419.13  1.059548e-10  2.622205e-09  
+ENSG00000000457.14  3.606275e-07  3.381376e-06  
+ENSG00000000460.17  2.386891e-11  7.074585e-10  
+...                          ...           ...  
+ENSG00000288658.1   5.723606e-01  6.705971e-01  
+ENSG00000288663.1   1.114980e-03  3.756046e-03  
+ENSG00000288670.1   1.956336e-05  1.138760e-04  
+ENSG00000288674.1   2.057528e-02  4.536907e-02  
+ENSG00000288675.1   2.614229e-03  7.828071e-03  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Her2 vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 39.05 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Her2 vs Basal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.399387  0.124227 -3.214986   
+ENSG00000000005.6     72.999641       -2.242245  0.331022 -6.773695   
+ENSG00000000419.13  2386.496112        0.101422  0.070733  1.433869   
+ENSG00000000457.14  1596.783158        0.512741  0.071486  7.172567   
+ENSG00000000460.17   715.140714       -0.581052  0.091224 -6.369511   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026       -0.992407  0.270668 -3.666515   
+ENSG00000288663.1     29.867524       -0.038489  0.112749 -0.341369   
+ENSG00000288670.1    422.158728        0.117936  0.089665  1.315301   
+ENSG00000288674.1      8.197550       -0.255971  0.135260 -1.892441   
+ENSG00000288675.1     32.370671        0.584431  0.131657  4.439053   
+
+                          pvalue          padj  
+ENSG00000000003.15  1.304509e-03  2.998372e-03  
+ENSG00000000005.6   1.255340e-11  8.773051e-11  
+ENSG00000000419.13  1.516097e-01  2.123625e-01  
+ENSG00000000457.14  7.360443e-13  5.828312e-12  
+ENSG00000000460.17  1.896317e-10  1.165813e-09  
+...                          ...           ...  
+ENSG00000288658.1   2.458789e-04  6.493343e-04  
+ENSG00000288663.1   7.328254e-01  7.904311e-01  
+ENSG00000288670.1   1.884088e-01  2.559593e-01  
+ENSG00000288674.1   5.843230e-02  9.229958e-02  
+ENSG00000288675.1   9.035541e-06  3.005334e-05  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumB vs. Normal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.60 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumB vs Normal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.660339  0.159710 -4.134599   
+ENSG00000000005.6     72.999641       -0.751062  0.422829 -1.776279   
+ENSG00000000419.13  2386.496112        0.548828  0.091000  6.031051   
+ENSG00000000457.14  1596.783158        0.389797  0.091967  4.238457   
+ENSG00000000460.17   715.140714        1.049255  0.117618  8.920864   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026        0.072986  0.349326  0.208934   
+ENSG00000288663.1     29.867524        0.159890  0.141706  1.128321   
+ENSG00000288670.1    422.158728        0.703788  0.115554  6.090572   
+ENSG00000288674.1      8.197550       -0.375132  0.169207 -2.216999   
+ENSG00000288675.1     32.370671       -0.664767  0.171077 -3.885789   
+
+                          pvalue          padj  
+ENSG00000000003.15  3.555750e-05  1.318943e-04  
+ENSG00000000005.6   7.568700e-02  1.186677e-01  
+ENSG00000000419.13  1.628964e-09  1.457562e-08  
+ENSG00000000457.14  2.250615e-05  8.703869e-05  
+ENSG00000000460.17  4.626642e-19  2.504984e-17  
+...                          ...           ...  
+ENSG00000288658.1   8.345001e-01  8.730974e-01  
+ENSG00000288663.1   2.591843e-01  3.374380e-01  
+ENSG00000288670.1   1.125076e-09  1.042529e-08  
+ENSG00000288674.1   2.662313e-02  4.801063e-02  
+ENSG00000288675.1   1.019982e-04  3.432171e-04  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumB vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.91 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumB vs Basal
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130       -0.956178  0.095308 -10.032556   
+ENSG00000000005.6     72.999641       -0.558979  0.252400  -2.214653   
+ENSG00000000419.13  2386.496112       -0.006451  0.054263  -0.118890   
+ENSG00000000457.14  1596.783158        0.379624  0.054849   6.921276   
+ENSG00000000460.17   715.140714       -0.409531  0.069938  -5.855631   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -1.139764  0.207297  -5.498214   
+ENSG00000288663.1     29.867524        0.642875  0.084864   7.575381   
+ENSG00000288670.1    422.158728        0.270494  0.068745   3.934776   
+ENSG00000288674.1      8.197550       -0.187841  0.101419  -1.852131   
+ENSG00000288675.1     32.370671       -0.652634  0.102204  -6.385619   
+
+                          pvalue          padj  
+ENSG00000000003.15  1.096412e-23  6.605119e-23  
+ENSG00000000005.6   2.678390e-02  3.592066e-02  
+ENSG00000000419.13  9.053624e-01  9.182818e-01  
+ENSG00000000457.14  4.475948e-12  1.394723e-11  
+ENSG00000000460.17  4.752026e-09  1.200514e-08  
+...                          ...           ...  
+ENSG00000288658.1   3.836571e-08  9.063396e-08  
+ENSG00000288663.1   3.580740e-14  1.268954e-13  
+ENSG00000288670.1   8.327447e-05  1.475641e-04  
+ENSG00000288674.1   6.400707e-02  8.153587e-02  
+ENSG00000288675.1   1.707057e-10  4.801047e-10  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Normal vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 38.49 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Normal vs Basal
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130       -0.295840  0.161945  -1.826789   
+ENSG00000000005.6     72.999641        0.192083  0.428711   0.448048   
+ENSG00000000419.13  2386.496112       -0.555279  0.092278  -6.017477   
+ENSG00000000457.14  1596.783158       -0.010172  0.093272  -0.109060   
+ENSG00000000460.17   715.140714       -1.458786  0.119249 -12.233145   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -1.212750  0.353853  -3.427268   
+ENSG00000288663.1     29.867524        0.482985  0.144510   3.342219   
+ENSG00000288670.1    422.158728       -0.433294  0.117198  -3.697107   
+ENSG00000288674.1      8.197550        0.187291  0.171522   1.091937   
+ENSG00000288675.1     32.370671        0.012134  0.173117   0.070089   
+
+                          pvalue          padj  
+ENSG00000000003.15  6.773144e-02  1.155568e-01  
+ENSG00000000005.6   6.541186e-01  7.328112e-01  
+ENSG00000000419.13  1.771569e-09  1.772456e-08  
+ENSG00000000457.14  9.131548e-01  9.376952e-01  
+ENSG00000000460.17  2.067743e-34  5.742773e-32  
+...                          ...           ...  
+ENSG00000288658.1   6.096881e-04  1.915533e-03  
+ENSG00000288663.1   8.311147e-04  2.519637e-03  
+ENSG00000288670.1   2.180707e-04  7.637823e-04  
+ENSG00000288674.1   2.748610e-01  3.696568e-01  
+ENSG00000288675.1   9.441229e-01  9.600946e-01  
+
+[29995 rows x 6 columns]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting dispersions...
+... done in 69.25 seconds.
+
+Fitting dispersion trend curve...
+... done in 0.97 seconds.
+</pre></div>
+</div>
+<img alt="../../_images/48dee35e8f518ff9ed3688b79a8f47dd305a98bb1d7644c4856c35840a0ba4a1.png" src="../../_images/48dee35e8f518ff9ed3688b79a8f47dd305a98bb1d7644c4856c35840a0ba4a1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clearing gpu memory
+Total = 11.5Gb 	 Reserved = 0.0Gb 	 Allocated = 0.0Gb
+</pre></div>
+</div>
+<img alt="../../_images/4d8cf5b264143cafa5e4bfe6339f0af9a86cc1f3de51f4a0d6f2b60b289072a0.png" src="../../_images/4d8cf5b264143cafa5e4bfe6339f0af9a86cc1f3de51f4a0d6f2b60b289072a0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): Encoder(
+      (encoder): ModuleList(
+        (0): Linear(in_features=464, out_features=500, bias=True)
+        (1): Linear(in_features=500, out_features=16, bias=True)
+      )
+      (norm): ModuleList(
+        (0): BatchNorm1d(500, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (decoder): Sequential(
+        (0): Linear(in_features=16, out_features=64, bias=True)
+      )
+      (drop): Dropout(p=0.5, inplace=False)
+    )
+    (1): Encoder(
+      (encoder): ModuleList(
+        (0): Linear(in_features=29995, out_features=500, bias=True)
+        (1): Linear(in_features=500, out_features=16, bias=True)
+      )
+      (norm): ModuleList(
+        (0): BatchNorm1d(500, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (decoder): Sequential(
+        (0): Linear(in_features=16, out_features=64, bias=True)
+      )
+      (drop): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=64, out=32, normalization=both, activation=None)
+    (1): GraphConv(in=32, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18398,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 1.6798 | Train Acc. 0.2780 | 
+Epoch 00005 | Loss 0.6435 | Train Acc. 0.7873 | 
+Epoch 00010 | Loss 0.5431 | Train Acc. 0.8228 | 
+Epoch 00015 | Loss 0.5307 | Train Acc. 0.8228 | 
+Epoch 00020 | Loss 0.5074 | Train Acc. 0.8228 | 
+Epoch 00025 | Loss 0.5056 | Train Acc. 0.8134 | 
+Epoch 00030 | Loss 0.4554 | Train Acc. 0.8209 | 
+Epoch 00035 | Loss 0.4616 | Train Acc. 0.8134 | 
+Epoch 00040 | Loss 0.4246 | Train Acc. 0.8433 | 
+Epoch 00045 | Loss 0.4217 | Train Acc. 0.8433 | 
+Epoch 00050 | Loss 0.4376 | Train Acc. 0.8340 | 
+Epoch 00055 | Loss 0.4131 | Train Acc. 0.8302 | 
+Epoch 00060 | Loss 0.3881 | Train Acc. 0.8526 | 
+Epoch 00065 | Loss 0.3927 | Train Acc. 0.8414 | 
+Epoch 00070 | Loss 0.3882 | Train Acc. 0.8545 | 
+Epoch 00075 | Loss 0.3737 | Train Acc. 0.8619 | 
+Epoch 00080 | Loss 0.3822 | Train Acc. 0.8451 | 
+Epoch 00085 | Loss 0.3653 | Train Acc. 0.8619 | 
+Epoch 00090 | Loss 0.3851 | Train Acc. 0.8526 | 
+Epoch 00095 | Loss 0.3566 | Train Acc. 0.8563 | 
+Epoch 00100 | Loss 0.3639 | Train Acc. 0.8582 | 
+Epoch 00105 | Loss 0.3413 | Train Acc. 0.8582 | 
+Epoch 00110 | Loss 0.3517 | Train Acc. 0.8675 | 
+Epoch 00115 | Loss 0.3465 | Train Acc. 0.8582 | 
+Epoch 00120 | Loss 0.3744 | Train Acc. 0.8358 | 
+Epoch 00125 | Loss 0.3410 | Train Acc. 0.8619 | 
+Epoch 00130 | Loss 0.3600 | Train Acc. 0.8601 | 
+Epoch 00135 | Loss 0.3612 | Train Acc. 0.8582 | 
+Epoch 00140 | Loss 0.3341 | Train Acc. 0.8713 | 
+Epoch 00145 | Loss 0.3227 | Train Acc. 0.8619 | 
+Epoch 00150 | Loss 0.3400 | Train Acc. 0.8563 | 
+Epoch 00155 | Loss 0.3280 | Train Acc. 0.8601 | 
+Epoch 00160 | Loss 0.3428 | Train Acc. 0.8563 | 
+Epoch 00165 | Loss 0.3442 | Train Acc. 0.8638 | 
+Epoch 00170 | Loss 0.3547 | Train Acc. 0.8601 | 
+Epoch 00175 | Loss 0.3180 | Train Acc. 0.8750 | 
+Epoch 00180 | Loss 0.3155 | Train Acc. 0.8787 | 
+Epoch 00185 | Loss 0.3350 | Train Acc. 0.8713 | 
+Epoch 00190 | Loss 0.3176 | Train Acc. 0.8619 | 
+Epoch 00195 | Loss 0.3000 | Train Acc. 0.8731 | 
+Epoch 00200 | Loss 0.3438 | Train Acc. 0.8619 | 
+Epoch 00205 | Loss 0.3048 | Train Acc. 0.8787 | 
+Epoch 00210 | Loss 0.3116 | Train Acc. 0.8769 | 
+Epoch 00215 | Loss 0.3199 | Train Acc. 0.8713 | 
+Epoch 00220 | Loss 0.3394 | Train Acc. 0.8713 | 
+Epoch 00225 | Loss 0.3281 | Train Acc. 0.8619 | 
+Epoch 00230 | Loss 0.3099 | Train Acc. 0.8750 | 
+Epoch 00235 | Loss 0.3131 | Train Acc. 0.8806 | 
+Epoch 00240 | Loss 0.3235 | Train Acc. 0.8750 | 
+Epoch 00245 | Loss 0.3463 | Train Acc. 0.8507 | 
+Epoch 00250 | Loss 0.3275 | Train Acc. 0.8787 | 
+Epoch 00255 | Loss 0.3142 | Train Acc. 0.8750 | 
+Epoch 00260 | Loss 0.2976 | Train Acc. 0.8750 | 
+Epoch 00265 | Loss 0.3057 | Train Acc. 0.8675 | 
+Epoch 00270 | Loss 0.3259 | Train Acc. 0.8526 | 
+Epoch 00275 | Loss 0.3130 | Train Acc. 0.8825 | 
+Epoch 00280 | Loss 0.2949 | Train Acc. 0.8750 | 
+Epoch 00285 | Loss 0.3344 | Train Acc. 0.8694 | 
+Epoch 00290 | Loss 0.3017 | Train Acc. 0.8769 | 
+Epoch 00295 | Loss 0.3255 | Train Acc. 0.8731 | 
+Epoch 00300 | Loss 0.3149 | Train Acc. 0.8750 | 
+Epoch 00305 | Loss 0.3082 | Train Acc. 0.8619 | 
+Epoch 00310 | Loss 0.3293 | Train Acc. 0.8806 | 
+Epoch 00315 | Loss 0.2958 | Train Acc. 0.8787 | 
+Epoch 00320 | Loss 0.3203 | Train Acc. 0.8787 | 
+Epoch 00325 | Loss 0.3045 | Train Acc. 0.8750 | 
+Epoch 00330 | Loss 0.3311 | Train Acc. 0.8582 | 
+Epoch 00335 | Loss 0.3099 | Train Acc. 0.8675 | 
+Epoch 00340 | Loss 0.3113 | Train Acc. 0.8750 | 
+Epoch 00345 | Loss 0.3110 | Train Acc. 0.8675 | 
+Epoch 00350 | Loss 0.3016 | Train Acc. 0.8787 | 
+Epoch 00355 | Loss 0.3221 | Train Acc. 0.8638 | 
+Epoch 00360 | Loss 0.3160 | Train Acc. 0.8769 | 
+Epoch 00365 | Loss 0.2907 | Train Acc. 0.8638 | 
+Epoch 00370 | Loss 0.3160 | Train Acc. 0.8638 | 
+Epoch 00375 | Loss 0.3107 | Train Acc. 0.8731 | 
+Epoch 00380 | Loss 0.3030 | Train Acc. 0.8787 | 
+Epoch 00385 | Loss 0.3099 | Train Acc. 0.8769 | 
+Epoch 00390 | Loss 0.3081 | Train Acc. 0.8657 | 
+Epoch 00395 | Loss 0.3195 | Train Acc. 0.8582 | 
+Epoch 00400 | Loss 0.3099 | Train Acc. 0.8899 | 
+Epoch 00405 | Loss 0.3113 | Train Acc. 0.8657 | 
+Epoch 00410 | Loss 0.2905 | Train Acc. 0.8825 | 
+Epoch 00415 | Loss 0.3006 | Train Acc. 0.8769 | 
+Epoch 00420 | Loss 0.3031 | Train Acc. 0.8675 | 
+Epoch 00425 | Loss 0.3202 | Train Acc. 0.8675 | 
+Epoch 00430 | Loss 0.3041 | Train Acc. 0.8825 | 
+Epoch 00435 | Loss 0.3106 | Train Acc. 0.8862 | 
+Epoch 00440 | Loss 0.2925 | Train Acc. 0.8713 | 
+Epoch 00445 | Loss 0.2960 | Train Acc. 0.8806 | 
+Epoch 00450 | Loss 0.2978 | Train Acc. 0.8787 | 
+Epoch 00455 | Loss 0.3072 | Train Acc. 0.8787 | 
+Epoch 00460 | Loss 0.3075 | Train Acc. 0.8787 | 
+Epoch 00465 | Loss 0.3135 | Train Acc. 0.8750 | 
+Epoch 00470 | Loss 0.3080 | Train Acc. 0.8806 | 
+Epoch 00475 | Loss 0.3238 | Train Acc. 0.8638 | 
+Epoch 00480 | Loss 0.3013 | Train Acc. 0.8619 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<img alt="../../_images/3b7a29eb7be81076dc1e7ce4c4540c39fba4d5e6505c9a70b1381e65484a87d7.png" src="../../_images/3b7a29eb7be81076dc1e7ce4c4540c39fba4d5e6505c9a70b1381e65484a87d7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 1 | Test Accuracy = 0.8519 | F1 = 0.8199 
+Total = 11.5Gb 	 Reserved = 0.8Gb 	 Allocated = 0.3Gb
+Clearing gpu memory
+Total = 11.5Gb 	 Reserved = 0.3Gb 	 Allocated = 0.3Gb
+Performing Logistic Regression for Feature Selection
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss : 0.6042: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:07&lt;00:00, 142.85epoch/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model score : 0.878
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/984e4a51720847305c5f0db5a8c72a86409bb0e2231ed582efaf4f1306ee09c1.png" src="../../_images/984e4a51720847305c5f0db5a8c72a86409bb0e2231ed582efaf4f1306ee09c1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing Differential Gene Expression for Feature Selection
+Keeping 29995 genes
+Removed 30665 genes
+Keeping 1047 Samples
+Removed 36 Samples
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting size factors...
+... done in 1.27 seconds.
+
+Fitting dispersions...
+... done in 77.05 seconds.
+
+Fitting dispersion trend curve...
+... done in 0.96 seconds.
+
+Fitting MAP dispersions...
+... done in 81.43 seconds.
+
+Fitting LFCs...
+... done in 55.79 seconds.
+
+Replacing 2948 outlier genes.
+
+Fitting dispersions...
+... done in 7.81 seconds.
+
+Fitting MAP dispersions...
+... done in 7.36 seconds.
+
+Fitting LFCs...
+... done in 8.41 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing contrastive analysis for LumA vs. Her2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.01 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs Her2
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.045843  0.109944 -0.416972   
+ENSG00000000005.6     72.999641        2.364056  0.293465  8.055672   
+ENSG00000000419.13  2386.496112       -0.604066  0.062602 -9.649258   
+ENSG00000000457.14  1596.783158       -0.062327  0.063247 -0.985453   
+ENSG00000000460.17   715.140714       -0.435593  0.080773 -5.392794   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026       -0.955682  0.240269 -3.977558   
+ENSG00000288663.1     29.867524        0.627702  0.099567  6.304315   
+ENSG00000288670.1    422.158728       -0.075705  0.079346 -0.954105   
+ENSG00000288674.1      8.197550        0.337858  0.120301  2.808438   
+ENSG00000288675.1     32.370671       -0.912699  0.116411 -7.840289   
+
+                          pvalue          padj  
+ENSG00000000003.15  6.766989e-01  7.320512e-01  
+ENSG00000000005.6   7.904344e-16  9.221735e-15  
+ENSG00000000419.13  4.951245e-22  1.091202e-20  
+ENSG00000000457.14  3.244017e-01  3.944235e-01  
+ENSG00000000460.17  6.937039e-08  3.022171e-07  
+...                          ...           ...  
+ENSG00000288658.1   6.962672e-05  1.878275e-04  
+ENSG00000288663.1   2.894705e-10  1.756203e-09  
+ENSG00000288670.1   3.400304e-01  4.104476e-01  
+ENSG00000288674.1   4.978246e-03  9.501304e-03  
+ENSG00000288675.1   4.495109e-15  4.869295e-14  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumA vs. LumB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.29 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs LumB
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130        0.510947  0.075755   6.744708   
+ENSG00000000005.6     72.999641        0.680790  0.200628   3.393292   
+ENSG00000000419.13  2386.496112       -0.496193  0.043131 -11.504244   
+ENSG00000000457.14  1596.783158        0.070789  0.043570   1.624719   
+ENSG00000000460.17   715.140714       -0.607113  0.055622 -10.914921   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -0.808325  0.165651  -4.879701   
+ENSG00000288663.1     29.867524       -0.053662  0.066356  -0.808702   
+ENSG00000288670.1    422.158728       -0.228263  0.054607  -4.180138   
+ENSG00000288674.1      8.197550        0.269729  0.080393   3.355137   
+ENSG00000288675.1     32.370671        0.324366  0.081632   3.973539   
+
+                          pvalue          padj  
+ENSG00000000003.15  1.533353e-11  1.663397e-10  
+ENSG00000000005.6   6.905787e-04  1.839928e-03  
+ENSG00000000419.13  1.255854e-30  1.034872e-28  
+ENSG00000000457.14  1.042225e-01  1.570695e-01  
+ENSG00000000460.17  9.781451e-28  6.378144e-26  
+...                          ...           ...  
+ENSG00000288658.1   1.062466e-06  5.131002e-06  
+ENSG00000288663.1   4.186868e-01  5.071212e-01  
+ENSG00000288670.1   2.913319e-05  1.041538e-04  
+ENSG00000288674.1   7.932558e-04  2.084242e-03  
+ENSG00000288675.1   7.081250e-05  2.341293e-04  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumA vs. Normal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.26 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs Normal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.149391  0.151267 -0.987602   
+ENSG00000000005.6     72.999641       -0.070272  0.400423 -0.175495   
+ENSG00000000419.13  2386.496112        0.052635  0.086204  0.610591   
+ENSG00000000457.14  1596.783158        0.460586  0.087118  5.286913   
+ENSG00000000460.17   715.140714        0.442141  0.111457  3.966909   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026       -0.735339  0.331180 -2.220362   
+ENSG00000288663.1     29.867524        0.106228  0.134478  0.789925   
+ENSG00000288670.1    422.158728        0.475525  0.109506  4.342478   
+ENSG00000288674.1      8.197550       -0.105403  0.159991 -0.658811   
+ENSG00000288675.1     32.370671       -0.340401  0.161826 -2.103502   
+
+                          pvalue      padj  
+ENSG00000000003.15  3.233477e-01  0.443638  
+ENSG00000000005.6   8.606910e-01  0.906762  
+ENSG00000000419.13  5.414704e-01  0.651681  
+ENSG00000000457.14  1.243974e-07  0.000002  
+ENSG00000000460.17  7.281077e-05  0.000401  
+...                          ...       ...  
+ENSG00000288658.1   2.639418e-02  0.059055  
+ENSG00000288663.1   4.295718e-01  0.548929  
+ENSG00000288670.1   1.408846e-05  0.000097  
+ENSG00000288674.1   5.100174e-01  0.624223  
+ENSG00000288675.1   3.542193e-02  0.075375  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumA vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.29 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumA vs Basal
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130       -0.445231  0.080360  -5.540470   
+ENSG00000000005.6     72.999641        0.121811  0.212744   0.572570   
+ENSG00000000419.13  2386.496112       -0.502644  0.045765 -10.983185   
+ENSG00000000457.14  1596.783158        0.450413  0.046261   9.736325   
+ENSG00000000460.17   715.140714       -1.016645  0.058992 -17.233550   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -1.948089  0.174997 -11.132159   
+ENSG00000288663.1     29.867524        0.589213  0.072151   8.166405   
+ENSG00000288670.1    422.158728        0.042231  0.058005   0.728062   
+ENSG00000288674.1      8.197550        0.081888  0.085157   0.961607   
+ENSG00000288675.1     32.370671       -0.328268  0.085826  -3.824822   
+
+                          pvalue          padj  
+ENSG00000000003.15  3.016608e-08  5.819227e-08  
+ENSG00000000005.6   5.669362e-01  6.009347e-01  
+ENSG00000000419.13  4.603976e-28  2.082272e-27  
+ENSG00000000457.14  2.110493e-22  7.768345e-22  
+ENSG00000000460.17  1.487367e-66  1.982826e-65  
+...                          ...           ...  
+ENSG00000288658.1   8.748999e-29  4.064213e-28  
+ENSG00000288663.1   3.177145e-16  9.097706e-16  
+ENSG00000288670.1   4.665758e-01  5.029267e-01  
+ENSG00000288674.1   3.362471e-01  3.704857e-01  
+ENSG00000288675.1   1.308665e-04  2.016511e-04  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Her2 vs. LumB
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.36 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Her2 vs LumB
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130        0.556791  0.121299  4.590231   
+ENSG00000000005.6     72.999641       -1.683266  0.323369 -5.205405   
+ENSG00000000419.13  2386.496112        0.107873  0.069058  1.562060   
+ENSG00000000457.14  1596.783158        0.133116  0.069775  1.907793   
+ENSG00000000460.17   715.140714       -0.171520  0.089082 -1.925423   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026        0.147357  0.264721  0.556650   
+ENSG00000288663.1     29.867524       -0.681364  0.109132 -6.243509   
+ENSG00000288670.1    422.158728       -0.152558  0.087504 -1.743435   
+ENSG00000288674.1      8.197550       -0.068130  0.132312 -0.514919   
+ENSG00000288675.1     32.370671        1.237065  0.128962  9.592484   
+
+                          pvalue          padj  
+ENSG00000000003.15  4.427567e-06  2.483262e-05  
+ENSG00000000005.6   1.935743e-07  1.438262e-06  
+ENSG00000000419.13  1.182739e-01  1.871209e-01  
+ENSG00000000457.14  5.641794e-02  1.010845e-01  
+ENSG00000000460.17  5.417645e-02  9.782221e-02  
+...                          ...           ...  
+ENSG00000288658.1   5.777669e-01  6.693491e-01  
+ENSG00000288663.1   4.278617e-10  5.113032e-09  
+ENSG00000288670.1   8.125761e-02  1.371594e-01  
+ENSG00000288674.1   6.066095e-01  6.935600e-01  
+ENSG00000288675.1   8.598906e-22  4.931629e-20  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Her2 vs. Normal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.30 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Her2 vs Normal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.103548  0.178483 -0.580154   
+ENSG00000000005.6     72.999641       -2.434328  0.473977 -5.135962   
+ENSG00000000419.13  2386.496112        0.656701  0.101685  6.458201   
+ENSG00000000457.14  1596.783158        0.522913  0.102761  5.088647   
+ENSG00000000460.17   715.140714        0.877735  0.131394  6.680155   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026        0.220343  0.390279  0.564578   
+ENSG00000288663.1     29.867524       -0.521474  0.159972 -3.259782   
+ENSG00000288670.1    422.158728        0.551230  0.129099  4.269817   
+ENSG00000288674.1      8.197550       -0.443262  0.191417 -2.315689   
+ENSG00000288675.1     32.370671        0.572297  0.190145  3.009796   
+
+                          pvalue          padj  
+ENSG00000000003.15  5.618106e-01  6.612584e-01  
+ENSG00000000005.6   2.807051e-07  2.723076e-06  
+ENSG00000000419.13  1.059548e-10  2.622205e-09  
+ENSG00000000457.14  3.606275e-07  3.381376e-06  
+ENSG00000000460.17  2.386891e-11  7.074585e-10  
+...                          ...           ...  
+ENSG00000288658.1   5.723606e-01  6.705971e-01  
+ENSG00000288663.1   1.114980e-03  3.756046e-03  
+ENSG00000288670.1   1.956336e-05  1.138760e-04  
+ENSG00000288674.1   2.057528e-02  4.536907e-02  
+ENSG00000288675.1   2.614229e-03  7.828071e-03  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Her2 vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.39 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Her2 vs Basal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.399387  0.124227 -3.214986   
+ENSG00000000005.6     72.999641       -2.242245  0.331022 -6.773695   
+ENSG00000000419.13  2386.496112        0.101422  0.070733  1.433869   
+ENSG00000000457.14  1596.783158        0.512741  0.071486  7.172567   
+ENSG00000000460.17   715.140714       -0.581052  0.091224 -6.369511   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026       -0.992407  0.270668 -3.666515   
+ENSG00000288663.1     29.867524       -0.038489  0.112749 -0.341369   
+ENSG00000288670.1    422.158728        0.117936  0.089665  1.315301   
+ENSG00000288674.1      8.197550       -0.255971  0.135260 -1.892441   
+ENSG00000288675.1     32.370671        0.584431  0.131657  4.439053   
+
+                          pvalue          padj  
+ENSG00000000003.15  1.304509e-03  2.998372e-03  
+ENSG00000000005.6   1.255340e-11  8.773051e-11  
+ENSG00000000419.13  1.516097e-01  2.123625e-01  
+ENSG00000000457.14  7.360443e-13  5.828312e-12  
+ENSG00000000460.17  1.896317e-10  1.165813e-09  
+...                          ...           ...  
+ENSG00000288658.1   2.458789e-04  6.493343e-04  
+ENSG00000288663.1   7.328254e-01  7.904311e-01  
+ENSG00000288670.1   1.884088e-01  2.559593e-01  
+ENSG00000288674.1   5.843230e-02  9.229958e-02  
+ENSG00000288675.1   9.035541e-06  3.005334e-05  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumB vs. Normal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.30 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumB vs Normal
+                       baseMean  log2FoldChange     lfcSE      stat  \
+ENSG00000000003.15  3087.392130       -0.660339  0.159710 -4.134599   
+ENSG00000000005.6     72.999641       -0.751062  0.422829 -1.776279   
+ENSG00000000419.13  2386.496112        0.548828  0.091000  6.031051   
+ENSG00000000457.14  1596.783158        0.389797  0.091967  4.238457   
+ENSG00000000460.17   715.140714        1.049255  0.117618  8.920864   
+...                         ...             ...       ...       ...   
+ENSG00000288658.1     22.532026        0.072986  0.349326  0.208934   
+ENSG00000288663.1     29.867524        0.159890  0.141706  1.128321   
+ENSG00000288670.1    422.158728        0.703788  0.115554  6.090572   
+ENSG00000288674.1      8.197550       -0.375132  0.169207 -2.216999   
+ENSG00000288675.1     32.370671       -0.664767  0.171077 -3.885789   
+
+                          pvalue          padj  
+ENSG00000000003.15  3.555750e-05  1.318943e-04  
+ENSG00000000005.6   7.568700e-02  1.186677e-01  
+ENSG00000000419.13  1.628964e-09  1.457562e-08  
+ENSG00000000457.14  2.250615e-05  8.703869e-05  
+ENSG00000000460.17  4.626642e-19  2.504984e-17  
+...                          ...           ...  
+ENSG00000288658.1   8.345001e-01  8.730974e-01  
+ENSG00000288663.1   2.591843e-01  3.374380e-01  
+ENSG00000288670.1   1.125076e-09  1.042529e-08  
+ENSG00000288674.1   2.662313e-02  4.801063e-02  
+ENSG00000288675.1   1.019982e-04  3.432171e-04  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for LumB vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.13 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 LumB vs Basal
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130       -0.956178  0.095308 -10.032556   
+ENSG00000000005.6     72.999641       -0.558979  0.252400  -2.214653   
+ENSG00000000419.13  2386.496112       -0.006451  0.054263  -0.118890   
+ENSG00000000457.14  1596.783158        0.379624  0.054849   6.921276   
+ENSG00000000460.17   715.140714       -0.409531  0.069938  -5.855631   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -1.139764  0.207297  -5.498214   
+ENSG00000288663.1     29.867524        0.642875  0.084864   7.575381   
+ENSG00000288670.1    422.158728        0.270494  0.068745   3.934776   
+ENSG00000288674.1      8.197550       -0.187841  0.101419  -1.852131   
+ENSG00000288675.1     32.370671       -0.652634  0.102204  -6.385619   
+
+                          pvalue          padj  
+ENSG00000000003.15  1.096412e-23  6.605119e-23  
+ENSG00000000005.6   2.678390e-02  3.592066e-02  
+ENSG00000000419.13  9.053624e-01  9.182818e-01  
+ENSG00000000457.14  4.475948e-12  1.394723e-11  
+ENSG00000000460.17  4.752026e-09  1.200514e-08  
+...                          ...           ...  
+ENSG00000288658.1   3.836571e-08  9.063396e-08  
+ENSG00000288663.1   3.580740e-14  1.268954e-13  
+ENSG00000288670.1   8.327447e-05  1.475641e-04  
+ENSG00000288674.1   6.400707e-02  8.153587e-02  
+ENSG00000288675.1   1.707057e-10  4.801047e-10  
+
+[29995 rows x 6 columns]
+Performing contrastive analysis for Normal vs. Basal
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Wald tests...
+... done in 37.32 seconds.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log2 fold change &amp; Wald test p-value: paper-BRCA-Subtype-PAM50 Normal vs Basal
+                       baseMean  log2FoldChange     lfcSE       stat  \
+ENSG00000000003.15  3087.392130       -0.295840  0.161945  -1.826789   
+ENSG00000000005.6     72.999641        0.192083  0.428711   0.448048   
+ENSG00000000419.13  2386.496112       -0.555279  0.092278  -6.017477   
+ENSG00000000457.14  1596.783158       -0.010172  0.093272  -0.109060   
+ENSG00000000460.17   715.140714       -1.458786  0.119249 -12.233145   
+...                         ...             ...       ...        ...   
+ENSG00000288658.1     22.532026       -1.212750  0.353853  -3.427268   
+ENSG00000288663.1     29.867524        0.482985  0.144510   3.342219   
+ENSG00000288670.1    422.158728       -0.433294  0.117198  -3.697107   
+ENSG00000288674.1      8.197550        0.187291  0.171522   1.091937   
+ENSG00000288675.1     32.370671        0.012134  0.173117   0.070089   
+
+                          pvalue          padj  
+ENSG00000000003.15  6.773144e-02  1.155568e-01  
+ENSG00000000005.6   6.541186e-01  7.328112e-01  
+ENSG00000000419.13  1.771569e-09  1.772456e-08  
+ENSG00000000457.14  9.131548e-01  9.376952e-01  
+ENSG00000000460.17  2.067743e-34  5.742773e-32  
+...                          ...           ...  
+ENSG00000288658.1   6.096881e-04  1.915533e-03  
+ENSG00000288663.1   8.311147e-04  2.519637e-03  
+ENSG00000288670.1   2.180707e-04  7.637823e-04  
+ENSG00000288674.1   2.748610e-01  3.696568e-01  
+ENSG00000288675.1   9.441229e-01  9.600946e-01  
+
+[29995 rows x 6 columns]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting dispersions...
+... done in 64.94 seconds.
+
+Fitting dispersion trend curve...
+... done in 0.91 seconds.
+</pre></div>
+</div>
+<img alt="../../_images/cdc73b5c613f34a221ed909f499d76f1bdd908ea93c17f830f1ae3bc4df382d5.png" src="../../_images/cdc73b5c613f34a221ed909f499d76f1bdd908ea93c17f830f1ae3bc4df382d5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clearing gpu memory
+Total = 11.5Gb 	 Reserved = 0.3Gb 	 Allocated = 0.3Gb
+</pre></div>
+</div>
+<img alt="../../_images/e6586537cd3f3a28c3f047d3547131558c26f766ea4d718eec463164c16075df.png" src="../../_images/e6586537cd3f3a28c3f047d3547131558c26f766ea4d718eec463164c16075df.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GCN_MME(
+  (encoder_dims): ModuleList(
+    (0): Encoder(
+      (encoder): ModuleList(
+        (0): Linear(in_features=464, out_features=500, bias=True)
+        (1): Linear(in_features=500, out_features=16, bias=True)
+      )
+      (norm): ModuleList(
+        (0): BatchNorm1d(500, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (decoder): Sequential(
+        (0): Linear(in_features=16, out_features=64, bias=True)
+      )
+      (drop): Dropout(p=0.5, inplace=False)
+    )
+    (1): Encoder(
+      (encoder): ModuleList(
+        (0): Linear(in_features=29995, out_features=500, bias=True)
+        (1): Linear(in_features=500, out_features=16, bias=True)
+      )
+      (norm): ModuleList(
+        (0): BatchNorm1d(500, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (decoder): Sequential(
+        (0): Linear(in_features=16, out_features=64, bias=True)
+      )
+      (drop): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (gnnlayers): ModuleList(
+    (0): GraphConv(in=64, out=32, normalization=both, activation=None)
+    (1): GraphConv(in=32, out=5, normalization=both, activation=None)
+  )
+  (batch_norms): ModuleList(
+    (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (drop): Dropout(p=0.5, inplace=False)
+)
+Graph(num_nodes=1076, num_edges=18430,
+      ndata_schemes={&#39;idx&#39;: Scheme(shape=(), dtype=torch.int64), &#39;label&#39;: Scheme(shape=(5,), dtype=torch.int64), &#39;feat&#39;: Scheme(shape=(30459,), dtype=torch.float32)}
+      edata_schemes={})
+Epoch 00000 | Loss 2.1592 | Train Acc. 0.1407 | 
+Epoch 00005 | Loss 0.5582 | Train Acc. 0.8426 | 
+Epoch 00010 | Loss 0.4923 | Train Acc. 0.8426 | 
+Epoch 00015 | Loss 0.4374 | Train Acc. 0.8630 | 
+Epoch 00020 | Loss 0.4187 | Train Acc. 0.8648 | 
+Epoch 00025 | Loss 0.3913 | Train Acc. 0.8574 | 
+Epoch 00030 | Loss 0.4014 | Train Acc. 0.8426 | 
+Epoch 00035 | Loss 0.3749 | Train Acc. 0.8704 | 
+Epoch 00040 | Loss 0.3638 | Train Acc. 0.8759 | 
+Epoch 00045 | Loss 0.3449 | Train Acc. 0.8648 | 
+Epoch 00050 | Loss 0.3493 | Train Acc. 0.8630 | 
+Epoch 00055 | Loss 0.3551 | Train Acc. 0.8759 | 
+Epoch 00060 | Loss 0.3395 | Train Acc. 0.8741 | 
+Epoch 00065 | Loss 0.3418 | Train Acc. 0.8778 | 
+Epoch 00070 | Loss 0.3354 | Train Acc. 0.8741 | 
+Epoch 00075 | Loss 0.3314 | Train Acc. 0.8704 | 
+Epoch 00080 | Loss 0.3197 | Train Acc. 0.8870 | 
+Epoch 00085 | Loss 0.3359 | Train Acc. 0.8611 | 
+Epoch 00090 | Loss 0.3315 | Train Acc. 0.8722 | 
+Epoch 00095 | Loss 0.3343 | Train Acc. 0.8667 | 
+Epoch 00100 | Loss 0.3101 | Train Acc. 0.8889 | 
+Epoch 00105 | Loss 0.3076 | Train Acc. 0.8870 | 
+Epoch 00110 | Loss 0.2842 | Train Acc. 0.8907 | 
+Epoch 00115 | Loss 0.2945 | Train Acc. 0.8889 | 
+Epoch 00120 | Loss 0.2942 | Train Acc. 0.8796 | 
+Epoch 00125 | Loss 0.3149 | Train Acc. 0.8759 | 
+Epoch 00130 | Loss 0.2849 | Train Acc. 0.8815 | 
+Epoch 00135 | Loss 0.2969 | Train Acc. 0.8759 | 
+Epoch 00140 | Loss 0.2908 | Train Acc. 0.8833 | 
+Epoch 00145 | Loss 0.2860 | Train Acc. 0.8944 | 
+Epoch 00150 | Loss 0.2931 | Train Acc. 0.8981 | 
+Epoch 00155 | Loss 0.2834 | Train Acc. 0.8870 | 
+Epoch 00160 | Loss 0.3005 | Train Acc. 0.8796 | 
+Epoch 00165 | Loss 0.2939 | Train Acc. 0.8796 | 
+Epoch 00170 | Loss 0.2685 | Train Acc. 0.8852 | 
+Epoch 00175 | Loss 0.2862 | Train Acc. 0.8759 | 
+Epoch 00180 | Loss 0.2645 | Train Acc. 0.9019 | 
+Epoch 00185 | Loss 0.2786 | Train Acc. 0.8870 | 
+Epoch 00190 | Loss 0.2666 | Train Acc. 0.8963 | 
+Epoch 00195 | Loss 0.2768 | Train Acc. 0.9037 | 
+Epoch 00200 | Loss 0.2590 | Train Acc. 0.8889 | 
+Epoch 00205 | Loss 0.2623 | Train Acc. 0.8926 | 
+Epoch 00210 | Loss 0.2683 | Train Acc. 0.8944 | 
+Epoch 00215 | Loss 0.2579 | Train Acc. 0.9019 | 
+Epoch 00220 | Loss 0.2905 | Train Acc. 0.8815 | 
+Epoch 00225 | Loss 0.2710 | Train Acc. 0.9056 | 
+Epoch 00230 | Loss 0.2638 | Train Acc. 0.8963 | 
+Epoch 00235 | Loss 0.2700 | Train Acc. 0.9019 | 
+Epoch 00240 | Loss 0.2516 | Train Acc. 0.8981 | 
+Epoch 00245 | Loss 0.2597 | Train Acc. 0.9056 | 
+Epoch 00250 | Loss 0.2594 | Train Acc. 0.8907 | 
+Epoch 00255 | Loss 0.2636 | Train Acc. 0.9056 | 
+Epoch 00260 | Loss 0.2767 | Train Acc. 0.9037 | 
+Epoch 00265 | Loss 0.2621 | Train Acc. 0.8926 | 
+Epoch 00270 | Loss 0.2632 | Train Acc. 0.9037 | 
+Epoch 00275 | Loss 0.2628 | Train Acc. 0.9111 | 
+Epoch 00280 | Loss 0.2694 | Train Acc. 0.8926 | 
+Epoch 00285 | Loss 0.2596 | Train Acc. 0.9037 | 
+Epoch 00290 | Loss 0.2663 | Train Acc. 0.8981 | 
+Epoch 00295 | Loss 0.2537 | Train Acc. 0.9111 | 
+Epoch 00300 | Loss 0.2787 | Train Acc. 0.8944 | 
+Epoch 00305 | Loss 0.2764 | Train Acc. 0.8944 | 
+Epoch 00310 | Loss 0.2390 | Train Acc. 0.9019 | 
+Epoch 00315 | Loss 0.2694 | Train Acc. 0.8889 | 
+Epoch 00320 | Loss 0.2686 | Train Acc. 0.9019 | 
+Epoch 00325 | Loss 0.2558 | Train Acc. 0.9056 | 
+Epoch 00330 | Loss 0.2738 | Train Acc. 0.9000 | 
+Epoch 00335 | Loss 0.2528 | Train Acc. 0.9037 | 
+Epoch 00340 | Loss 0.2515 | Train Acc. 0.8926 | 
+Epoch 00345 | Loss 0.2628 | Train Acc. 0.9037 | 
+Epoch 00350 | Loss 0.2562 | Train Acc. 0.8907 | 
+Epoch 00355 | Loss 0.2642 | Train Acc. 0.9000 | 
+Epoch 00360 | Loss 0.2641 | Train Acc. 0.8963 | 
+Epoch 00365 | Loss 0.2669 | Train Acc. 0.8963 | 
+Epoch 00370 | Loss 0.2624 | Train Acc. 0.9019 | 
+Epoch 00375 | Loss 0.2623 | Train Acc. 0.9000 | 
+Epoch 00380 | Loss 0.2590 | Train Acc. 0.8963 | 
+Epoch 00385 | Loss 0.2509 | Train Acc. 0.9037 | 
+Epoch 00390 | Loss 0.2638 | Train Acc. 0.9056 | 
+Epoch 00395 | Loss 0.2486 | Train Acc. 0.9074 | 
+Epoch 00400 | Loss 0.2448 | Train Acc. 0.9167 | 
+Epoch 00405 | Loss 0.2655 | Train Acc. 0.9000 | 
+Epoch 00410 | Loss 0.2575 | Train Acc. 0.8981 | 
+Epoch 00415 | Loss 0.2619 | Train Acc. 0.9037 | 
+Epoch 00420 | Loss 0.2734 | Train Acc. 0.9000 | 
+Epoch 00425 | Loss 0.2632 | Train Acc. 0.8963 | 
+Epoch 00430 | Loss 0.2545 | Train Acc. 0.9019 | 
+Epoch 00435 | Loss 0.2329 | Train Acc. 0.9111 | 
+Epoch 00440 | Loss 0.2519 | Train Acc. 0.9019 | 
+Epoch 00445 | Loss 0.2550 | Train Acc. 0.8944 | 
+Epoch 00450 | Loss 0.2589 | Train Acc. 0.9037 | 
+Epoch 00455 | Loss 0.2622 | Train Acc. 0.8981 | 
+Epoch 00460 | Loss 0.2462 | Train Acc. 0.9000 | 
+Epoch 00465 | Loss 0.2589 | Train Acc. 0.8944 | 
+Epoch 00470 | Loss 0.2563 | Train Acc. 0.9074 | 
+Epoch 00475 | Loss 0.2666 | Train Acc. 0.9019 | 
+Epoch 00480 | Loss 0.2767 | Train Acc. 0.9037 | 
+Epoch 00485 | Loss 0.2508 | Train Acc. 0.9056 | 
+Epoch 00490 | Loss 0.2711 | Train Acc. 0.8926 | 
+Epoch 00495 | Loss 0.2489 | Train Acc. 0.8981 | 
+Epoch 00500 | Loss 0.2705 | Train Acc. 0.8907 | 
+Early stopping! No improvement for 100 consecutive epochs.
+</pre></div>
+</div>
+<img alt="../../_images/2d293a5db59f5749f9c4c3c4f4495933dfcf559427c08c3b46ec35bc1302e5c0.png" src="../../_images/2d293a5db59f5749f9c4c3c4f4495933dfcf559427c08c3b46ec35bc1302e5c0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold : 2 | Test Accuracy = 0.8302 | F1 = 0.7934 
+Total = 11.5Gb 	 Reserved = 1.1Gb 	 Allocated = 0.4Gb
+Clearing gpu memory
+Total = 11.5Gb 	 Reserved = 0.3Gb 	 Allocated = 0.3Gb
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">F1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">output_metrics</span> <span class="p">:</span>
+    
+    <span class="n">accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">F1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metric</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> Fold Cross Validation Accuracy = </span><span class="si">%2.2f</span><span class="s2"> </span><span class="se">\u00B1</span><span class="s2"> </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">5</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2"> Fold Cross Validation F1 = </span><span class="si">%2.2f</span><span class="s2"> </span><span class="se">\u00B1</span><span class="s2"> </span><span class="si">%2.2f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">5</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">F1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">F1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_logits</span> <span class="p">,</span> <span class="n">test_labels</span> <span class="p">,</span> <span class="n">meta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Test Accuracy = </span><span class="si">%2.1f</span><span class="s1"> </span><span class="si">%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">precision_recall_plot</span> <span class="p">,</span> <span class="n">all_predictions_conf</span> <span class="o">=</span> <span class="n">AUROC</span><span class="p">(</span><span class="n">test_logits</span><span class="p">,</span> <span class="n">test_labels</span> <span class="p">,</span> <span class="n">meta</span><span class="p">)</span>
+
+<span class="n">node_predictions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">true_label</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">display_label</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
+
+<span class="k">for</span> <span class="n">pred</span> <span class="p">,</span> <span class="n">true</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">all_predictions_conf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="n">test_labels</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>  <span class="p">:</span> 
+    <span class="n">node_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">display_label</span><span class="p">[</span><span class="n">pred</span><span class="p">])</span>
+    <span class="n">true_label</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">display_label</span><span class="p">[</span><span class="n">true</span><span class="o">.</span><span class="n">item</span><span class="p">()])</span>
+
+<span class="n">preds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual&#39;</span> <span class="p">:</span> <span class="n">true_label</span> <span class="p">,</span> <span class="s1">&#39;Predicted&#39;</span> <span class="p">:</span> <span class="n">node_predictions</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 Fold Cross Validation Accuracy = 84.66 ± 1.05
+5 Fold Cross Validation F1 = 81.95 ± 1.76
+</pre></div>
+</div>
+<img alt="../../_images/87e46601178a8ea45f06330797ba5c500ab5435b5c3c79585a0de557d2640383.png" src="../../_images/87e46601178a8ea45f06330797ba5c500ab5435b5c3c79585a0de557d2640383.png" />
+<img alt="../../_images/4af6bdf6fffc7a0e9d8fa30cf1cf1c37a21ec84afc747c9c2fd8385ddf191938.png" src="../../_images/4af6bdf6fffc7a0e9d8fa30cf1cf1c37a21ec84afc747c9c2fd8385ddf191938.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\Notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOGDx &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../intro.html">
+            
+              <img src="../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MOGDx</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/README.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="mogdx">
+<h1>MOGDx<a class="headerlink" href="#mogdx" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.10545043"><img alt="DOI" src="https://zenodo.org/badge/622972427.svg" /></a></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Multi-omic Graph Diagnosis (MOGDx) is a tool for the integration of omic data and classification of heterogeneous diseases. MOGDx exploits a Patient Similarity Network (PSN) framework to integrate omic data using Similarity Network Fusion (SNF) <a class="footnote-reference brackets" href="#fn1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. A single PSN is built per modality. The PSN is built using the most informative features of that modality. The most informative features are found by performing a contrastive analysis between classification targets. For example, in mRNA, differentially expressed genes will be used to construct the PSN. Where suitable, Pearson correlation, otherwise Euclidean distance is measured between these informative features and the network is constructed using the K Nearest Neighbours (KNN) algorithm. SNF is used to combine individual PSN’s into a single network. The fused PSN and the omic datasets are input into the Graph Convultional Network with Multi Modal Encoder, the architecture of which is shown in below. Each omic measure is compressed using a two layer encoder. The compressed encoded layer of each modality is then decoded to a shared latent space using mean pooling. This encourages each modality to learn the same latent space. The shared latent space is the node feature matrix, required for training the GCN, with each row forming a node feature vector. Classification is performed on the fused network using the Graph Convolutional Network (GCN) deep learning algorithm <a class="footnote-reference brackets" href="#fn2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<p>GCN is a novel paradigm for learning from both network structure and node features. Heterogeneity in diseases confounds clinical trials, treatments, genetic association and more. Accurate stratification of these diseases is therefore critical to optimize treatment strategies for patients with heterogeneous diseases. Previous research has shown that accurate classification of heterogenous diseases has been achieved by integrating and classifying multi-omic data <a class="footnote-reference brackets" href="#fn3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#fn4" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#fn5" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. MOGDx improves upon this research. The advantages of MOGDx is that it can handle both a variable number of modalities and missing patient data in one or more modalities. Performance of MOGDx was benchmarked on the BRCA TCGA dataset with competitive performance compared to its counterparts. In summary, MOGDx combines patient similarity network integration with graph neural network learning for accurate disease classification.</p>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading"></a></h2>
+<section id="full-pipeline-overview">
+<h3>Full pipeline overview<a class="headerlink" href="#full-pipeline-overview" title="Link to this heading"></a></h3>
+<p><img alt="Code Overview" src="MOGDx/workflow_diagrams/code_flowchart.png?raw=true" /></p>
+</section>
+<section id="pre-preocessing-and-graph-generation">
+<h3>Pre-preocessing and Graph Generation<a class="headerlink" href="#pre-preocessing-and-graph-generation" title="Link to this heading"></a></h3>
+<p><img alt="R preprocess" src="MOGDx/workflow_diagrams/pre-processing_modalities_inkscape.png?raw=true" /></p>
+</section>
+<section id="graph-convolutionl-network-with-multi-modal-encoder">
+<h3>Graph Convolutionl Network with Multi Modal Encoder<a class="headerlink" href="#graph-convolutionl-network-with-multi-modal-encoder" title="Link to this heading"></a></h3>
+<p><img alt="Python" src="MOGDx/workflow_diagrams/gcn-mme.png?raw=true" /></p>
+</section>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>A working version of R and Python is required. R version 4.2.2 and Python version 3.9.2 was used to obtain all results.</p>
+<p>Steps 1-4 are executed in R, while step 5 is designed to run on a cluster with a GPU but can be executed locally if there is sufficient memory availability.</p>
+<section id="step-1-data-download">
+<h3>Step 1 - Data Download<a class="headerlink" href="#step-1-data-download" title="Link to this heading"></a></h3>
+<p>Create a folder called <code class="docutils literal notranslate"><span class="pre">data</span></code> and a folder for each dataset with naming convention ‘TCGA-’ e.g. ‘TCGA-BRCA’ inside this folder.</p>
+<p>Use the R script <code class="docutils literal notranslate"><span class="pre">data_download.R</span></code> to download all data changing the project to BRCA/LGG/KICH/KIRC/KICH</p>
+</section>
+<section id="step-2-preprocessing">
+<h3>Step 2 - Preprocessing<a class="headerlink" href="#step-2-preprocessing" title="Link to this heading"></a></h3>
+<p>Create a folder called for the dataset e.g. TCGA, and within this folder create a folder for each project.</p>
+<p>Run the R script <code class="docutils literal notranslate"><span class="pre">Preprocessing.R</span></code> specifying the phenotypical trait and project, checking to ensure the paths point to the created <code class="docutils literal notranslate"><span class="pre">data</span></code> folder.</p>
+<p>Save each modalities processed folder with naming convention <code class="docutils literal notranslate"><span class="pre">modality_processed.RData</span></code>.</p>
+<p>The options are <br />
+BRCA : <br />
+project = ‘BRCA’ <br />
+trait = ‘paper_paper_BRCA_Subtype_PAM50’</p>
+<p>LGG : <br />
+project = ‘LGG’ <br />
+trait = ‘paper_Grade’</p>
+<p>Note : To create the KIPAN dataset, the KIRC, KICP and KICH datasets have to be combined. This can be achieved by copying the downloaded files
+from all three seperate datasets into a single dataset called KIPAN keeping the same naming structures. A column named ‘subtype’ specifying which dataset
+the patient came from needs to be created in the Meta data file. A basic knowledge of R is required for this.</p>
+<p>KIPAN :  <br />
+project = ‘KIPAN’ <br />
+trait = ‘subtype’</p>
+</section>
+<section id="step-3-graph-generation">
+<h3>Step 3 - Graph Generation<a class="headerlink" href="#step-3-graph-generation" title="Link to this heading"></a></h3>
+<p>Point the knn_graph_generation.R to the project folder containing the processed modalities.</p>
+<p>Create a folder called raw. This is the folder from which MOGDx will be run.</p>
+<p>Use the R script <code class="docutils literal notranslate"><span class="pre">knn_graph_generation.R</span></code> specifying the phenotypical trait, project and modalities downloaded in the for loop.</p>
+</section>
+<section id="step-4-snf">
+<h3>Step 4 - SNF<a class="headerlink" href="#step-4-snf" title="Link to this heading"></a></h3>
+<p>Create a folder called Network outside data <br />
+Copy each modalities <code class="docutils literal notranslate"><span class="pre">modality_graph.csv</span></code> to this folder \</p>
+<p>Specify the modalities of interest in the list <code class="docutils literal notranslate"><span class="pre">mod_list</span></code></p>
+<p>Point the SNF script to the new Network folder</p>
+<p>Run the R script <code class="docutils literal notranslate"><span class="pre">SNF.R</span></code></p>
+</section>
+<section id="example-of-directory-structure-for-tcga">
+<h3>Example of directory structure for TCGA<a class="headerlink" href="#example-of-directory-structure-for-tcga" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>data</p>
+<ul>
+<li><p>TCGA-BRCA</p>
+<ul>
+<li><p>mRNA</p>
+<ul>
+<li><p>mRNA.rda</p></li>
+</ul>
+</li>
+<li><p>miRNA</p>
+<ul>
+<li><p>miRNA.rda</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TCGA</p>
+<ul>
+<li><p>BRCA</p>
+<ul>
+<li><p>mRNA_processed.RData</p></li>
+<li><p>miRNA_processed.RData</p></li>
+<li><p>raw</p>
+<ul>
+<li><p>datExpr_mRNA.csv</p></li>
+<li><p>datMeta_mRNA.csv</p></li>
+<li><p>mRNA_graph.csv</p></li>
+<li><p>datExpr_miRNA.csv</p></li>
+<li><p>datMeta_miRNA.csv</p></li>
+<li><p>miRNA_graph.csv</p></li>
+<li><p>mRNA_miRNA_graph.csv</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step-5-execute-mogdx-py">
+<h3>Step 5 - Execute <a class="reference external" href="http://MOGDx.py">MOGDx.py</a><a class="headerlink" href="#step-5-execute-mogdx-py" title="Link to this heading"></a></h3>
+<p>Ensure all expression, meta and graph files for all modalities are in a single folder with naming convention ‘modality_datExpr.csv’/’modality_datMeta.csv’/’modality_graph.csv’ e.g. ‘mRNA_datExpr.csv’/’mRNA_datMeta.csv’/’modality_graph.csv’. <br />
+If performing an analysis on integrated modalities ensure all expression and meta files for the integrated modalities are in the folder. <br />
+e.g. if analysing mRNA &amp; miRNA, ensure mRNA_miRNA_graph.csv , datMeta_mRNA.csv, datMeta_miRNA.csv, datExpr_mRNA.csv and datExper_miRNA.csv are in the same folder. \</p>
+<p>This process will have been done automatically by the creation of the raw folder and running of SNF.R and it is easiest to retain this folder.</p>
+<p>MOGDx is a command line tool. A sample command is : <br />
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">MOGDx.py</span> <span class="pre">-i</span> <span class="pre">&quot;/raw_data/raw_BRCA&quot;</span> <span class="pre">-o</span> <span class="pre">&quot;./Output/BRCA/&quot;</span>&#160; <span class="pre">-snf</span> <span class="pre">&quot;mRNA_miRNA_graph.csv&quot;</span> <span class="pre">--n-splits</span> <span class="pre">5</span> <span class="pre">-ld</span> <span class="pre">32</span> <span class="pre">16</span> <span class="pre">--target</span> <span class="pre">&quot;paper_BRCA_Subtype_PAM50&quot;</span> <span class="pre">--index-col</span> <span class="pre">&quot;patient&quot;</span> <span class="pre">--epochs</span> <span class="pre">2000</span> <span class="pre">--lr</span> <span class="pre">0.001</span> <span class="pre">--h-feats</span> <span class="pre">64</span> <span class="pre">--decoder-dim</span> <span class="pre">64</span></code></p>
+<p>-i is the location of the raw data containing all datExpr, datMeta and graph.csv files <br />
+-o is the location where the output will be printed <br />
+-snf is the name of the fused psn  <br />
+–n-splits is the number of cross validation splits <br />
+-ld is the latent dimension per modality. It is order alphabetically thus, mRNA will be compressed to dim of 32 and miRNA to 16  <br />
+–target is the phenotype being classified <br />
+–index-col is the column containing the patient ids</p>
+<p>All other arguments are related to the Graph Convolutional Network with Multi Modal Encoder</p>
+</section>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>All requirements are specified in requirements.txt</p>
+<p>To create virtual env execute :  <br />
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">&lt;env&gt;</span> <span class="pre">--file</span> <span class="pre">requirements.txt</span></code></p>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h2>
+<p>Barry Ryan</p>
+<p>PhD Candidate Biomedical AI, University of Edinburgh <br />
+School of Informatics, 10 Crichton Street</p>
+<p>Email: <a class="reference external" href="mailto:barry&#46;ryan&#37;&#52;&#48;ed&#46;ac&#46;uk">barry<span>&#46;</span>ryan<span>&#64;</span>ed<span>&#46;</span>ac<span>&#46;</span>uk</a> <br />
+LinkedIn: <a class="reference external" href="https://www.linkedin.com/in/barry-ryan/">https://www.linkedin.com/in/barry-ryan/</a></p>
+</section>
+<section id="citations">
+<h2>Citations<a class="headerlink" href="#citations" title="Link to this heading"></a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="fn1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Bo Wang et al. “Similarity network fusion for aggregating data types on a genomic scale”. en. In: Nature Methods 11.3 (Mar. 2014). Number: 3 Publisher: Nature Publishing Group, pp. 333–337. ISSN: 1548-7105. DOI: 10.1038/nmeth.2810. URL: <a class="reference external" href="https://www.nature.com/articles/nmeth.2810">https://www.nature.com/articles/nmeth.2810</a> (visited on 11/07/2022)</p>
+</aside>
+<aside class="footnote brackets" id="fn2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Thomas N. Kipf and Max Welling. Semi-Supervised Classification with Graph Convolutional Networks. en. arXiv:1609.02907 [cs, stat]. Feb. 2017. URL:<a class="reference external" href="http://arxiv.org/abs/1609.02907">http://arxiv.org/abs/1609.02907</a> (visited on 09/26/2022).</p>
+</aside>
+<aside class="footnote brackets" id="fn3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Shraddha Pai et al. “netDx: interpretable patient classification using integrated patient similarity networks”. In:
+Molecular Systems Biology 15.3 (Mar. 2019). Publisher: John Wiley &amp; Sons, Ltd, e8497. ISSN: 1744-4292. DOI: 10.15252/msb.20188497. URL: <a class="reference external" href="https://www.embopress.org/doi/full/10.15252/msb">https://www.embopress.org/doi/full/10.15252/msb</a>. 20188497 (visited on 12/05/2022).</p>
+</aside>
+<aside class="footnote brackets" id="fn4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Xiao Li et al. “MoGCN: A Multi-Omics Integration Method Based on Graph Convolutional Network for Cancer Subtype Analysis”. eng. In: Frontiers in Genetics 13 (2022), p. 806842. ISSN: 1664-8021. DOI: 10.3389/fgene.2022.806842.</p>
+</aside>
+<aside class="footnote brackets" id="fn5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Tongxin Wang et al. “MOGONET integrates multi-omics data using graph convolutional networks allowing patient classification and biomarker identification”. en. In: Nature Communications 12.1 (June 2021). Number: 1 Publisher: Nature Publishing Group, p. 3445. ISSN: 2041-1723. DOI: 10.1038/s41467-021-23774-w. URL: <a class="reference external" href="https://www.nature.com/articles/s41467-021-23774-w">https://www.nature.com/articles/s41467-021-23774-w</a> (visited on 01/26/2023).</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../intro.html">
+            
+              <img src="../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dgl.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphConv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="c1"># Define the merge operation setup</span>
+<div class="viewcode-block" id="merge_dfs">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.merge_dfs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_dfs</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span> <span class="n">right_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Merges two DataFrames on their indexes with an outer join method.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        left_df (pd.DataFrame): The left DataFrame to merge.</span>
+<span class="sd">        right_df (pd.DataFrame): The right DataFrame to merge.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: The resulting DataFrame after merging.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1"># Merging on &#39;key&#39; and expanding with &#39;how=outer&#39; to include all records</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span> <span class="n">right_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="data_parsing">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.data_parsing">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">data_parsing</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="p">,</span> <span class="n">MODALITIES</span> <span class="p">,</span><span class="n">TARGET</span> <span class="p">,</span> <span class="n">INDEX_COL</span> <span class="p">,</span> <span class="n">PROCESSED</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parses multiple data modalities into a unified structure, handling metadata alignment and preprocessing steps.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        DATA_PATH (str): The directory path where the data files are stored.</span>
+<span class="sd">        MODALITIES (list): A list of modality names to parse.</span>
+<span class="sd">        TARGET (str): The column name in metadata that indicates the target or label.</span>
+<span class="sd">        INDEX_COL (str): The column used as the index for merging and aligning data.</span>
+<span class="sd">        PROCESSED (bool, optional): Whether to load processed or preprocessed data.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary of DataFrames, one for each modality.</span>
+<span class="sd">        pd.Series: Metadata series indexed by INDEX_COL and containing TARGET values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">datModalities</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span> <span class="p">:</span> 
+        <span class="n">modalities</span> <span class="o">=</span> <span class="p">[</span><span class="n">mod</span> <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">MODALITIES</span><span class="p">]</span>
+    <span class="k">except</span> <span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Modalities listed not found in data path </span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modalities</span><span class="p">)</span> <span class="p">:</span> 
+        <span class="k">if</span> <span class="n">PROCESSED</span> <span class="p">:</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_processed.pkl&#39;</span> <span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span> 
+                <span class="n">loaded_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span> 
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_PATH</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">mod</span><span class="si">}</span><span class="s1">_preprocessed.pkl&#39;</span> <span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span> 
+                <span class="n">loaded_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+            <span class="n">datMeta</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;datMeta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[[</span><span class="n">INDEX_COL</span> <span class="p">,</span> <span class="n">TARGET</span><span class="p">]]</span>
+        <span class="k">else</span> <span class="p">:</span> 
+            <span class="n">datMeta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">datMeta</span> <span class="p">,</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;datMeta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[[</span><span class="n">INDEX_COL</span> <span class="p">,</span> <span class="n">TARGET</span><span class="p">]]</span> <span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;outer&#39;</span> <span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="n">INDEX_COL</span> <span class="p">,</span> <span class="n">TARGET</span><span class="p">]</span> <span class="p">)</span>
+         
+        <span class="n">datExpr</span> <span class="o">=</span> <span class="n">loaded_data</span><span class="p">[</span><span class="s1">&#39;datExpr&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">datExpr</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">datMeta</span><span class="p">[</span><span class="n">INDEX_COL</span><span class="p">]))</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span> 
+            <span class="n">datExpr</span> <span class="o">=</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">T</span>
+            
+        <span class="k">if</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span> 
+            <span class="n">datExpr</span> <span class="o">=</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">datExpr</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+        
+        <span class="n">datModalities</span><span class="p">[</span><span class="n">mod</span><span class="p">]</span> <span class="o">=</span> <span class="n">datExpr</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">datExpr</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+        
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">datMeta</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">INDEX_COL</span><span class="p">)[</span><span class="n">TARGET</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">datModalities</span> <span class="p">,</span> <span class="n">meta</span></div>
+
+
+<div class="viewcode-block" id="get_gpu_memory">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.get_gpu_memory">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_gpu_memory</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves and prints the current GPU memory usage statistics including total, reserved, and allocated memory amounts.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_properties</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">total_memory</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>             
+    <span class="n">r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">memory_reserved</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">memory_allocated</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total = </span><span class="si">%1.1f</span><span class="s2">Gb </span><span class="se">\t</span><span class="s2"> Reserved = </span><span class="si">%1.1f</span><span class="s2">Gb </span><span class="se">\t</span><span class="s2"> Allocated = </span><span class="si">%1.1f</span><span class="s2">Gb&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="indices_removal_adjust">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.indices_removal_adjust">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">indices_removal_adjust</span><span class="p">(</span><span class="n">idx_to_swap</span> <span class="p">,</span> <span class="n">all_idx</span><span class="p">,</span>  <span class="n">new_idx</span><span class="p">)</span> <span class="p">:</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjusts and filters indices after some have been removed, mapping old indices to new indices post-removal.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        idx_to_swap (array-like): Indices that potentially need adjustment after an update.</span>
+<span class="sd">        all_idx (pd.Index): The complete set of original indices.</span>
+<span class="sd">        new_idx (array-like): The updated list of indices after some removals.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.array: Adjusted indices reflecting the new index placement.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">update_idx</span> <span class="o">=</span> <span class="n">all_idx</span><span class="p">[</span><span class="n">all_idx</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">new_idx</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span>
+    
+    <span class="n">update_idx_swap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">update_idx</span><span class="o">.</span><span class="n">index</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">update_idx</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">update_idx_swap</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">update_idx</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">idx_to_swap</span><span class="p">))]</span><span class="o">.</span><span class="n">values</span></div>
+
+    
+
+<div class="viewcode-block" id="network_from_csv">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.network_from_csv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">network_from_csv</span><span class="p">(</span><span class="n">NETWORK_PATH</span> <span class="p">,</span> <span class="n">no_psn</span> <span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span> <span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructs a NetworkX graph from a CSV file containing network data.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        NETWORK_PATH (str): The file path to the CSV containing the network data.</span>
+<span class="sd">        no_psn (bool): If True, performs special handling specific to pseudonetworks.</span>
+<span class="sd">        weighted (bool): Indicates if the network edges should consider weights (true for weighted edges).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        nx.Graph: The constructed NetworkX graph.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Open csv as pandas dataframe</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">NETWORK_PATH</span> <span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Obtain node names (ids) and numbers</span>
+    <span class="n">node_from</span> <span class="o">=</span> <span class="n">network</span><span class="p">[[</span><span class="s1">&#39;from&#39;</span> <span class="p">,</span> <span class="s1">&#39;from_name&#39;</span><span class="p">]]</span>
+    <span class="n">node_from</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span> <span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+
+    <span class="n">node_to</span> <span class="o">=</span> <span class="n">network</span><span class="p">[[</span><span class="s1">&#39;to&#39;</span> <span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">]]</span>
+    <span class="n">node_to</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;node&#39;</span> <span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Create networkx Graph object and add nodes to network </span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    
+    <span class="c1"># Add nodes to Graph object, resetting index to begin from 0</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">node_from</span> <span class="p">,</span> <span class="n">node_to</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span> <span class="c1"># Convert node names to strings</span>
+    
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+    
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span> <span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="s1">&#39;idx&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add edges and weights (if applicable to network)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">weighted</span> <span class="o">==</span> <span class="kc">True</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">edge1</span> <span class="p">,</span> <span class="n">edge2</span> <span class="p">,</span> <span class="n">weight</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;from&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;to&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">:</span> 
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge2</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">weight</span> <span class="p">))</span>
+
+        <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">no_psn</span> <span class="o">==</span> <span class="kc">True</span> <span class="p">:</span>
+         <span class="k">pass</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">edge1</span> <span class="p">,</span> <span class="n">edge2</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">network</span><span class="p">[</span><span class="s1">&#39;from_name&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;to_name&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">:</span>
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge1</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">edge2</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">))</span>
+
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">G</span></div>
+
+
+<div class="viewcode-block" id="init_weights">
+<a class="viewcode-back" href="../MOGDx/MAIN/Utils.html#utils.init_weights">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_weights</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes weights for PyTorch layers within a model.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        m (torch.nn.Module): The model or layer to initialize.</span>
+
+<span class="sd">    Effects:</span>
+<span class="sd">        Applied in-situ: Adjusts the weights of the model passed based on the type of layer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">GraphConv</span><span class="p">):</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span> <span class="c1">## or simply use your layer.reset_parameters()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">.</span><span class="n">in_features</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> 
+            <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">zeros_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

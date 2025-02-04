@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A replication of the results on the Prostate Dataset from PNet &mdash; Multi Omic Graph Diagnosis (MOGDx)</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../intro.html">
+            
+              <img src="../../../_static/mogdx.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../GettingStarted.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Processing_in_R.html">Processing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Processing_in_Python.html">Processing in Python</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Executing_MOGDx.html">Executing MOGDx</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contact.html">Contact Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../requirements.html">Requirements</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../intro.html">Project name not set</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../intro.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">A replication of the results on the Prostate Dataset from PNet </li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/Barry8197/MOGDxBook/blob/master/_build/html/_sources/MOGDx/Modules/PNetTorch/PNet_Prostate.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="a-replication-of-the-results-on-the-prostate-dataset-from-pnet">
+<h1>A replication of the results on the Prostate Dataset from <a class="reference external" href="https://www.nature.com/articles/s41586-021-03922-4">PNet </a><a class="headerlink" href="#a-replication-of-the-results-on-the-prostate-dataset-from-pnet" title="Link to this heading"></a></h1>
+<p>This notebook is an example for the use of PNet Torch and it’s resemblance to the original PNet paper.</p>
+<p>Some of the code is taken directly from the original papers <a class="reference external" href="https://github.com/marakeby/pnet_prostate_paper">GitHub</a></p>
+<section id="import-packages-and-pnettorch-modules">
+<h2>Import Packages and PNetTorch Modules<a class="headerlink" href="#import-packages-and-pnettorch-modules" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span> <span class="s1">&#39;./MAIN/&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reactome</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactomeNetwork</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Pnet</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaskedLinear</span> <span class="p">,</span> <span class="n">PNET</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">train</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_gpu_memory</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;frozen importlib._bootstrap&gt;:228: RuntimeWarning: scipy._lib.messagestream.MessageStream size changed, may indicate binary incompatibility. Expected 56 from C header, got 64 from PyObject
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-data-using-orginal-paper-code">
+<h3>Load Data Using Orginal Paper Code<a class="headerlink" href="#load-data-using-orginal-paper-code" title="Link to this heading"></a></h3>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./paper_data/&#39;</span>
+<span class="n">processed_path</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;./paper_data/prostate&#39;</span><span class="p">,</span> <span class="s1">&#39;processed&#39;</span><span class="p">])</span>
+
+<span class="c1"># use this one</span>
+<span class="n">gene_final_no_silent_no_intron</span> <span class="o">=</span> <span class="s1">&#39;P1000_final_analysis_set_cross__no_silent_no_introns_not_from_the_paper.csv&#39;</span>
+<span class="n">cnv_filename</span> <span class="o">=</span> <span class="s1">&#39;P1000_data_CNA_paper.csv&#39;</span>
+<span class="n">response_filename</span> <span class="o">=</span> <span class="s1">&#39;response_paper.csv&#39;</span>
+<span class="n">gene_important_mutations_only</span> <span class="o">=</span> <span class="s1">&#39;P1000_final_analysis_set_cross_important_only.csv&#39;</span>
+<span class="n">gene_important_mutations_only_plus_hotspots</span> <span class="o">=</span> <span class="s1">&#39;P1000_final_analysis_set_cross_important_only_plus_hotspots.csv&#39;</span>
+<span class="n">gene_hotspots</span> <span class="o">=</span> <span class="s1">&#39;P1000_final_analysis_set_cross_hotspots.csv&#39;</span>
+<span class="n">gene_truncating_mutations_only</span> <span class="o">=</span> <span class="s1">&#39;P1000_final_analysis_set_cross_truncating_only.csv&#39;</span>
+<span class="n">gene_expression</span> <span class="o">=</span> <span class="s1">&#39;P1000_adjusted_TPM.csv&#39;</span>
+<span class="n">fusions_filename</span> <span class="o">=</span> <span class="s1">&#39;p1000_onco_ets_fusions.csv&#39;</span>
+<span class="n">cnv_burden_filename</span> <span class="o">=</span> <span class="s1">&#39;P1000_data_CNA_burden.csv&#39;</span>
+<span class="n">fusions_genes_filename</span> <span class="o">=</span> <span class="s1">&#39;fusion_genes.csv&#39;</span>
+
+<span class="n">cached_data</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">processed_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">])</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loading data from </span><span class="si">%s</span><span class="s1">,&#39;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">cached_data</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loading from memory cached_data&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">cached_data</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">cached_data</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;response&#39;</span> <span class="ow">in</span> <span class="n">cached_data</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loading from memory cached_data&#39;</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">cached_data</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">get_response</span><span class="p">()</span>
+        <span class="n">cached_data</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
+
+    <span class="c1"># remove all zeros columns (note the column may be added again later if another feature type belongs to the same gene has non-zero entries).</span>
+    <span class="c1"># zero_cols = data.sum(axis=0) == 0</span>
+    <span class="c1"># data = data.loc[:, ~zero_cols]</span>
+
+    <span class="c1"># join with the labels</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="o">~</span><span class="nb">all</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="nb">all</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="k">del</span> <span class="nb">all</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">all</span>
+    <span class="n">genes</span> <span class="o">=</span> <span class="nb">all</span><span class="o">.</span><span class="n">columns</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">selected_genes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">intersect</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">genes</span><span class="p">),</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intersect</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_genes</span><span class="p">):</span>
+            <span class="c1"># raise Exception(&#39;wrong gene&#39;)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;some genes dont exist in the original data set&#39;</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="nb">list</span><span class="p">(</span><span class="n">intersect</span><span class="p">)]</span>
+        <span class="n">genes</span> <span class="o">=</span> <span class="n">intersect</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loaded data </span><span class="si">%d</span><span class="s1"> samples, </span><span class="si">%d</span><span class="s1"> variables, </span><span class="si">%d</span><span class="s1"> responses &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">response</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">genes</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">genes</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_TMB</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">gene_final_no_silent_no_intron</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;TMB&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">cols</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_CNV_burden</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">gene_final_no_silent_no_intron</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;TMB&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">cols</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_data_type</span><span class="p">(</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;gene&#39;</span><span class="p">,</span> <span class="n">cnv_levels</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">cnv_filter_single_event</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mut_binary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">selected_genes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loading </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_type</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;TMB&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_TMB</span><span class="p">(</span><span class="n">gene_important_mutations_only</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;mut_no_silent_no_intron&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_final_no_silent_no_intron</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mut_binary</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;mut_binary = True&#39;</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;mut_important&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_important_mutations_only</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mut_binary</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;mut_binary = True&#39;</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;mut_important_plus_hotspots&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_important_mutations_only_plus_hotspots</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;mut_hotspots&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_hotspots</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;truncating_mut&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_truncating_mutations_only</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mut_binary</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;mut_binary = True&#39;</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;gene_final_no_silent&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_final_no_silent</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cnv_levels</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;cnv_levels = 3&#39;</span><span class="p">)</span>
+            <span class="c1"># remove single amplification and single delteion, they are usually noisey</span>
+            <span class="k">if</span> <span class="n">cnv_levels</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cnv_filter_single_event</span><span class="p">:</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span>
+                    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_del&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">if</span> <span class="n">cnv_levels</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cnv_filter_single_event</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># cnv == 5 , use everything</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_amp&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">if</span> <span class="n">cnv_levels</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cnv_filter_single_event</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># cnv == 5 , use everything</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_single_del&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_single_amp&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">!=</span> <span class="mf">1.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_high_amp&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">!=</span> <span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_deep_del&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">!=</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;gene_expression&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">gene_expression</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;fusions&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">fusions_filename</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;cnv_burden&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">cnv_burden_filename</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># x.loc[:, :] = 0.</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;fusion_genes&#39;</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">fusions_genes_filename</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+        <span class="c1"># x.loc[:,:]=0.</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">genes</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_response</span><span class="p">():</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;loading response from </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">response_filename</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">processed_path</span><span class="p">,</span> <span class="n">response_filename</span><span class="p">]))</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">labels</span>
+
+
+<span class="c1"># complete_features: make sure all the data_types have the same set of features_processing (genes)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">combine</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">rows_list</span><span class="p">,</span> <span class="n">cols_list</span><span class="p">,</span> <span class="n">data_type_list</span><span class="p">,</span> <span class="n">combine_type</span><span class="p">,</span> <span class="n">use_coding_genes_only</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">cols_list_set</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols_list</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">combine_type</span> <span class="o">==</span> <span class="s1">&#39;intersection&#39;</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="o">*</span><span class="n">cols_list_set</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="n">cols_list_set</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">use_coding_genes_only</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;genes/HUGO_genes/protein-coding_gene_with_coordinate_minimal.txt&#39;</span><span class="p">])</span>
+        <span class="n">coding_genes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">coding_genes_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;chr&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">coding_genes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">coding_genes_df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">coding_genes</span><span class="p">)</span>
+
+    <span class="c1"># the unique (super) set of genes</span>
+    <span class="n">all_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+
+    <span class="n">all_cols_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">all_cols</span><span class="p">)</span>
+
+    <span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">rows_list</span><span class="p">,</span> <span class="n">cols_list</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">all_cols_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="n">all_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">data_type_list</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># put genes on the first level and then the data type</span>
+    <span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># order the columns based on genes</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">all_data</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="n">reordering_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">all_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">reordering_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+        <span class="s1">&#39;After combining, loaded data </span><span class="si">%d</span><span class="s1"> samples, </span><span class="si">%d</span><span class="s1"> variables, </span><span class="si">%d</span><span class="s1"> responses &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">split_cnv</span><span class="p">(</span><span class="n">x_df</span><span class="p">):</span>
+    <span class="n">genes</span> <span class="o">=</span> <span class="n">x_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cnv&#39;</span><span class="p">:</span> <span class="s1">&#39;CNA_amplification&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">genes</span><span class="p">:</span>
+        <span class="n">x_df</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;CNA_deletion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_df</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;CNA_amplification&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="o">-</span><span class="mf">1.0</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+        <span class="n">x_df</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;CNA_amplification&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_df</span><span class="p">[</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;CNA_amplification&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mf">1.0</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+    <span class="n">x_df</span> <span class="o">=</span> <span class="n">x_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">genes</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_df</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProstateDataPaper</span><span class="p">():</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;mut&#39;</span><span class="p">,</span> <span class="n">account_for_data_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cnv_levels</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                 <span class="n">cnv_filter_single_event</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mut_binary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">selected_genes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">combine_type</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">,</span>
+                 <span class="n">use_coding_genes_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">drop_AR</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">balanced_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cnv_split</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">selected_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">training_split</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">training_split</span> <span class="o">=</span> <span class="n">training_split</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">selected_genes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">selected_genes</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+                <span class="c1"># list of genes</span>
+                <span class="n">selected_genes</span> <span class="o">=</span> <span class="n">selected_genes</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># file that will be used to load list of genes</span>
+                <span class="n">selected_genes_file</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;genes&#39;</span><span class="p">])</span>
+                <span class="n">selected_genes_file</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">selected_genes_file</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">])</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">selected_genes_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">selected_genes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;genes&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data_type</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="n">x_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">rows_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">cols_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data_type</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">load_data_type</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cnv_levels</span><span class="p">,</span> <span class="n">cnv_filter_single_event</span><span class="p">,</span> <span class="n">mut_binary</span><span class="p">,</span> <span class="n">selected_genes</span><span class="p">)</span>
+                <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">rows_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rows</span><span class="p">),</span> <span class="n">cols_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">combine</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">rows_list</span><span class="p">,</span> <span class="n">cols_list</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="n">combine_type</span><span class="p">,</span>
+                                       <span class="n">use_coding_genes_only</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">load_data_type</span><span class="p">(</span><span class="n">data_type</span><span class="p">,</span> <span class="n">cnv_levels</span><span class="p">,</span> <span class="n">cnv_filter_single_event</span><span class="p">,</span> <span class="n">mut_binary</span><span class="p">,</span>
+                                              <span class="n">selected_genes</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">drop_AR</span><span class="p">:</span>
+
+            <span class="n">data_types</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="s1">&#39;cnv&#39;</span> <span class="ow">in</span> <span class="n">data_types</span><span class="p">:</span>
+                <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span><span class="p">[(</span><span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;cnv&#39;</span><span class="p">)]</span> <span class="o">&lt;=</span> <span class="mf">0.</span>
+            <span class="k">elif</span> <span class="s1">&#39;cnv_amp&#39;</span> <span class="ow">in</span> <span class="n">data_types</span><span class="p">:</span>
+                <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span><span class="p">[(</span><span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;cnv_amp&#39;</span><span class="p">)]</span> <span class="o">&lt;=</span> <span class="mf">0.</span>
+
+            <span class="k">if</span> <span class="s1">&#39;mut_important&#39;</span> <span class="ow">in</span> <span class="n">data_types</span><span class="p">:</span>
+                <span class="n">ind2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[(</span><span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;mut_important&#39;</span><span class="p">)]</span> <span class="o">&lt;</span> <span class="mf">1.</span><span class="p">)</span>
+                <span class="n">ind</span> <span class="o">=</span> <span class="n">ind</span> <span class="o">&amp;</span> <span class="n">ind2</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ind</span><span class="p">,]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">cnv_split</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">split_cnv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">if</span> <span class="n">balanced_data</span><span class="p">:</span>
+            <span class="n">pos_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mf">1.</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">neg_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mf">0.</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="n">n_pos</span> <span class="o">=</span> <span class="n">pos_ind</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">n_neg</span> <span class="o">=</span> <span class="n">neg_ind</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">n_pos</span><span class="p">,</span> <span class="n">n_neg</span><span class="p">)</span>
+
+            <span class="n">pos_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pos_ind</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">neg_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">neg_ind</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">pos_ind</span><span class="p">,</span> <span class="n">neg_ind</span><span class="p">]))</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,]</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">account_for_data_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">x_genomics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rows</span><span class="p">)</span>
+            <span class="n">y_genomics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">])</span>
+            <span class="n">x_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">rows_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">cols_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">account_for_data_type</span><span class="p">:</span>
+                <span class="n">x_</span><span class="p">,</span> <span class="n">y_</span><span class="p">,</span> <span class="n">rows_</span><span class="p">,</span> <span class="n">cols_</span> <span class="o">=</span> <span class="n">load_data_type</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cnv_levels</span><span class="p">,</span> <span class="n">cnv_filter_single_event</span><span class="p">,</span> <span class="n">mut_binary</span><span class="p">,</span>
+                                                      <span class="n">selected_genes</span><span class="p">)</span>
+                <span class="n">x_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x_</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rows_</span><span class="p">)</span>
+                <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_df</span><span class="p">),</span> <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_</span><span class="p">),</span> <span class="n">rows_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rows_</span><span class="p">),</span> <span class="n">cols_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cols_</span><span class="p">)</span>
+
+            <span class="n">x_account_for</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">account_for_data_type</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">x_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x_genomics</span><span class="p">,</span> <span class="n">x_account_for</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;genomics&#39;</span><span class="p">,</span> <span class="s1">&#39;account_for&#39;</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">common_samples</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">x_all</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+            <span class="n">x_all</span> <span class="o">=</span> <span class="n">x_all</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_samples</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y_genomics</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_samples</span><span class="p">,</span> <span class="p">:]</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x_all</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">x_all</span><span class="o">.</span><span class="n">columns</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">x_all</span><span class="o">.</span><span class="n">index</span>
+
+        <span class="k">if</span> <span class="n">selected_samples</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">selected_samples_file</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">processed_path</span><span class="p">,</span> <span class="n">selected_samples</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">selected_samples_file</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">selected_samples_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tumor_Sample_Barcode&#39;</span><span class="p">])</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rows</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">])</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">selected_samples_list</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">selected_samples_list</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">rows</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">rows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_train_validate_test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
+        <span class="n">splits_path</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">PROSTATE_DATA_PATH</span><span class="p">,</span> <span class="s1">&#39;splits&#39;</span><span class="p">)</span>
+
+        <span class="n">training_file</span> <span class="o">=</span> <span class="s1">&#39;training_set_</span><span class="si">{}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">training_split</span><span class="p">)</span>
+        <span class="n">training_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">splits_path</span><span class="p">,</span> <span class="n">training_file</span><span class="p">))</span>
+
+        <span class="n">validation_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">splits_path</span><span class="p">,</span> <span class="s1">&#39;validation_set.csv&#39;</span><span class="p">))</span>
+        <span class="n">testing_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">splits_path</span><span class="p">,</span> <span class="s1">&#39;test_set.csv&#39;</span><span class="p">))</span>
+
+        <span class="n">info_train</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">info</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+        <span class="n">info_validate</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">info</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">validation_set</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+        <span class="n">info_test</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">info</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">testing_set</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+
+        <span class="n">ind_train</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">info_train</span><span class="p">)</span>
+        <span class="n">ind_validate</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">info_validate</span><span class="p">)</span>
+        <span class="n">ind_test</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">info_test</span><span class="p">)</span>
+
+        <span class="n">x_train</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind_train</span><span class="p">]</span>
+        <span class="n">x_test</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind_test</span><span class="p">]</span>
+        <span class="n">x_validate</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind_validate</span><span class="p">]</span>
+
+        <span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">ind_train</span><span class="p">]</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">ind_test</span><span class="p">]</span>
+        <span class="n">y_validate</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">ind_validate</span><span class="p">]</span>
+
+        <span class="n">info_train</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="n">ind_train</span><span class="p">]</span>
+        <span class="n">info_test</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="n">ind_test</span><span class="p">]</span>
+        <span class="n">info_validate</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="n">ind_validate</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_validate</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_validate</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">info_train</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">info_validate</span><span class="p">,</span> <span class="n">info_test</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">task</span> <span class="o">=</span> <span class="s1">&#39;classification_binary&#39;</span>
+<span class="n">selected_genes</span> <span class="o">=</span> <span class="s1">&#39;tcga_prostate_expressed_genes_and_cancer_genes.csv&#39;</span>
+<span class="n">data_base</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;prostate_paper&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="s1">&#39;data_type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mut_important&#39;</span><span class="p">,</span> <span class="s1">&#39;cnv_del&#39;</span><span class="p">,</span> <span class="s1">&#39;cnv_amp&#39;</span><span class="p">],</span>
+                 <span class="s1">&#39;drop_AR&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="s1">&#39;cnv_levels&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                 <span class="s1">&#39;mut_binary&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                 <span class="s1">&#39;balanced_data&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="s1">&#39;combine_type&#39;</span><span class="p">:</span> <span class="s1">&#39;union&#39;</span><span class="p">,</span>  <span class="c1"># intersection</span>
+                 <span class="s1">&#39;use_coding_genes_only&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                 <span class="s1">&#39;selected_genes&#39;</span><span class="p">:</span> <span class="n">selected_genes</span><span class="p">,</span>
+                 <span class="s1">&#39;training_split&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+             <span class="p">}</span>
+             <span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Data</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_size</span> <span class="o">=</span> <span class="n">test_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stratify</span> <span class="o">=</span> <span class="n">stratify</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;prostate_paper&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span> <span class="o">=</span> <span class="n">ProstateDataPaper</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;unsupported data type&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unsupported data type&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_train_validate_test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">get_train_validate_test</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_train_test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x_train</span><span class="p">,</span> <span class="n">x_validate</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_validate</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">info_train</span><span class="p">,</span> <span class="n">info_validate</span><span class="p">,</span> <span class="n">info_test</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">get_train_validate_test</span><span class="p">()</span>
+        <span class="c1"># combine training and validation datasets</span>
+        <span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_validate</span><span class="p">))</span>
+        <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_validate</span><span class="p">))</span>
+        <span class="n">info_train</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">info_train</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">info_validate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">info_train</span><span class="p">,</span> <span class="n">info_test</span><span class="p">,</span> <span class="n">columns</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">y</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">info</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">columns</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">columns</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_relevant_features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="p">,</span> <span class="s1">&#39;relevant_features&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_reader</span><span class="o">.</span><span class="n">get_relevant_features</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="o">**</span><span class="n">data_base</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:some genes dont exist in the original data set
+WARNING:root:some genes dont exist in the original data set
+WARNING:root:some genes dont exist in the original data set
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="check-data">
+<h3>Check Data<a class="headerlink" href="#check-data" title="Link to this heading"></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input data to learn</span>
+<span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1011, 27687)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Targets</span>
+<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1011, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Patient ID&#39;s</span>
+<span class="n">info</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;00-029N9_LN&#39;, &#39;01-087MM_BONE&#39;, &#39;01-095N1_LN&#39;, &#39;01-120A1_LIVER&#39;,
+       &#39;02-083E1_LN&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Features - NOTE : Multi-index column with mappings directly from datasets to gene</span>
+<span class="n">columns</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(&#39;CAMTA2&#39;, &#39;mut_important&#39;),
+            (&#39;CAMTA2&#39;,       &#39;cnv_del&#39;),
+            (&#39;CAMTA2&#39;,       &#39;cnv_amp&#39;),
+            (   &#39;BTK&#39;, &#39;mut_important&#39;),
+            (   &#39;BTK&#39;,       &#39;cnv_del&#39;)],
+           )
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="run-pnettorch-on-paper">
+<h2>Run PNetTorch on Paper<a class="headerlink" href="#run-pnettorch-on-paper" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+
+<span class="c1"># The original paper mask process the input to have direct mappings to genes. For replication in this example</span>
+<span class="c1"># we will also mask the input. </span>
+<span class="n">input_mask</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">columns</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>  <span class="c1"># Initialize all zeros</span>
+
+<span class="c1"># Mask the inputs for dataset to gene (3:1) mapping</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">input_mask</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">input_mask</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span> <span class="p">,</span> <span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    
+<span class="n">input_mask_arr</span> <span class="o">=</span> <span class="n">input_mask</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">values</span>
+<span class="k">del</span> <span class="n">input_mask</span>
+
+<span class="c1"># Highly recommend running on GPU or in HPC environment</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+
+<span class="c1"># Build network to obtain gene and pathway relationships</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">ReactomeNetwork</span><span class="p">(</span><span class="n">genes_of_interest</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">columns</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span> <span class="p">,</span> <span class="n">n_levels</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Build PNet model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PNET</span><span class="p">(</span><span class="n">reactome_network</span><span class="o">=</span><span class="n">net</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                  <span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.3</span> <span class="p">,</span> <span class="n">filter_pathways</span><span class="o">=</span><span class="kc">False</span> <span class="p">,</span> <span class="n">input_layer_mask</span> <span class="o">=</span> <span class="n">input_mask_arr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Convert classifications to One Hot Encodings</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="c1"># Train Model</span>
+<span class="n">model</span> <span class="p">,</span> <span class="n">train_loader</span> <span class="p">,</span> <span class="n">test_loader</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">device</span> <span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1024</span> <span class="p">,</span> <span class="n">lr_decay</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                                                 <span class="n">num_epochs</span><span class="o">=</span><span class="mi">50</span> <span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span> <span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Evaluate</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PNET(
+  (dropout): Dropout(p=0.3, inplace=False)
+  (layers): ModuleList(
+    (0): MaskedLinear(in_features=27687, out_features=9229, bias=True)
+    (1): MaskedLinear(in_features=9229, out_features=1397, bias=True)
+    (2): MaskedLinear(in_features=1397, out_features=1066, bias=True)
+    (3): MaskedLinear(in_features=1066, out_features=447, bias=True)
+    (4): MaskedLinear(in_features=447, out_features=147, bias=True)
+    (5): MaskedLinear(in_features=147, out_features=26, bias=True)
+  )
+  (skip): ModuleList(
+    (0): Linear(in_features=9229, out_features=2, bias=True)
+    (1): Linear(in_features=1397, out_features=2, bias=True)
+    (2): Linear(in_features=1066, out_features=2, bias=True)
+    (3): Linear(in_features=447, out_features=2, bias=True)
+    (4): Linear(in_features=147, out_features=2, bias=True)
+    (5): Linear(in_features=26, out_features=2, bias=True)
+  )
+  (act_layers): ModuleList(
+    (0-5): 6 x ReLU()
+  )
+  (norm_layers): ModuleList(
+    (0): BatchNorm1d(9229, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): BatchNorm1d(1397, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): BatchNorm1d(1066, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): BatchNorm1d(447, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): BatchNorm1d(147, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): BatchNorm1d(26, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 50: 100%|██████████| 50/50 [01:00&lt;00:00,  1.20s/epoch, loss=0.0809]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training complete.
+              precision    recall  f1-score   support
+
+           0     0.9388    0.6765    0.7863        68
+           1     0.5849    0.9118    0.7126        34
+
+    accuracy                         0.7549       102
+   macro avg     0.7618    0.7941    0.7495       102
+weighted avg     0.8208    0.7549    0.7618       102
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actuals</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">),</span> <span class="n">test_loader</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">actuals</span> <span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="n">actuals</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="n">get_probabilities</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">),</span> <span class="n">test_loader</span><span class="p">)</span>
+<span class="c1"># Assuming `probs` has been calculated as the probability outcomes for class 1, if not implement it</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">actuals</span><span class="p">,</span> <span class="n">probs</span> <span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)</span>
+
+<span class="n">roc</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">actuals</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span> <span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;localised&#39;</span> <span class="p">,</span> <span class="s1">&#39;metastatic&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8f347f753b3ec40e7ecb4941dde8e78d483d8516fa3c86af21af5cc5fa47ee1d.png" src="../../../_images/8f347f753b3ec40e7ecb4941dde8e78d483d8516fa3c86af21af5cc5fa47ee1d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Micro-averaged One-vs-Rest ROC AUC score:
+0.83
+</pre></div>
+</div>
+<img alt="../../../_images/0b2cac3143456bbce56556bc742b98a166121fb850224d56422d16b4b80af1cd.png" src="../../../_images/0b2cac3143456bbce56556bc742b98a166121fb850224d56422d16b4b80af1cd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_zero_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+    <span class="n">non_zero_elements</span> <span class="o">=</span> <span class="p">(</span><span class="n">param</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># filter non-zero elements</span>
+    <span class="n">non_zero_sum</span> <span class="o">+=</span> <span class="n">non_zero_elements</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># sum them up</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum of non-zero parameters:&quot;</span><span class="p">,</span> <span class="n">non_zero_sum</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sum of non-zero parameters: 155344
+</pre></div>
+</div>
+</div>
+</div>
+<section id="functions-for-checking-and-clearing-gpu-memory-if-required">
+<h3>Functions for checking and clearing GPU memory if required<a class="headerlink" href="#functions-for-checking-and-clearing-gpu-memory-if-required" title="Link to this heading"></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_gpu_memory</span><span class="p">()</span>
+<span class="c1">#del model , train_loader , test_loader</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">reset_accumulated_memory_stats</span><span class="p">()</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+<span class="n">get_gpu_memory</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total = 6.4Gb 	 Reserved = 6.6Gb 	 Allocated = 0.0Gb
+Total = 6.4Gb 	 Reserved = 0.1Gb 	 Allocated = 0.0Gb
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="interpretability">
+<h2>Interpretability<a class="headerlink" href="#interpretability" title="Link to this heading"></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">interpret</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span> <span class="p">,</span> <span class="n">evaluate_interpret_save</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract all data and targets using list comprehensions</span>
+<span class="n">data_batches</span><span class="p">,</span> <span class="n">target_batches</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">])</span>
+
+<span class="c1"># Convert lists of batches into single tensors</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">data_batches</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">test_targets</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">target_batches</span> <span class="p">,</span> <span class="n">dim</span> <span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Assign the model features to the columns</span>
+<span class="n">model</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">columns</span>
+
+<span class="n">model_importances</span> <span class="o">=</span> <span class="n">interpret</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">test_data</span> <span class="p">,</span> <span class="n">savedir</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Save Path Not Found - Plots will not be saved
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Barry\anaconda3\lib\site-packages\captum\_utils\gradient.py:57: UserWarning: Input Tensor 0 did not already require gradients, required_grads has been set automatically.
+  warnings.warn(
+C:\Users\Barry\anaconda3\lib\site-packages\captum\attr\_core\deep_lift.py:304: UserWarning: Setting forward, backward hooks and attributes on non-linear
+               activations. The hooks and attributes will be removed
+            after the attribution is finished
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../../../_images/f35dfddfcbc8023fdd352def3157d29ce7ae98a620a76d14fc7305b0293adf0b.png" src="../../../_images/f35dfddfcbc8023fdd352def3157d29ce7ae98a620a76d14fc7305b0293adf0b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MaskedLinear(in_features=27687, out_features=9229, bias=True)
+MaskedLinear(in_features=9229, out_features=1397, bias=True)
+MaskedLinear(in_features=1397, out_features=1066, bias=True)
+MaskedLinear(in_features=1066, out_features=447, bias=True)
+MaskedLinear(in_features=447, out_features=147, bias=True)
+MaskedLinear(in_features=147, out_features=26, bias=True)
+</pre></div>
+</div>
+<img alt="../../../_images/bdb9c674e5c1770dc31fa700fa0eb9663e03016ea1eb1dbbc3c94e22e82d79dc.png" src="../../../_images/bdb9c674e5c1770dc31fa700fa0eb9663e03016ea1eb1dbbc3c94e22e82d79dc.png" />
+<img alt="../../../_images/10a5105ba60f6fee21fd6993e067212cef2831f2ebe81bebb6ce6ddcb47b26c0.png" src="../../../_images/10a5105ba60f6fee21fd6993e067212cef2831f2ebe81bebb6ce6ddcb47b26c0.png" />
+<img alt="../../../_images/5c5e74a30c3b79dc579bc4416222a416fe6d76a786e6cbc9596e40cedb000355.png" src="../../../_images/5c5e74a30c3b79dc579bc4416222a416fe6d76a786e6cbc9596e40cedb000355.png" />
+<img alt="../../../_images/86a565d31d612c8947c07c40c45983172b49af636cdb491c25edfc1c5fcad09a.png" src="../../../_images/86a565d31d612c8947c07c40c45983172b49af636cdb491c25edfc1c5fcad09a.png" />
+<img alt="../../../_images/53a12eaf561b2186171deaed62737423537577bb8c090e1bab2b27d75af475a6.png" src="../../../_images/53a12eaf561b2186171deaed62737423537577bb8c090e1bab2b27d75af475a6.png" />
+<img alt="../../../_images/46dd33ac8bbad58e2082cd7b994d0da11f9e89448e5e65f048a071b9e3eb976c.png" src="../../../_images/46dd33ac8bbad58e2082cd7b994d0da11f9e89448e5e65f048a071b9e3eb976c.png" />
+</div>
+</div>
+</section>
+<section id="generate-and-save-metrics-importance">
+<h2>Generate and Save Metrics + Importance<a class="headerlink" href="#generate-and-save-metrics-importance" title="Link to this heading"></a></h2>
+<p>Single function to generate and save all model metrics and importances</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluate_interpret_save</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">test_loader</span> <span class="p">,</span> <span class="s1">&#39;./Output/Prostate&#39;</span> <span class="p">,</span> <span class="n">n_classes</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;localised&#39;</span> <span class="p">,</span> <span class="s1">&#39;metastatic&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8f347f753b3ec40e7ecb4941dde8e78d483d8516fa3c86af21af5cc5fa47ee1d.png" src="../../../_images/8f347f753b3ec40e7ecb4941dde8e78d483d8516fa3c86af21af5cc5fa47ee1d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC Score: 0.9364186851211072
+Micro-averaged One-vs-Rest ROC AUC score:
+0.83
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Barry\anaconda3\lib\site-packages\captum\_utils\gradient.py:57: UserWarning: Input Tensor 0 did not already require gradients, required_grads has been set automatically.
+  warnings.warn(
+C:\Users\Barry\anaconda3\lib\site-packages\captum\attr\_core\deep_lift.py:304: UserWarning: Setting forward, backward hooks and attributes on non-linear
+               activations. The hooks and attributes will be removed
+            after the attribution is finished
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../../../_images/0b2cac3143456bbce56556bc742b98a166121fb850224d56422d16b4b80af1cd.png" src="../../../_images/0b2cac3143456bbce56556bc742b98a166121fb850224d56422d16b4b80af1cd.png" />
+<img alt="../../../_images/f35dfddfcbc8023fdd352def3157d29ce7ae98a620a76d14fc7305b0293adf0b.png" src="../../../_images/f35dfddfcbc8023fdd352def3157d29ce7ae98a620a76d14fc7305b0293adf0b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MaskedLinear(in_features=27687, out_features=9229, bias=True)
+MaskedLinear(in_features=9229, out_features=1397, bias=True)
+MaskedLinear(in_features=1397, out_features=1066, bias=True)
+MaskedLinear(in_features=1066, out_features=447, bias=True)
+MaskedLinear(in_features=447, out_features=147, bias=True)
+MaskedLinear(in_features=147, out_features=26, bias=True)
+</pre></div>
+</div>
+<img alt="../../../_images/bdb9c674e5c1770dc31fa700fa0eb9663e03016ea1eb1dbbc3c94e22e82d79dc.png" src="../../../_images/bdb9c674e5c1770dc31fa700fa0eb9663e03016ea1eb1dbbc3c94e22e82d79dc.png" />
+<img alt="../../../_images/10a5105ba60f6fee21fd6993e067212cef2831f2ebe81bebb6ce6ddcb47b26c0.png" src="../../../_images/10a5105ba60f6fee21fd6993e067212cef2831f2ebe81bebb6ce6ddcb47b26c0.png" />
+<img alt="../../../_images/5c5e74a30c3b79dc579bc4416222a416fe6d76a786e6cbc9596e40cedb000355.png" src="../../../_images/5c5e74a30c3b79dc579bc4416222a416fe6d76a786e6cbc9596e40cedb000355.png" />
+<img alt="../../../_images/86a565d31d612c8947c07c40c45983172b49af636cdb491c25edfc1c5fcad09a.png" src="../../../_images/86a565d31d612c8947c07c40c45983172b49af636cdb491c25edfc1c5fcad09a.png" />
+<img alt="../../../_images/53a12eaf561b2186171deaed62737423537577bb8c090e1bab2b27d75af475a6.png" src="../../../_images/53a12eaf561b2186171deaed62737423537577bb8c090e1bab2b27d75af475a6.png" />
+<img alt="../../../_images/46dd33ac8bbad58e2082cd7b994d0da11f9e89448e5e65f048a071b9e3eb976c.png" src="../../../_images/46dd33ac8bbad58e2082cd7b994d0da11f9e89448e5e65f048a071b9e3eb976c.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./MOGDx\Modules\PNetTorch"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z09VV2YFE0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Z09VV2YFE0', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
