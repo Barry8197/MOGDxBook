@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
@@ -71,6 +71,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Executing_MOGDx.html">Executing MOGDx</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">MOGDx Model Types</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MOGDx/Notebooks/MOGDx.html">MOGDx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MOGDx/Notebooks/MOGDx_PNet.html">MOGDx &amp; PNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MOGDx/Notebooks/MOGDx_NetGen.html">MOGDx Network Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MOGDx/Notebooks/MOGDx_Free.html">MOGDx Free</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Model Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Training_MOGDx.html">MOGDx Main Functions and Classes</a></li>
@@ -128,7 +135,7 @@
 
 <div class="viewcode-block" id="train">
 <a class="viewcode-back" href="../MOGDx/MAIN/Training.html#train.train">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">device</span> <span class="p">,</span>  <span class="n">model</span> <span class="p">,</span> <span class="n">labels</span> <span class="p">,</span> <span class="n">epochs</span> <span class="p">,</span> <span class="n">lr</span> <span class="p">,</span> <span class="n">patience</span><span class="p">,</span> <span class="n">pretrain</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">,</span> <span class="n">pnet</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">device</span> <span class="p">,</span>  <span class="n">model</span> <span class="p">,</span> <span class="n">labels</span> <span class="p">,</span> <span class="n">epochs</span> <span class="p">,</span> <span class="n">lr</span> <span class="p">,</span> <span class="n">patience</span><span class="p">,</span> <span class="n">pretrain</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">,</span> <span class="n">pnet</span><span class="o">=</span><span class="kc">False</span> <span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Trains a model on the given graph data using specified parameters.</span>
 
@@ -163,7 +170,7 @@
         <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">train_index</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span>
         <span class="n">sampler</span><span class="p">,</span>
         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
         <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -184,7 +191,10 @@
         
         <span class="k">for</span> <span class="n">it</span><span class="p">,</span> <span class="p">(</span><span class="n">input_nodes</span><span class="p">,</span> <span class="n">output_nodes</span><span class="p">,</span> <span class="n">blocks</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
             <span class="n">train_dataloader</span>
-        <span class="p">):</span> 
+        <span class="p">):</span>  
+
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            
             <span class="n">x</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">srcdata</span><span class="p">[</span><span class="s2">&quot;feat&quot;</span><span class="p">]</span>
             <span class="n">y</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dstdata</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
             <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">blocks</span><span class="p">)</span>
@@ -197,8 +207,7 @@
 
             <span class="n">train_acc</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">true</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
             <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
-            
-            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        
             <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
             <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
             <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
@@ -227,8 +236,9 @@
     <span class="n">fig</span> <span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_loss</span>  <span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Train Loss&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    
-    <span class="k">del</span> <span class="n">train_dataloader</span>
+
+    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span> 
 
     <span class="k">if</span> <span class="n">pretrain</span> <span class="p">:</span> 
         <span class="n">G</span> <span class="o">=</span> <span class="n">gen_new_graph</span><span class="p">(</span><span class="n">model</span> <span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">ndata</span><span class="p">[</span><span class="s1">&#39;feat&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="p">,</span> <span class="n">pnet</span><span class="o">=</span><span class="n">pnet</span><span class="p">)</span>
